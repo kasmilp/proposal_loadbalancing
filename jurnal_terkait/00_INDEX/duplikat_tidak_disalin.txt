@@ -1,0 +1,19 @@
+Berkas berikut tidak disalin karena duplikat, gambar, atau arsip.
+
+- 1induk The application and performance optimization of multi-controller-based.htm
+  Alasan: versi HTML; PDF-nya sudah ada di 06_SDN_dan_Arsitektur_Kontrol.
+
+- jurnal isp indihome\Desain dan Implementasi Desain Jaringan FTTH GPON Berdasarkan Pengukuran Attenuasi dan Pemodelan Optisystem.png
+  Alasan: gambar/figure, bukan artikel.
+
+- penanda\New folder.rar
+  Alasan: arsip berisi salinan folder `penanda/New folder` dan `penanda/New folder/expor` yang sudah diekstrak dan disalin. Tidak ada artikel unik di dalamnya.
+
+- wan\Measuring Network Latency from a Wireless ISP Variations Within and Across Subnets\Measuring Network Latency from a Wireless ISP Variations Within and Across Subnets.png
+  Alasan: gambar/figure, bukan artikel.
+
+- wan\You Don’tKnow JackaboutBandwidth\Screenshot 2026-04-23 012612.png
+  Alasan: tangkapan layar, bukan artikel.
+
+- wan\You Don’tKnow JackaboutBandwidth\Screenshot 2026-04-23 012741.png
+  Alasan: tangkapan layar, bukan artikel.

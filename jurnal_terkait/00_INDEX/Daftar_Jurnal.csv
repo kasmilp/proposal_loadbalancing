@@ -1,0 +1,90 @@
+﻿folder,file,year,ext,size_mb,status,version,note
+01_QoS_dan_Pengukuran,[2023] QoS PPPoE PPTP L2TP pada Hotspot RT RW Net.pdf,2023,PDF,1.08,unduhan baru,utama,QoS RT/RW Net.
+01_QoS_dan_Pengukuran,Early detection of link failures through the modeling of the hardware.pdf,,PDF,1.48,lama,utama,
+01_QoS_dan_Pengukuran,Lightweight RTT prediction for performance-aware load.pdf,,PDF,12.09,lama,utama,
+01_QoS_dan_Pengukuran,Measuring Network Latency from a Wireless ISP VariationsWithin and Across Subnets.pdf,,PDF,2.09,lama,utama,
+01_QoS_dan_Pengukuran,TIPHON.pdf,,PDF,0.29,lama,utama,Standar ETSI TIPHON.
+01_QoS_dan_Pengukuran,You Don't Know Jack About Bandwidth.pdf,,PDF,1.17,lama,utama,Artikel bandwidth; judul asli tidak tercantum pada nama berkas.
+02_FO_IndiHome_dan_Optik,[2023] Ring-Based Hybrid WDM TDM-PON for Smart Cities.pdf,2023,PDF,4.97,lama,utama,
+02_FO_IndiHome_dan_Optik,6117-12779-1-PB.pdf,,PDF,0.81,lama,utama,QoS IndiHome GPON/MSAN.
+02_FO_IndiHome_dan_Optik,Desain dan Implementasi Desain Jaringan FTTH GPON Berdasarkan Pengukuran Attenuasi dan Pemodelan Optisystem.pdf,,PDF,0.59,lama,utama,FTTH GPON.
+02_FO_IndiHome_dan_Optik,Real-World quality of service (QoS) performance in Radio over Fiber (RoF).htm,,HTM,0.18,lama,HTML,HTML full-text.
+03_LEO_Starlink_dan_Satelit,[2026] Ji et al. - Inter-Satellite Link Technologies in LEO.pdf,2026,PDF,1.5,lama,utama,
+03_LEO_Starlink_dan_Satelit,[2025] Integration of Non-Terrestrial Network for 5G NR and 6G LEO.pdf,2025,PDF,11.56,lama,utama,
+03_LEO_Starlink_dan_Satelit,[2025] Network-Layer Perspectives on Satellite-Terrestrial 6G (annotated).pdf,2025,PDF,2.38,lama,annotated,Tinjauan satelit-terestrial 6G.
+03_LEO_Starlink_dan_Satelit,"Garcia, Sundberg, Brunstrom - 2025 - A Detailed Characterization of Starlink One-way Delay(2)-annotated.pdf",2025,PDF,1.43,lama,annotated,
+03_LEO_Starlink_dan_Satelit,Ullah et al. - 2025 - Impact of Weather on Satellite Communication Evaluating Starlink Resilience-annotated.pdf,2025,PDF,2.37,lama,annotated,
+03_LEO_Starlink_dan_Satelit,[2024] Hammer et al. - Starlink Performance through the Edge Router Lens.pdf,2024,PDF,4.83,lama,utama,
+03_LEO_Starlink_dan_Satelit,[2024] LEO Satellite Network Access in the Wild.pdf,2024,PDF,13.13,unduhan baru,utama,Akses LEO di lapangan.
+03_LEO_Starlink_dan_Satelit,[2024] Link Duration-Aware Shared Backup Path Protection in LEO Optical Networks.pdf,2024,PDF,3.88,lama,utama,
+03_LEO_Starlink_dan_Satelit,Hammer et al. - 2024 - Starlink Performance through the Edge Router Lens(2)-annotated.pdf,2024,PDF,4.83,lama,annotated,
+03_LEO_Starlink_dan_Satelit,Mohan et al. - 2024 - A Multifaceted Look at Starlink Performance(2)-annotated.pdf,2024,PDF,2.98,lama,annotated,
+03_LEO_Starlink_dan_Satelit,[2023] Network Characteristics of LEO Satellite Constellations - Starlink Measurement.pdf,2023,PDF,5.83,unduhan baru,utama,Karakterisasi Starlink dari sisi pengguna.
+03_LEO_Starlink_dan_Satelit,[2020] Load Balancing for 5G Integrated Satellite-Terrestrial Networks.pdf,2020,PDF,1.19,unduhan baru,utama,Load balancing satelit-terestrial.
+03_LEO_Starlink_dan_Satelit,3 Perspektif Lapisan Jaringan pada Jaringan Terintegrasi Satelit-Terestrial dalam 6G Sebuah Tinjauan Komprehensif.pdf,,PDF,2.24,lama,utama,
+03_LEO_Starlink_dan_Satelit,6 ke2.pdf,,PDF,2.29,lama,utama,Rain attenuation Ka-band wilayah tropis.
+03_LEO_Starlink_dan_Satelit,7 Dampak Cuaca terhadap Komunikasi Satelit Mengevaluasi Ketahanan Starlink.pdf,,PDF,2.4,lama,utama,
+03_LEO_Starlink_dan_Satelit,8 Karakterisasi Detail Penundaan Satu Arah (One-way Delay) pada Starlink.pdf,,PDF,1.42,lama,utama,
+03_LEO_Starlink_dan_Satelit,9A Multifaceted Look at Starlink Performance Analisis Multifaset terhadap Kinerja Starlink.pdf,,PDF,3.11,lama,utama,
+03_LEO_Starlink_dan_Satelit,Distributed_IoT_Communications_With_LEO_Satellites_QoS_Performance_and_Terminal_Attempt_Rate_Schemes.pdf,,PDF,7.52,lama,utama,QoS LEO untuk IoT.
+03_LEO_Starlink_dan_Satelit,Inter-Satellite Link pada Jaringan Satelit LEO.pdf,,PDF,2.35,lama,utama,
+03_LEO_Starlink_dan_Satelit,LATENCY PERFORMANCE EVALUATION OF LEO STARLINK AND SES-12 GEO HTS NETWORK UNDER TROPICAL RAINFALL CONDITIONS.pdf,,PDF,2.24,lama,utama,
+03_LEO_Starlink_dan_Satelit,Lightweight AI-driven traffic forecasting and shaping for 6G LEO satellite.pdf,,PDF,4.1,lama,utama,
+03_LEO_Starlink_dan_Satelit,Model to Scale Rain Attenuation Time Series With LinkElevation Angle for LEO Satellite Based Systems.pdf,,PDF,1.45,lama,utama,
+03_LEO_Starlink_dan_Satelit,Network-Layer Perspectives on Satellite Terrestrial IntegratedNetworks in 6G A Comprehensive Review.pdf,,PDF,2.7,lama,utama,Tinjauan satelit-terestrial 6G.
+03_LEO_Starlink_dan_Satelit,SaTE Low Latency Traffic Engineering for Satellite Networks.pdf,,PDF,3.8,lama,utama,
+03_LEO_Starlink_dan_Satelit,SLA-Aware Traffic Steering in Hybrid TN-NTN 5G.pdf,,PDF,0.66,lama,utama,Traffic steering TN-NTN.
+03_LEO_Starlink_dan_Satelit,starlink.pdf,,PDF,2.44,lama,utama,"Mohan et al. (2024), A Multifaceted Look at Starlink."
+04_PCC_MikroTik_dan_Load_Balancing,[2026] Evaluation of PCC Load Balancing for Dual ISP Networks.pdf,2026,PDF,0.87,unduhan baru,utama,PCC dual-ISP terbaru.
+04_PCC_MikroTik_dan_Load_Balancing,[2026] Mirsal & Agtriadi - PCC vs QoS Queue Tree.pdf,2026,PDF,0.64,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,[2026] PCC vs QoS Queue Tree pada MikroTik.pdf,2026,PDF,0.67,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,[2024] Arfianita et al. - PCC Load Balancing for Responsiveness.pdf,2024,PDF,0.95,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,[2024] PCC dan Failover pada PT Maxpower Indonesia.pdf,2024,PDF,0.76,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,[2024] Putra - PCC and Failover on MikroTik.pdf,2024,PDF,0.75,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,"Nugroho et al. - 2023 - Quality Analysis of Service Load Balancing Using PCC, ECMP, and NTH Methods-annotated.pdf",2023,PDF,0.48,lama,annotated,
+04_PCC_MikroTik_dan_Load_Balancing,[2022] Amalia et al. - PCC Load Balancing on MikroTik.pdf,2022,PDF,0.96,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,1.+Jurnal+Submit+USI+2+(Ade+Frihadi).pdf,,PDF,0.42,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,10 Implementation of Load Balancing Using the PCC Method on Computer Networks to Improve Responsiveness.pdf,,PDF,1.01,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,"21 Quality Analysis Of Service Load Balancing Using PCC, ECMP, dan NTH Methods.pdf",,PDF,0.5,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,Optimasi jaringan internet menggunakan kombinasi load balancing dan queue pada router mikrotik.pdf,,PDF,0.66,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,pcc loadbalancing in.pdf,,PDF,0.39,lama,utama,
+04_PCC_MikroTik_dan_Load_Balancing,pcc.pdf,,PDF,0.96,lama,utama,"Amalia et al. (2022), versi bersih."
+04_PCC_MikroTik_dan_Load_Balancing,pcr.pdf,,PDF,1.47,lama,utama,Peer Classifier Robin (PCC + Round Robin).
+05_MCDM_SAW_EWMA_dan_Histeresis,[2023] Tournaire et al. - Optimal Thresholds in Cloud Auto-scaling (annotated).pdf,2023,PDF,1.4,lama,annotated,
+05_MCDM_SAW_EWMA_dan_Histeresis,"Vafaei, Ribeiro, Camarinha-Matos - 2021 - Assessing Normalization Techniques for Simple Additive Weighting Method.pdf",2021,PDF,0.6,lama,utama,
+05_MCDM_SAW_EWMA_dan_Histeresis,[2017] A Trade-off Between Unnecessary Handover and Handover Failure.pdf,2017,PDF,2.34,unduhan baru,utama,Histeresis handover LTE.
+05_MCDM_SAW_EWMA_dan_Histeresis,14 Menilai Teknik Normalisasi untuk Metode Simple Additive Weighting (SAW) (2).pdf,,PDF,0.6,lama,utama,
+05_MCDM_SAW_EWMA_dan_Histeresis,14 Menilai Teknik Normalisasi untuk Metode Simple Additive Weighting (SAW).pdf,,PDF,0.66,lama,utama,
+05_MCDM_SAW_EWMA_dan_Histeresis,17Komputasi Efisien Ambang Batas Optimal pada Sistem Auto-scaling Cloud.pdf,,PDF,1.47,lama,utama,
+05_MCDM_SAW_EWMA_dan_Histeresis,hysteresis.pdf,,PDF,0.51,lama,utama,"Fisika histeresis dinamis; konsep dasar, bukan jaringan."
+06_SDN_dan_Arsitektur_Kontrol,[2025] A New Method for Load Balancing in DSDN Data Centers.pdf,2025,PDF,19.81,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,[2025] Ali et al. - Dynamic Connectivity Hub Multi-ISP (annotated).pdf,2025,PDF,1.62,lama,annotated,
+06_SDN_dan_Arsitektur_Kontrol,[2025] Ali et al. - Dynamic Connectivity Hub Multi-ISP.pdf,2025,PDF,1.58,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,[2024] Ali et al. - QoS and Congestion Control in SDN.pdf,2024,PDF,1.03,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,[2022] Routing and QoS Policy Optimization in SD-WAN.pdf,2022,PDF,0.54,unduhan baru,utama,SD-WAN.
+06_SDN_dan_Arsitektur_Kontrol,A new method for load balancing in DSDN-Based data centers using.htm,,HTM,0.17,lama,HTML,HTML full-text.
+06_SDN_dan_Arsitektur_Kontrol,A stochastic model for transit latency in OpenFlow SDNs.pdf,,PDF,6.75,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,Algoritma Pemilihan Jaringan Heterogen.pdf,,PDF,2.77,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,Context-aware network selection in heterogeneous wireless networks.pdf,,PDF,5.25,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,Distributed gateway-based load balancing in software defined network.pdf,,PDF,1.81,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,Load-aware efficient routing scheme in hierarchical software.pdf,,PDF,3.94,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,Mencapai Pemulihan Kegagalan Link di Bawah 60ms pada Software-Defined Networks.pdf,,PDF,2.94,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,The application and performance optimization of multi-controller-based.pdf,,PDF,5.83,lama,utama,
+06_SDN_dan_Arsitektur_Kontrol,Traffic-Shaping-and-Flow-Management-in-Wide-Area-Networks.pdf,,PDF,0.15,lama,utama,
+07_QoE_dan_Aplikasi,A general QoE assessment framework for applications and services.pdf,,PDF,1.78,lama,utama,
+07_QoE_dan_Aplikasi,Statistical Error Propagation Affecting the Quality of Experience Evaluation in Video on Demand Applications.pdf,,PDF,1.06,lama,utama,
+08_Cloud_dan_Load_Balancing_Umum,[2025] Lilhore et al. - Multi-Objective Load Balancing Cloud (ACO-WWO).pdf,2025,PDF,5.97,lama,utama,
+08_Cloud_dan_Load_Balancing_Umum,[2024] Pendekatan Multi-Tujuan Load Balancing Cloud (ACO-WWO).pdf,2024,PDF,6.39,lama,utama,
+08_Cloud_dan_Load_Balancing_Umum,Komathi et al. - 2024 - Network load balancing and data categorization in cloud computing-annotated.pdf,2024,PDF,0.78,lama,annotated,
+08_Cloud_dan_Load_Balancing_Umum,15 Network load balancing and data categorization in cloud.pdf,,PDF,0.8,lama,utama,
+08_Cloud_dan_Load_Balancing_Umum,A comprehensive survey.pdf,,PDF,4.12,lama,utama,Survei load balancing data center.
+08_Cloud_dan_Load_Balancing_Umum,IEEE_PDGC_onlineVersion.pdf,,PDF,0.9,lama,utama,Load balancing adaptif threshold (parallel computing).
+09_Referensi_Umum_dan_Lainnya,A Novel Broadband Line Construction Using 3G Service.pdf,,PDF,0.29,lama,utama,Di luar fokus utama.
+09_Referensi_Umum_dan_Lainnya,A Resource-Efficient LEO-Satellite-Assisted HeterogeneousFederated Learning Framework.pdf,,PDF,2.81,lama,utama,Federated learning; di luar fokus.
+09_Referensi_Umum_dan_Lainnya,AC-LSTM Adaptive Clockwork LSTM for Network Traffic Prediction.pdf,,PDF,3.31,lama,utama,Prediksi trafik; di luar fokus utama.
+09_Referensi_Umum_dan_Lainnya,Benefits of aggressively co undergrounding electric and broadband lines outweigh costs.pdf,,PDF,5.39,lama,utama,Kebijakan infrastruktur; di luar fokus.
+09_Referensi_Umum_dan_Lainnya,Cooperative path scheduling and resource allocation for LEOsatellite-enabled mobile edge computing network.pdf,,PDF,1.49,lama,utama,MEC satelit; di luar fokus.
+09_Referensi_Umum_dan_Lainnya,Downlink optimization for direct-to-satellite IoT with LEO satellites andLoRaWAN.pdf,,PDF,1.77,lama,utama,IoT satelit; di luar fokus.
+09_Referensi_Umum_dan_Lainnya,Effect of Dashboard Design on User Flow Experience.pdf,,PDF,11.66,lama,utama,UX monitoring; di luar fokus.
+09_Referensi_Umum_dan_Lainnya,Efficient management of computational resources in the IoT FOG layer..pdf,,PDF,15.53,lama,utama,IoT fog; di luar fokus utama.
+09_Referensi_Umum_dan_Lainnya,Retrieval of orbital maneuver information of Starlink satellites.pdf,,PDF,5.68,lama,utama,Orbit satelit; bukan QoS.

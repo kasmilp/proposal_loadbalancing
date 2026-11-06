@@ -1,0 +1,28 @@
+Baghdady, M., Aberg Cobo, F. P., Mellon, S. N., & Younts, R. A. (2022, January 1). Analysis of atmospheric conditions for optimizing optical communications. Proceedings of SPIE - The International Society for Optical Engineering. https://doi.org/10.1117/12.2633498
+
+Baghdady, M., Wells, J. D., Mellon, S. N., & Younts, R. A. (2023, January 1). Analysis of Atmospheric Conditions for Optimizing Optical Communications. Proceedings of SPIE - The International Society for Optical Engineering. https://doi.org/10.1117/12.2676757
+
+Collier-Brown, D. (2024). You Don’t Know Jack about Bandwidth. Queue. https://doi.org/10.1145/3674953
+
+Göçer, S., & Tuna, G. (2026). Traffic Shaping and Flow Management in Wide Area Networks. In Emerging Technologies Shaping New Communication and Electronic Infrastructures. https://doi.org/10.4018/979-8-3373-0852-4.ch010
+
+Hu, J., Zhou, Z., & Yang, X. (2022). Characterizing Physical-Layer Transmission Errors in Cable Broadband Networks. In Proceedings of the 19th USENIX Symposium on Networked Systems Design and Implementation, NSDI 2022.
+
+Kusmaryanto, S., Ambarwati, R., Mustofa, A., Asmungi, G., & Herfita, N. P. (2024). Impact of Traffic Increase on Quality of Service for Internet, IPTV, and VoIP in FTTH Networks: A Case Study at Brawijaya University. In Proceedings - 2024 12th Electrical Power, Electronics, Communications, Controls and Informatics Seminar, EECCIS 2024. https://doi.org/10.1109/EECCIS62037.2024.10839761
+
+Laniewski, D., Thieme, S., Zimmermann, T., Mast, J., & Aschenbruck, N. (2024). Demo: The Impact of LEO Satellite Network Instabilities on the Performance of Networking Applications. In Proceedings - Conference on Local Computer Networks, LCN. https://doi.org/10.1109/LCN60385.2024.10639672
+
+Melki, R., Noura, H. N., & Chehab, A. (2020). Efficient and secure multi-homed systems based on binary random linear network coding. Computers and Electrical Engineering. https://doi.org/10.1016/j.compeleceng.2020.106774
+
+Nadarajah, S., & Ba, A. (2025). On the analytical model for jitter. Frontiers in Communications and Networks. https://doi.org/10.3389/frcmn.2025.1602095
+
+Nur Hadi, M. R., & Kaburuan, E. R. (2022). ETHERNET LINK NETWORK DESIGN USING AUTO FAILOVER AND LOAD BALANCING TECHNOLOGY IN THROUGHPUT OPTIMIZATION. Journal of Theoretical and Applied Information Technology.
+
+Raghunandan, K. (2022). Microwave and Millimeter-Wave Links. In Textbooks in Telecommunications Engineering. https://doi.org/10.1007/978-3-030-92188-0_14
+
+Rommer, S. (n.d.). Protocols. In The Core Network for 5G Advanced. https://doi.org/10.1016/B978-0-443-29188-3.00004-1
+
+Sukarsa, M., Piarsa, I. N., & Putra, I. G. B. P. (2021). Simple solution for low cost bandwidth management. Telkomnika (Telecommunication Computing Electronics and Control). https://doi.org/10.12928/TELKOMNIKA.v19i4.17109
+
+Sundberg, S., Brunström, A., Ferlin, S., Hoiland-Jorgensen, T., & Chacón, R. (2024, November 1). Measuring Network Latency from a Wireless ISP: Variations Within and Across Subnets. Proceedings of the ACM SIGCOMM Internet Measurement Conference, IMC. https://doi.org/10.1145/3646547.3688438
+
