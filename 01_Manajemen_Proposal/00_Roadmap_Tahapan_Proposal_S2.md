@@ -4,7 +4,7 @@
 **Kandidat sistem:** SPA-HSM (*Session-Preserving Asymmetric Hysteresis State Machine*)
 **Program:** Magister Teknik Informatika, Universitas Hasanuddin
 **Status:** Kerangka kerja — diperbarui 12 November 2026
-**Progres:** Tahap 0–5 selesai; draf Bab III tersedia. Berikutnya: konsolidasi Bab I–II dan naskah penuh.
+**Progres:** Tahap 0–5 selesai; draf Bab I–III tersedia. Berikutnya: verifikasi referensi, abstrak, daftar pustaka, dan format.
 
 ---
 
