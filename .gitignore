@@ -1,0 +1,10 @@
+# Koleksi mentah jurnal dipindah ke luar repo (Opsi B)
+00_Arsip_Proposal_SPA-HSM/jurnal_terkait/jurnal terkait/
+
+# Berkas sistem dan sementara
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*
+*.tmp
+*.temp
