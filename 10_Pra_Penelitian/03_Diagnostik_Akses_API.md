@@ -5,6 +5,12 @@
 **Akun:** group read-only (kredensial tidak disimpan)
 **Tujuan:** Memastikan akun monitoring dapat membaca data melalui API/REST.
 
+> **Pembaruan:** akses **berhasil** melalui port 6187 dengan TLS legacy
+> (`minimum_version=TLSv1`, cipher `ALL:@SECLEVEL=0`, `OP_LEGACY_SERVER_CONNECT`).
+> Negosiasi akhir: **TLS 1.2 + ADH-AES256-SHA256** (anonymous cipher).
+> Snapshot lengkap ada di `04_Snapshot_ReadOnly_12Nov2026.md`.
+> Bagian di bawah adalah riwayat diagnosis awal.
+
 ---
 
 ## 1. Ringkasan
@@ -55,22 +61,17 @@ Endpoint kedua diuji dengan akun yang sama. Hasilnya:
 | Resolusi DNS | Sempat gagal, lalu mengarah ke `103.186.31.198` |
 | TCP ke IP:6187 | **Berhasil** |
 | TCP via hostname:6187 | Tidak konsisten |
-| TLS 1.0/1.1/1.2 (semua cipher) | Gagal: `handshake_failure` |
+| TLS 1.0/1.1/1.2 (cipher default) | Gagal: `handshake_failure` |
+| TLS legacy + `ALL:@SECLEVEL=0` | **Berhasil** (TLS 1.2, ADH-AES256-SHA256) |
 | API plaintext (sentence `/login`) | Menerima 7 byte: `15 00 00 00 02 02 16` |
 | Sentence API berikutnya | Tidak ada respons |
 | REST HTTP/HTTPS | Tidak merespons |
 
-**Interpretasi:** port 6187 **bukan API/REST standar**. Respons 7 byte tersebut
-bukan sentence RouterOS API (yang seharusnya berisi `!done`, `!trap`, atau
-`!fatal`). Kemungkinan besar:
-
-1. **RouterOS v6 API-SSL** memakai TLS/cipher lama yang tidak didukung OpenSSL 3
-   (Python 3.11), sehingga handshake gagal.
-2. Port 6187 diteruskan ke **Winbox** atau layanan lain, bukan ke 8729.
-3. Ada **proxy/tunnel** di depan yang memerlukan handshake khusus.
-
-Jika router masih RouterOS v6, API-SSL lama sering hanya mendukung TLS 1.0 dan
-cipher yang sudah dihapus dari OpenSSL modern.
+**Interpretasi:** port 6187 adalah **API-SSL** yang hanya menawarkan cipher
+*anonymous Diffie-Hellman* (ADH). Client modern menolak cipher ini secara default,
+sehingga handshake gagal. Dengan cipher legacy diaktifkan, koneksi berhasil.
+Ini **tidak aman** untuk produksi karena tidak ada autentikasi sertifikat.
+Solusi: pasang sertifikat yang valid, nonaktifkan ADH, atau akses melalui VPN.
 
 ---
 
