@@ -18,6 +18,7 @@ dan **novelty** yang dapat dipertahankan di depan penguji.
 | `07_Bab_III_Metodologi/` | Draf Bab III, lampiran protokol pilot/rollback, matriks alinyemen metodologi. |
 | `08_Bab_I-II/` | Draf Bab I–II konsolidasi, matriks konsistensi, daftar simbol, catatan penyusunan. |
 | `09_Verifikasi_dan_Pencarian/` | Log pencarian gap (P-01), verifikasi 7 klaim (P-04), kandidat referensi baru. |
+| `10_Pra_Penelitian/` | Protokol baseline 3 ISP read-only dan matriks keputusan dual vs tri-ISP. |
 
 ## Aturan kerja
 

@@ -36,6 +36,8 @@ antar-bab. Setiap perubahan harus diberi tanggal dan alasan.
 | D-11 | Tier referensi | Terapkan T1/T2/T3 | T3 hanya untuk daftar pustaka/konteks | **Dikunci 12-11-2026** |
 | D-12 | Target SOTA inti | 10 / 15 / 20 | Minimal 15 sebelum seminar | **Dikunci 12-11-2026** |
 | D-13 | Referensi kontinuitas sesi | 0 / 4 / lebih | Minimal 4 (MPTCP/session continuity) | **Terlaksana 12-11-2026 (4 refs)** |
+| D-14 | Topologi formal | Dual-ISP (A+C) / Tri-ISP (A+B+C) / Dual + validasi tri | Dual + validasi tri | **Menunggu baseline** |
+| D-15 | Akun API | Read-only / write / dua akun terpisah | Read-only untuk baseline; write terpisah untuk intervensi | **Dikunci 12-11-2026** |
 
 ---
 
@@ -101,6 +103,8 @@ Setiap perubahan keputusan harus menambah baris:
 | 12-11-2026 | B-01 | H1 60 s; H2 +30 s | Rmax global 90 s | Menghilangkan konflik ambang | H1/H2 diperbarui |
 | 12-11-2026 | B-02 | Dua kriteria primer H3a | Non-inferior primer; <1% sekunder | Aturan keputusan jelas | H3a diperbarui |
 | 12-11-2026 | D-13 | 0 referensi kontinuitas | 4 referensi masuk Bab II 2.8.1 | P-03 | H3a punya landasan teori |
+| 12-11-2026 | D-15 | Belum ada | Read-only baseline; write terpisah | Keamanan jaringan produksi | Baseline tanpa modifikasi |
+| 12-11-2026 | D-14 | Dual-ISP | Dual + validasi tri (sementara) | Tersedia 3 ISP | Protokol baseline 3 ISP |
 
 ---
 
