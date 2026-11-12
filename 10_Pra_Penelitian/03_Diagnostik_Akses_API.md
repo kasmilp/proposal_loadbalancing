@@ -46,6 +46,34 @@ diubah.
 
 ---
 
+## 2A. Uji Endpoint Kedua (port 6187)
+
+Endpoint kedua diuji dengan akun yang sama. Hasilnya:
+
+| Uji | Hasil |
+|---|---|
+| Resolusi DNS | Sempat gagal, lalu mengarah ke `103.186.31.198` |
+| TCP ke IP:6187 | **Berhasil** |
+| TCP via hostname:6187 | Tidak konsisten |
+| TLS 1.0/1.1/1.2 (semua cipher) | Gagal: `handshake_failure` |
+| API plaintext (sentence `/login`) | Menerima 7 byte: `15 00 00 00 02 02 16` |
+| Sentence API berikutnya | Tidak ada respons |
+| REST HTTP/HTTPS | Tidak merespons |
+
+**Interpretasi:** port 6187 **bukan API/REST standar**. Respons 7 byte tersebut
+bukan sentence RouterOS API (yang seharusnya berisi `!done`, `!trap`, atau
+`!fatal`). Kemungkinan besar:
+
+1. **RouterOS v6 API-SSL** memakai TLS/cipher lama yang tidak didukung OpenSSL 3
+   (Python 3.11), sehingga handshake gagal.
+2. Port 6187 diteruskan ke **Winbox** atau layanan lain, bukan ke 8729.
+3. Ada **proxy/tunnel** di depan yang memerlukan handshake khusus.
+
+Jika router masih RouterOS v6, API-SSL lama sering hanya mendukung TLS 1.0 dan
+cipher yang sudah dihapus dari OpenSSL modern.
+
+---
+
 ## 3. Checklist di Winbox
 
 Jalankan di terminal RouterOS:
@@ -105,6 +133,21 @@ policy yang diperlukan tersedia pada versi tersebut.
 ```
 
 Pastikan DDNS menunjuk ke router yang benar.
+
+### 3.6 Versi RouterOS dan port 6187
+
+```routeros
+/system/resource print
+/ip/service print
+/ip/firewall/nat print detail where dst-port~"6187"
+```
+
+- Jika versi **6.x**: API-SSL lama mungkin memakai TLS 1.0/cipher yang tidak
+  didukung OpenSSL modern. Opsi: upgrade ke v7, atau gunakan API plaintext
+  **hanya melalui VPN/SSH tunnel**.
+- Jika versi **7.x**: pastikan `api-ssl` aktif, sertifikat valid, dan coba REST
+  melalui `www-ssl`.
+- Pastikan `to-ports=8729`. Jika `to-ports=8291`, itu Winbox, bukan API-SSL.
 
 ---
 
