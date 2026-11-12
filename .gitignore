@@ -1,6 +1,14 @@
 # Koleksi mentah jurnal dipindah ke luar repo (Opsi B)
 00_Arsip_Proposal_SPA-HSM/jurnal_terkait/jurnal terkait/
 
+# Kolektor baseline
+11_Kolektor_Baseline/.env
+11_Kolektor_Baseline/data/
+11_Kolektor_Baseline/logs/
+11_Kolektor_Baseline/report_*.md
+11_Kolektor_Baseline/report_*.json
+11_Kolektor_Baseline/__pycache__/
+
 # Berkas sistem dan sementara
 Thumbs.db
 desktop.ini
