@@ -8,6 +8,9 @@
 11_Kolektor_Baseline/report_*.md
 11_Kolektor_Baseline/report_*.json
 11_Kolektor_Baseline/__pycache__/
+11_Kolektor_Baseline/.venv/
+**/__pycache__/
+*.pyc
 
 # Berkas sistem dan sementara
 Thumbs.db
