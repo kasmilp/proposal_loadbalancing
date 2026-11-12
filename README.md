@@ -40,5 +40,7 @@ dan **novelty** yang dapat dipertahankan di depan penguji.
 - [x] Tahap 4 — Metodologi dan desain evaluasi
 - [x] Tahap 5 — Instrumen, etika, manajemen risiko (dokumen; kalibrasi lapangan belum)
 - [ ] Tahap 6 — Penulisan naskah proposal (draf Bab I–III selesai; P-01 s.d. P-04 selesai; abstrak dan daftar pustaka belum)
+- [x] Baseline awal 2,2 jam dianalisis (bukan baseline final)
+- [ ] Baseline final 7–14 hari + throughput 1 detik
 - [ ] Tahap 7 — Uji kelayakan internal dan simulasi seminar
 - [ ] Tahap 8 — Seminar proposal dan revisi

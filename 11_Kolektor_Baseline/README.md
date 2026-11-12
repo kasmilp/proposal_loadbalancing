@@ -10,6 +10,7 @@ hanya memanggil endpoint `/print` dan `/ping` (test); tidak ada operasi
 |---|---|
 | `collector.py` | Kolektor JSONL: resource, interface, route, mangle, NAT, service, group, netwatch, probe |
 | `analyze_baseline.py` | Analisis: loss, RTT, jitter, periodisitas, korelasi, episode, throughput |
+| `analyze_periodicity.py` | Analisis lanjutan: FFT periode dominan, ACF residual, korelasi dan tumpang tindih episode |
 | `config.example.env` | Contoh konfigurasi; salin menjadi `.env` |
 | `data/` | Output JSONL (di-ignore Git) |
 | `logs/` | Log kolektor (di-ignore Git) |
@@ -25,6 +26,12 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install librouteros
+```
+
+Untuk analisis periodisitas lanjutan:
+
+```bash
+pip install numpy
 ```
 
 Salin konfigurasi:
@@ -112,6 +119,17 @@ Luaran:
 
 - `report_<timestamp>.md`
 - `report_<timestamp>.json`
+
+### Analisis periodisitas lanjutan
+
+```bash
+python analyze_periodicity.py data/baseline_*.jsonl
+```
+
+Luaran: file `*.periodicity.md` di folder `data/`.
+
+Isi: periode dominan (FFT), ACF residual lag 15 detik, autokorelasi indikator
+buruk, korelasi antar-WAN, Jaccard episode, dan kecocokan episode ±2 detik.
 
 Isi laporan:
 
