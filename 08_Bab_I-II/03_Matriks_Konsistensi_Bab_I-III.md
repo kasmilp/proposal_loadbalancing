@@ -89,8 +89,8 @@
 | H3a kriteria primer/sekunder | Lulus | Non-inferior primer |
 | SIWG muncul di tiga bab | Lulus | Bab I, II, III |
 | Klaim SOTA vs konteks | Sebagian | P-02 belum dijalankan |
-| Klaim "belum ditemukan" | Sebagian | P-01 belum dijalankan |
-| Angka rain fade/15 detik | Sebagian | P-04 belum |
+| Klaim "belum ditemukan" | Sebagian | P-01 OpenAlex selesai; Scopus/IEEE belum |
+| Angka rain fade/15 detik | Lulus | P-04 selesai (hlm. 5 / hlm. 1) |
 | Gaya sitasi | Belum | D-10 |
 
 ---

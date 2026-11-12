@@ -22,9 +22,9 @@ pola degradasi yang tidak sama (Chen et al., 2025).
 Jalur *Fiber Optic* (FO) secara arsitektural unggul dalam latensi rendah,
 *throughput* tinggi, dan *packet loss* kecil karena mediumnya terlindung dari
 gangguan atmosferik. Namun, kualitas FO dalam praktik operasional tidak identik
-dengan kapasitas nominal. Kebijakan *oversubscription*, *contention ratio*, dan
-kondisi jaringan akses dapat membuat *throughput* aktual berada di bawah kontrak,
-terutama pada jam sibuk. Gejala ini bersifat operasional-komersial, bukan
+dengan kapasitas nominal. Kepadatan pelanggan dan gangguan pada jaringan akses
+dapat membuat *throughput* aktual berada di bawah kapasitas nominal, terutama
+pada jam sibuk (Safitri et al., 2016). Gejala ini bersifat operasional, bukan
 keterbatasan fisik medium, sehingga kualitas FO perlu dievaluasi berkala dan tidak
 dapat diasumsikan konstan.
 
@@ -38,8 +38,8 @@ curah hujan menjadi prediktor kuat penurunan *throughput* (Boeckenholt et al.,
 2024; Ullah et al., 2025). Selain degradasi lambat akibat cuaca, terdapat transien
 cepat akibat rekonfigurasi dan *handover*; karakterisasi *one-way delay*
 melaporkan pola periodik sekitar 15 detik yang paling terdampak pada arah
-*uplink* (Garcia et al., 2025) **[verifikasi]**, dan pola serupa teramati pada
-*throughput* dari sisi *edge router* (Hammer et al., 2024) **[verifikasi]**.
+*uplink* (Garcia et al., 2025), dan pola serupa teramati pada
+*throughput* dari sisi *edge router* (Hammer et al., 2024).
 
 Dengan demikian, jalur LEO mengandung dua lapis ketidakstabilan: degradasi lambat
 berskala menit akibat cuaca dan transien cepat berskala detik akibat rekonfigurasi.
@@ -69,9 +69,10 @@ sadar-kondisi ini dapat menurunkan kualitas layanan agregat dan mengurangi
 Pendekatan adaptif yang lebih baru, seperti *hub* konektivitas berbasis *Artificial
 Neural Network* (ANN) dan *load balancing* cloud berbasis metaheuristik, menunjukkan
 manfaat alokasi sadar-kondisi (Ali et al., 2025; Komathi et al., 2024; Lilhore et
-al., 2025). Namun, pendekatan tersebut umumnya membutuhkan sumber daya komputasi
-besar, tidak dirancang untuk perangkat kelas SOHO, dan tidak secara eksplisit
-menjaga konsistensi sesi TCP. Di sisi lain, literatur MCDM menyediakan kerangka
+al., 2025). Namun, pendekatan tersebut umumnya memerlukan pelatihan model dan
+sumber daya komputasi yang lebih besar daripada aturan ambang sederhana, sehingga
+kurang sesuai untuk perangkat kelas SOHO; selain itu, pendekatan tersebut tidak
+secara eksplisit menjaga konsistensi sesi TCP. Di sisi lain, literatur MCDM menyediakan kerangka
 skor multi-kriteria (Wang & Kuo, 2013; Vafaei et al., 2021), literatur kontrol
 menyediakan histeresis untuk mencegah osilasi (Tournaire et al., 2023; Alhabo et
 al., 2017), dan literatur Starlink menyediakan karakterisasi dinamika link (Ma et

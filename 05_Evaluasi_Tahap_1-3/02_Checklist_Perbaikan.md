@@ -3,8 +3,8 @@
 **Dokumen:** `02_Checklist_Perbaikan.md`
 **Fungsi:** Daftar kerja yang dapat dicentang, bukan sekadar catatan.
 **Aturan:** Tahap 4 baru dimulai setelah semua item **BLOCKING** selesai.
-**Status 12-11-2026:** B-01 s.d. B-04 selesai. P-01 s.d. P-05 dikerjakan paralel
-dengan Tahap 4.
+**Status 12-11-2026:** B-01 s.d. B-04 selesai. P-01 dan P-04 selesai; P-02, P-03,
+dan P-05 dikerjakan paralel dengan Tahap 4.
 
 ---
 
@@ -87,7 +87,7 @@ dan tersedia di RouterOS.
 
 ## B. PARALEL — dikerjakan bersamaan dengan Tahap 4
 
-### [ ] P-01 — Jalankan log pencarian gap (K-01)
+### [x] P-01 — Jalankan log pencarian gap (K-01)
 
 **Langkah:**
 1. Jalankan string S1–S7 di `04_Tahap_03_Kerangka_Teori/04_Audit_Referensi_dan_Rencana_Pencarian.md`.
@@ -110,6 +110,10 @@ dan tersedia di RouterOS.
 
 **Kriteria selesai:** komponen PCC memiliki minimal 3 referensi T1, bukan 1.
 
+**Status:** 4 kandidat ditemukan dan dicatat di
+`09_Verifikasi_dan_Pencarian/01_Log_Pencarian_Gap.md` §5.1; **belum diverifikasi
+teks penuh**, jadi belum dimasukkan ke Bab II.
+
 **Perkiraan:** 1 hari.
 
 ---
@@ -123,11 +127,15 @@ dan tersedia di RouterOS.
 
 **Kriteria selesai:** H3a punya landasan teori, bukan hanya dokumentasi vendor.
 
+**Status:** 5 kandidat ditemukan dan dicatat di
+`09_Verifikasi_dan_Pencarian/01_Log_Pencarian_Gap.md` §5.2; **belum diverifikasi
+teks penuh**.
+
 **Perkiraan:** 1 hari.
 
 ---
 
-### [ ] P-04 — Verifikasi 7 klaim berstatus "halaman" (M-04)
+### [x] P-04 — Verifikasi 7 klaim berstatus "halaman" (M-04)
 
 **Daftar:**
 - C08 — oversubscription FO

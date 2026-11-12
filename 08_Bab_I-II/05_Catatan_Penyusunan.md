@@ -89,11 +89,14 @@ diselesaikan.
 
 ## 6. Catatan Kecil
 
-- Bab I memakai "sekitar 15 detik" dengan penanda **[verifikasi]**; jangan
-  dihapus sampai P-04 selesai.
-- Angka rain fade 137→90 Mbps sengaja tidak dimasukkan ke Bab I agar tidak
-  bergantung pada satu angka yang belum dicek; angka itu tetap ada di Bab II
-  sebagai klaim yang ditandai.
+- P-04 selesai: klaim 15 detik, 137→90,2 Mbps, dan QoS/QoE sudah diverifikasi;
+  penanda **[verifikasi]** dihapus dari Bab I–II.
+- Angka rain fade tidak dimasukkan ke Bab I; di Bab II angka 90,2 Mbps dipakai
+  dengan sitasi halaman 5.
+- Klaim *oversubscription/contention* FO dihapus karena tidak didukung sumber;
+  diganti dengan kepadatan pelanggan dan gangguan akses (Safitri et al., 2016).
+- Klaim "komputasi berat" untuk ANN/metaheuristik dilunakkan menjadi alasan desain,
+  bukan temuan literatur.
 - Baseline G memakai waktu pemulihan `netwatch` 60 detik; ini berbeda dari
   $R_{max}=90$ detik untuk *recovery latency* SPA-HSM.
 - Jika P-02 tidak menemukan cukup referensi T1, turunkan klaim SOTA PCC dan

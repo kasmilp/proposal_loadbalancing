@@ -17,6 +17,7 @@ dan **novelty** yang dapat dipertahankan di depan penguji.
 | `06_Tahap_04_Metodologi/` | Luaran Tahap 4: desain skenario, formalisasi, instrumen, rencana statistik, jadwal/risiko/etika. |
 | `07_Bab_III_Metodologi/` | Draf Bab III, lampiran protokol pilot/rollback, matriks alinyemen metodologi. |
 | `08_Bab_I-II/` | Draf Bab I–II konsolidasi, matriks konsistensi, daftar simbol, catatan penyusunan. |
+| `09_Verifikasi_dan_Pencarian/` | Log pencarian gap (P-01), verifikasi 7 klaim (P-04), kandidat referensi baru. |
 
 ## Aturan kerja
 
@@ -36,6 +37,6 @@ dan **novelty** yang dapat dipertahankan di depan penguji.
 - [x] Tahap 3.5 — Evaluasi dan perbaikan (blocking B-01 s.d. B-04 selesai)
 - [x] Tahap 4 — Metodologi dan desain evaluasi
 - [x] Tahap 5 — Instrumen, etika, manajemen risiko (dokumen; kalibrasi lapangan belum)
-- [ ] Tahap 6 — Penulisan naskah proposal (draf Bab I–III selesai; abstrak dan daftar pustaka belum)
+- [ ] Tahap 6 — Penulisan naskah proposal (draf Bab I–III selesai; P-01/P-04 selesai; abstrak dan daftar pustaka belum)
 - [ ] Tahap 7 — Uji kelayakan internal dan simulasi seminar
 - [ ] Tahap 8 — Seminar proposal dan revisi

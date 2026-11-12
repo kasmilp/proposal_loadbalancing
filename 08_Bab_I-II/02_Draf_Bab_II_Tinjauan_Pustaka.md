@@ -4,7 +4,7 @@
 **Status:** Draf kerja — belum naskah final
 **Dasar:** `04_Tahap_03_Kerangka_Teori/`
 **Aturan:** Setiap klaim faktual merujuk sumber di `03_Tabel_Klaim_dan_Sumber.md`.
-Angka spesifik yang belum diverifikasi halaman ditandai **[verifikasi]**.
+Verifikasi halaman terbaru ada di `09_Verifikasi_dan_Pencarian/02_Verifikasi_Klaim.md`.
 
 ---
 
@@ -43,8 +43,10 @@ untuk trafik *real-time* (Schulzrinne et al., 2003).
 
 Dua pembedaan penting dipakai konsisten di seluruh penelitian:
 
-1. **QoS bukan QoE.** QoE melibatkan persepsi pengguna dan model aplikasi; penelitian
-   ini mengukur QoS dan tidak mengklaim kepuasan pengguna.
+1. **QoS bukan QoE.** QoS diukur melalui metrik teknis seperti *throughput*,
+   *delay*, *jitter*, dan *packet loss*, sedangkan QoE melibatkan persepsi
+   pengguna dan model aplikasi (Wang et al., 2023). Penelitian ini mengukur QoS
+   dan tidak mengklaim kepuasan pengguna.
 2. **Carried throughput bukan achievable throughput.** Throughput yang terukur di
    antarmuka mencakup trafik yang mungkin tertahan atau diulang. Untuk skor
    kualitas, digunakan *goodput* atau *headroom*, bukan sekadar laju antarmuka.
@@ -60,10 +62,10 @@ berubah skala ketika kondisi link lain berubah.
 
 Jalur *fiber optic* (FO) unggul pada latensi rendah, *throughput* tinggi, dan
 *loss* rendah karena mediumnya terlindung dari gangguan atmosferik. Namun kualitas
-operasional FO tidak identik dengan kapasitas nominal: kebijakan *oversubscription*,
-*contention ratio*, dan kondisi jaringan akses membuat *throughput* aktual dapat
-berada di bawah kontrak, terutama pada jam sibuk. Gejala ini bersifat
-operasional-komersial, bukan keterbatasan fisik medium, sehingga kualitas FO
+operasional FO tidak identik dengan kapasitas nominal: kepadatan pelanggan dan
+gangguan pada jaringan akses membuat *throughput* aktual dapat berada di bawah
+kapasitas nominal, terutama pada jam sibuk (Safitri et al., 2016). Gejala ini
+bersifat operasional, bukan keterbatasan fisik medium, sehingga kualitas FO
 perlu dievaluasi berkala dan tidak dapat diasumsikan konstan.
 
 Starlink beroperasi pada orbit rendah (sekitar 550 km) sehingga latensinya jauh
@@ -74,8 +76,8 @@ terestrial, disertai *outage* yang relatif sering (Ma et al., 2023; Mohan et al.
 2024). Pada wilayah tropis, *rain fade* memperburuk kondisi; curah hujan
 diidentifikasi sebagai prediktor terkuat penurunan *throughput* (Boeckenholt et
 al., 2024), dengan penurunan *throughput downlink* median dari sekitar 137 Mbps
-menjadi 90 Mbps dan *uplink* dari 20,9 Mbps menjadi 10,5 Mbps saat hujan
-(Ullah et al., 2025) **[verifikasi]**.
+menjadi 90,2 Mbps dan *uplink* dari 20,9 Mbps menjadi 10,5 Mbps saat hujan
+(Ullah et al., 2025, hlm. 5).
 
 Yang paling relevan bagi penelitian ini adalah **dua skala waktu degradasi**:
 
@@ -85,9 +87,9 @@ Yang paling relevan bagi penelitian ini adalah **dua skala waktu degradasi**:
 | Cepat | *Handover*, rekonfigurasi, transien | Detik (~15 detik) | Perlu *dwell* yang lebih panjang dari transien |
 
 Karakterisasi *one-way delay* melaporkan pola periodik sekitar 15 detik yang
-paling terdampak pada arah *uplink* (Garcia et al., 2025) **[verifikasi]**, dan
-pola serupa teramati sebagai penurunan *throughput* berulang pada *edge router*
-(Hammer et al., 2024) **[verifikasi]**.
+paling terdampak pada arah *uplink* (Garcia et al., 2025), dan pola serupa
+teramati sebagai penurunan *throughput* berulang pada batas interval 15 detik
+(Hammer et al., 2024; Mohan et al., 2024).
 
 **Implikasi desain.** Sampling harus cukup cepat untuk menangkap transien, tetapi
 tidak boleh lebih cepat dari yang dapat direspons oleh aktuator. Parameter *dwell*
