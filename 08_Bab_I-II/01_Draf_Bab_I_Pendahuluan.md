@@ -67,12 +67,16 @@ sadar-kondisi ini dapat menurunkan kualitas layanan agregat dan mengurangi
 *throughput* efektif.
 
 Pendekatan adaptif yang lebih baru, seperti *hub* konektivitas berbasis *Artificial
-Neural Network* (ANN) dan *load balancing* cloud berbasis metaheuristik, menunjukkan
-manfaat alokasi sadar-kondisi (Ali et al., 2025; Komathi et al., 2024; Lilhore et
-al., 2025). Namun, pendekatan tersebut umumnya memerlukan pelatihan model dan
+Neural Network* (ANN), *load balancing* cloud berbasis metaheuristik, dan *traffic
+steering* SD-WAN berbasis pembelajaran penguatan, menunjukkan manfaat alokasi
+sadar-kondisi (Ali et al., 2025; Komathi et al., 2024; Lilhore et al., 2025;
+Cruvellier et al., 2025; Giacometti et al., 2025). Namun, pendekatan tersebut umumnya memerlukan pelatihan model dan
 sumber daya komputasi yang lebih besar daripada aturan ambang sederhana, sehingga
 kurang sesuai untuk perangkat kelas SOHO; selain itu, pendekatan tersebut tidak
-secara eksplisit menjaga konsistensi sesi TCP. Di sisi lain, literatur MCDM menyediakan kerangka
+secara eksplisit menjaga konsistensi sesi TCP. Di level transport, MPTCP dan
+StarTCP menawarkan agregasi jalur dan kesadaran *handover* (Duchene & Bonaventure,
+2017; Jiang et al., 2024), tetapi mekanisme tersebut bekerja ujung-ke-ujung dan
+tidak mengatur proporsi alokasi PCC di router. Di sisi lain, literatur MCDM menyediakan kerangka
 skor multi-kriteria (Wang & Kuo, 2013; Vafaei et al., 2021), literatur kontrol
 menyediakan histeresis untuk mencegah osilasi (Tournaire et al., 2023; Alhabo et
 al., 2017), dan literatur Starlink menyediakan karakterisasi dinamika link (Ma et

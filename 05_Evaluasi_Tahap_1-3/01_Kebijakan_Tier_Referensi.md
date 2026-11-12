@@ -182,3 +182,25 @@ Referensi berikut **tetap dipakai**, tetapi hanya untuk konteks/definisi:
 | D-11 | Terapkan tiering T1/T2/T3; T3 hanya untuk daftar pustaka/konteks | **Dikunci 12-11-2026** |
 | D-12 | Target minimal 15 SOTA inti sebelum seminar | **Dikunci 12-11-2026** |
 | D-13 | Tambah minimal 4 referensi kontinuitas sesi/MPTCP | **Menunggu eksekusi** |
+
+---
+
+## 10. Pembaruan Setelah P-02/P-03 (12-11-2026)
+
+| Kelompok | Sebelum | Sesudah |
+|---|---:|---:|
+| SOTA inti (T1) | 12 | **17** |
+| SOTA pendukung (T2) | 7 | **10** |
+| Register total | 38 | **48** |
+
+**Komponen PCC** kini memiliki 4 referensi T1:
+Kumar & Golash (2009), Shahid et al. (2020), Cruvellier et al. (2025), dan
+Giacometti et al. (2025). Ditambah Rajagopalan (2020) sebagai T2.
+
+**Kontinuitas sesi** kini memiliki:
+- T1: Duchene & Bonaventure (2017); Naimi et al. (2024).
+- T2: Liénardy & Donnet (2016); Jiang et al. (2024).
+
+**Catatan:** Naimi et al. (2024) baru tersedia pada level judul; klaim dibatasi
+pada topik. Dua kandidat belum dipakai: Mokhtar et al. (2021) dan Choi et al.
+(2017). P-05 (audit sitasi) masih harus dijalankan.

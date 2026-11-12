@@ -152,6 +152,34 @@ tahap konfigurasi. Rasio tidak dievaluasi ulang terhadap kondisi link secara
 trafik sesuai rasio semula. Klaim ini berlaku baik untuk studi T1 maupun T3,
 tetapi kekuatan buktinya berbeda.
 
+### 2.4.2 Load balancing adaptif pada WAN
+
+Literatur SD-WAN menunjukkan bahwa kebijakan *traffic engineering* statis mulai
+ditinggalkan. Rajagopalan (2020) merangkum peran *load balancing* pada SD-WAN.
+Cruvellier et al. (2025) menyatakan solusi SD-WAN saat ini masih bergantung pada
+kebijakan *traffic engineering* statis dan mengusulkan *deep reinforcement
+learning* untuk kebijakan adaptif; simulasi mereka melaporkan perbaikan 48,94%
+pada lingkungan *bandwidth* asimetris. Giacometti et al. (2025) mengusulkan
+*multi-agent reinforcement learning* untuk *traffic steering* guna mengurangi
+gangguan layanan. Pada konteks satelit–terestrial, Shahid et al. (2020)
+mengusulkan *load balancing* multi-RAT dengan *radio resource utilization ratio*
+dan *adaptive threshold* untuk menentukan sel *overload*; algoritme tersebut juga
+memperkirakan dampak pemindahan beban untuk menghindari aksi yang tidak perlu.
+
+Studi-studi tersebut menunjukkan bahwa alokasi sadar-kondisi memang diperlukan.
+Namun, mereka beroperasi pada level *overlay*, *flow steering*, atau sel/RAT,
+bukan pada granularitas *bucket* PCC. Tidak ada yang membahas *conntrack*,
+preservasi sesi TCP, atau eksekusi pada router kelas SOHO. *Adaptive threshold*
+pada level sel/RAT juga belum diterjemahkan menjadi aturan *dwell* per koneksi.
+Karena itu, pendekatan tersebut tidak dapat langsung dipakai sebagai pembanding
+SPA-HSM, tetapi menjadi bukti bahwa masalah yang lebih umum—alokasi adaptif lintas
+jalur—sedang aktif diteliti.
+
+**Implikasi desain.** Pendekatan SD-WAN/DRL menunjukkan arah, tetapi tidak
+menggantikan mekanisme ringan di level PCC. Penelitian ini mengambil posisi di
+antara keduanya: adaptif seperti SD-WAN, tetapi cukup ringan dan sadar-sesi
+seperti PCC.
+
 **Implikasi desain.** PCC dipakai sebagai **aktuator**, bukan sebagai objek yang
 dikembangkan. Yang diteliti adalah kebijakan yang menentukan rasio, bukan
 implementasi PCC itu sendiri. Baseline praktisi yang dipakai adalah PCC dengan
@@ -297,11 +325,32 @@ berjalan dapat menyebabkan *reordering*, retransmisi, atau *reset*. Pada TCP,
 *reset* dapat muncul ketika salah satu ujung menerima paket di luar jendela yang
 diharapkan atau ketika *middlebox* kehilangan state (Eddy, 2022).
 
+### 2.8.1 Kontinuitas sesi pada level transport
+
+Masalah kontinuitas sesi juga dibahas pada literatur *Multipath TCP* (MPTCP).
+Liénardy & Donnet (2016) menunjukkan bahwa *load balancer* stateless pada
+*entry point* data center dapat meneruskan subflow ke server berbeda, sehingga
+manfaat MPTCP hilang. Duchene & Bonaventure (2017) menunjukkan bahwa perubahan
+kecil pada penanganan subflow awal membuat MPTCP kompatibel dengan *load balancer*
+stateless, sekaligus mendukung agregasi *bandwidth* dan *fast handover*.
+
+Pada konteks Starlink, Jiang et al. (2024) menemukan bahwa *handover* periodik
+15 detik menyebabkan interupsi link dan *bursty loss* yang merusak kinerja TCP.
+StarTCP menahan transmisi selama *handover* untuk menghindari sinyal kongesti
+yang keliru. Naimi et al. (2024) menginventarisasi parameter *load balancing*
+pada *scheduler* MPTCP.
+
+Literatur ini menangani kontinuitas di level **transport**, bukan di level
+keputusan proporsi PCC. MPTCP membutuhkan dukungan ujung-ke-ujung, sedangkan
+SPA-HSM bekerja pada router dan harus menjaga sesi yang sudah ada tanpa mengubah
+aplikasi. Karena itu, keduanya saling melengkapi, bukan saling menggantikan.
+
 **Implikasi desain dan pengukuran.** (1) `AFFINITY_LOCK` diperlakukan sebagai
 hipotesis, bukan jaminan. (2) TCP RST *rate* diukur pada *vantage point* di luar
 router. (3) Perlakuan "tanpa affinity" didefinisikan teknis sebagai *selective
 conntrack flush* setelah aturan baru diterapkan, agar perbandingan tidak menjadi
-*strawman*.
+*strawman*. (4) Temuan MPTCP/StarTCP dipakai sebagai bukti bahwa gangguan sesi
+nyata, tetapi solusi yang diuji tetap berada di level PCC.
 
 ---
 
@@ -429,9 +478,20 @@ ditemukan studi yang menyatukan keempatnya dalam satu *state machine* yang
 mengendalikan proporsi PCC, menjaga sesi, dan dipisahkan dari vendor—lalu mengukur
 kontribusi tiap komponen melalui ablasi.
 
-Klaim "belum ditemukan" tidak boleh berdiri tanpa bukti pencarian. Karena itu,
-klaim tersebut masih berstatus sementara sampai log pencarian P-01 dijalankan dan
-didokumentasikan.
+Klaim "belum ditemukan" telah diuji melalui pencarian OpenAlex (P-01): irisan
+PCC × histeresis/dwell menghasilkan 0 hit, sedangkan irisan PCC × preservasi sesi
+menghasilkan 2 studi lokal yang tidak mengukur RST. Karena itu, klaim dapat dipakai
+dengan frasa "berdasarkan pencarian pada OpenAlex", bukan sebagai klaim universal.
+Pencarian Scopus dan IEEE Xplore masih diperlukan sebagai pelengkap.
+
+Literatur *adaptive load balancing* di SD-WAN/DRL (Rajagopalan, 2020; Cruvellier
+et al., 2025; Giacometti et al., 2025) dan literatur kontinuitas transport
+(Liénardy & Donnet, 2016; Duchene & Bonaventure, 2017; Jiang et al., 2024; Naimi
+et al., 2024) menunjukkan bahwa masalah stabilitas dan kontinuitas sudah diakui.
+Namun, solusinya ditempatkan pada level *overlay* atau *transport*, bukan pada
+keputusan proporsi PCC di router. Belum ada studi yang menempatkan skor kualitas,
+*dwell* sadar-transien, preservasi *conntrack*, dan ablasi komponen dalam satu
+loop kendali pada WAN FO–LEO.
 
 Kebaruan penelitian ini terletak pada tiga hal:
 

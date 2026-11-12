@@ -37,6 +37,6 @@ dan **novelty** yang dapat dipertahankan di depan penguji.
 - [x] Tahap 3.5 — Evaluasi dan perbaikan (blocking B-01 s.d. B-04 selesai)
 - [x] Tahap 4 — Metodologi dan desain evaluasi
 - [x] Tahap 5 — Instrumen, etika, manajemen risiko (dokumen; kalibrasi lapangan belum)
-- [ ] Tahap 6 — Penulisan naskah proposal (draf Bab I–III selesai; P-01/P-04 selesai; abstrak dan daftar pustaka belum)
+- [ ] Tahap 6 — Penulisan naskah proposal (draf Bab I–III selesai; P-01 s.d. P-04 selesai; abstrak dan daftar pustaka belum)
 - [ ] Tahap 7 — Uji kelayakan internal dan simulasi seminar
 - [ ] Tahap 8 — Seminar proposal dan revisi

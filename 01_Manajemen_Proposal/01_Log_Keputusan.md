@@ -35,7 +35,7 @@ antar-bab. Setiap perubahan harus diberi tanggal dan alasan.
 | D-10 | Gaya sitasi | APA 7 / IEEE / gaya kampus | APA 7 sesuai draf | **Menunggu konfirmasi pedoman** |
 | D-11 | Tier referensi | Terapkan T1/T2/T3 | T3 hanya untuk daftar pustaka/konteks | **Dikunci 12-11-2026** |
 | D-12 | Target SOTA inti | 10 / 15 / 20 | Minimal 15 sebelum seminar | **Dikunci 12-11-2026** |
-| D-13 | Referensi kontinuitas sesi | 0 / 4 / lebih | Minimal 4 (MPTCP/session continuity) | **Menunggu eksekusi** |
+| D-13 | Referensi kontinuitas sesi | 0 / 4 / lebih | Minimal 4 (MPTCP/session continuity) | **Terlaksana 12-11-2026 (4 refs)** |
 
 ---
 
@@ -100,6 +100,7 @@ Setiap perubahan keputusan harus menambah baris:
 | 12-11-2026 | D-07 | Belum ada | Primer non-inferior +0,5 pp; sekunder <1% | Menghindari kriteria ganda | H3a diperbarui |
 | 12-11-2026 | B-01 | H1 60 s; H2 +30 s | Rmax global 90 s | Menghilangkan konflik ambang | H1/H2 diperbarui |
 | 12-11-2026 | B-02 | Dua kriteria primer H3a | Non-inferior primer; <1% sekunder | Aturan keputusan jelas | H3a diperbarui |
+| 12-11-2026 | D-13 | 0 referensi kontinuitas | 4 referensi masuk Bab II 2.8.1 | P-03 | H3a punya landasan teori |
 
 ---
 

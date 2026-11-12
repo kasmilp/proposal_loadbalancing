@@ -111,6 +111,13 @@ kuantitatif.
 **Status:** kandidat, **belum disitasi**. Baca teks penuh dan verifikasi klaim
 sebelum memasukkannya ke Bab II.
 
+**Pembaruan 12-11-2026:** 7 dari 9 kandidat sudah dimasukkan ke Bab II.
+- P-02: Shahid et al. (2020), Cruvellier et al. (2025), Giacometti et al. (2025),
+  Rajagopalan (2020).
+- P-03: Liénardy & Donnet (2016), Duchene & Bonaventure (2017), Jiang et al.
+  (2024), Naimi et al. (2024).
+- Tetap kandidat: Mokhtar et al. (2021); Choi et al. (2017).
+
 **Catatan versi:** Ullah et al. (2025) yang semula berupa arXiv telah terbit di
 IEEE VTC2025-Spring dengan DOI `10.1109/vtc2025-spring65109.2025.11174614`.
 Register sudah diperbarui ke versi terbit.

@@ -3,8 +3,8 @@
 **Dokumen:** `02_Checklist_Perbaikan.md`
 **Fungsi:** Daftar kerja yang dapat dicentang, bukan sekadar catatan.
 **Aturan:** Tahap 4 baru dimulai setelah semua item **BLOCKING** selesai.
-**Status 12-11-2026:** B-01 s.d. B-04 selesai. P-01 dan P-04 selesai; P-02, P-03,
-dan P-05 dikerjakan paralel dengan Tahap 4.
+**Status 12-11-2026:** B-01 s.d. B-04 selesai. P-01 s.d. P-04 selesai; P-05
+dikerjakan berikutnya.
 
 ---
 
@@ -101,7 +101,7 @@ dan tersedia di RouterOS.
 
 ---
 
-### [ ] P-02 — Tambah 3–5 referensi internasional PCC/adaptive LB (K-02)
+### [x] P-02 — Tambah 3–5 referensi internasional PCC/adaptive LB (K-02)
 
 **Target topik:**
 - adaptive/dynamic load balancing pada multi-WAN
@@ -110,15 +110,15 @@ dan tersedia di RouterOS.
 
 **Kriteria selesai:** komponen PCC memiliki minimal 3 referensi T1, bukan 1.
 
-**Status:** 4 kandidat ditemukan dan dicatat di
-`09_Verifikasi_dan_Pencarian/01_Log_Pencarian_Gap.md` §5.1; **belum diverifikasi
-teks penuh**, jadi belum dimasukkan ke Bab II.
+**Status:** selesai. Shahid et al. (2020), Cruvellier et al. (2025), dan Giacometti
+et al. (2025) masuk sebagai T1; Rajagopalan (2020) sebagai T2. Ditempatkan di
+Bab II 2.4.2.
 
 **Perkiraan:** 1 hari.
 
 ---
 
-### [ ] P-03 — Tambah 4 referensi kontinuitas sesi/MPTCP (D-13)
+### [x] P-03 — Tambah 4 referensi kontinuitas sesi/MPTCP (D-13)
 
 **Target topik:**
 - MPTCP dan connection migration
@@ -127,9 +127,9 @@ teks penuh**, jadi belum dimasukkan ke Bab II.
 
 **Kriteria selesai:** H3a punya landasan teori, bukan hanya dokumentasi vendor.
 
-**Status:** 5 kandidat ditemukan dan dicatat di
-`09_Verifikasi_dan_Pencarian/01_Log_Pencarian_Gap.md` §5.2; **belum diverifikasi
-teks penuh**.
+**Status:** selesai. Liénardy & Donnet (2016), Duchene & Bonaventure (2017),
+Jiang et al. (2024), dan Naimi et al. (2024) masuk ke Bab II 2.8.1. Naimi et al.
+(2024) baru pada level judul; klaim dibatasi pada topik.
 
 **Perkiraan:** 1 hari.
 

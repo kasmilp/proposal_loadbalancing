@@ -8,6 +8,7 @@ dan apa yang masih harus diverifikasi.
 **Legenda status**
 - **Siap** — sumber ada di korpus, metadata lengkap, klaim umum.
 - **Siap (revisi)** — sumber mendukung versi klaim yang sudah dilunakkan.
+- **Siap (terbatas)** — bukti hanya dari judul/abstrak; klaim dibatasi pada topik.
 - **Verifikasi halaman** — sumber ada, tetapi angka/kutipan spesifik harus dicek.
 - **Perlu sumber** — belum ada sumber yang memadai; jangan dipakai dulu.
 - **Inferensi** — penalaran peneliti, bukan pernyataan langsung sumber.
@@ -56,6 +57,15 @@ dan apa yang masih harus diverifikasi.
 | C35 | SIWG = $G_{eff}(1-\lambda \cdot RST_{flow})$ | Definisi penelitian ini | Desain | — | Desain | Nyatakan sebagai metrik internal |
 | C36 | Aturan $k_{down} T_s > T_{tr}+m$ mencegah flapping akibat transien | Proposisi 1 penelitian ini | Desain/analitis | Sedang | Desain | Uji dengan replay; jangan sebut teorema |
 | C37 | QoS dan QoE adalah konsep berbeda | Wang et al. (2023), p.1 | Konsep | Kuat | Siap | Terverifikasi; tambahkan ke register |
+| C38 | SD-WAN saat ini bergantung pada kebijakan traffic engineering statis | Cruvellier et al. (2025) | Studi simulasi | Sedang | Siap | Abstrak; konteks SD-WAN |
+| C39 | DRL meningkatkan kinerja LB SD-WAN 48,94% pada lingkungan bandwidth asimetris | Cruvellier et al. (2025) | Simulasi | Sedang | Siap | Jangan generalisasi ke lapangan |
+| C40 | MARL untuk traffic steering mengurangi gangguan layanan | Giacometti et al. (2025) | Studi | Sedang | Siap | Abstrak |
+| C41 | Load balancer stateless dapat memecah subflow MPTCP | Liénardy & Donnet (2016) | Workshop | Sedang | Siap | Abstrak |
+| C42 | MPTCP dapat dibuat kompatibel dengan stateless LB dan mendukung fast handover | Duchene & Bonaventure (2017) | Konferensi | Sedang–kuat | Siap | Abstrak |
+| C43 | Handover Starlink 15 detik menyebabkan bursty loss; StarTCP menahan transmisi | Jiang et al. (2024) | Workshop | Sedang | Siap | Abstrak |
+| C44 | Scheduler MPTCP memiliki parameter load balancing yang diinventarisasi | Naimi et al. (2024) | Judul | Lemah | Siap (terbatas) | Hanya judul; jangan klaim detail |
+| C45 | SD-WAN menggunakan kemampuan load balancing untuk koneksi WAN | Rajagopalan (2020) | Overview | Sedang | Siap | Abstrak |
+| C46 | Adaptive threshold digunakan untuk menentukan sel overload pada jaringan satelit-terestrial | Shahid et al. (2020) | Studi simulasi | Sedang–kuat | Siap | Abstrak; belum diterjemahkan ke PCC |
 
 ---
 
@@ -63,13 +73,14 @@ dan apa yang masih harus diverifikasi.
 
 | Status | Jumlah | Tindakan |
 |---|---:|---|
-| Siap | 29 | Bisa langsung dipakai |
+| Siap | 37 | Bisa langsung dipakai |
 | Siap (revisi) | 1 | Pakai versi klaim yang sudah dilunakkan (C08) |
+| Siap (terbatas) | 1 | Klaim dibatasi pada topik (C44) |
 | Verifikasi halaman | 0 | — |
 | Perlu sumber | 0 | — |
 | Inferensi | 2 | Nyatakan sebagai penalaran desain (C33, C34) |
 | Desain | 5 | Nyatakan sebagai klaim penelitian, bukan literatur |
-| **Total** | **37** | |
+| **Total** | **46** | |
 
 ---
 
