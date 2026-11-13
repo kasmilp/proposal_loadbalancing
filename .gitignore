@@ -12,6 +12,10 @@
 **/__pycache__/
 *.pyc
 
+# Presentasi
+12_Presentasi/preview/
+12_Presentasi/~$*.pptx
+
 # Berkas sistem dan sementara
 Thumbs.db
 desktop.ini
