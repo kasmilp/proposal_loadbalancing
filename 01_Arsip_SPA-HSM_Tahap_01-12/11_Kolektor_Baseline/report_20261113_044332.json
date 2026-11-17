@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "version": 1,
+    "host": "router.example.local",
+    "port": 6187,
+    "site": "site",
+    "router": "router",
+    "tag": "baseline",
+    "probe": false,
+    "probe_targets": [
+      "1.1.1.1"
+    ],
+    "probe_interfaces": [
+      "ether1-ISP-A",
+      "ether2-ISP-B",
+      "ether3-ISP-C"
+    ],
+    "intervals": {
+      "resource": 10,
+      "identity": 3600,
+      "interface": 10,
+      "ethernet": 300,
+      "address": 60,
+      "route": 60,
+      "mangle": 60,
+      "nat": 300,
+      "service": 3600,
+      "group": 3600,
+      "netwatch": 60
+    },
+    "probe_interval": 2.0,
+    "duration_s": 0,
+    "connection_table": false,
+    "read_only": true
+  },
+  "time_range": {
+    "start": "2026-11-13T04:43:02.491698",
+    "end": "2026-11-13T04:43:17.745832"
+  },
+  "records": 27,
+  "counts": {
+    "resource": 1,
+    "identity": 1,
+    "address": 7,
+    "route": 18,
+    "mangle": 23,
+    "service": 63,
+    "group": 3,
+    "netwatch": 0
+  },
+  "probe_summary": [
+    {
+      "interface": "ether1-ISP-A",
+      "target": "1.1.1.1",
+      "samples": 1,
+      "success": 1,
+      "loss_pct": 0.0,
+      "rtt_median_ms": 37.22,
+      "rtt_p95_ms": 37.22,
+      "rtt_min_ms": 37.22,
+      "rtt_max_ms": 37.22,
+      "jitter_ms": null
+    },
+    {
+      "interface": "ether2-ISP-B",
+      "target": "1.1.1.1",
+      "samples": 1,
+      "success": 1,
+      "loss_pct": 0.0,
+      "rtt_median_ms": 40.55,
+      "rtt_p95_ms": 40.55,
+      "rtt_min_ms": 40.55,
+      "rtt_max_ms": 40.55,
+      "jitter_ms": null
+    },
+    {
+      "interface": "ether3-ISP-C",
+      "target": "1.1.1.1",
+      "samples": 1,
+      "success": 1,
+      "loss_pct": 0.0,
+      "rtt_median_ms": 58.57,
+      "rtt_p95_ms": 58.57,
+      "rtt_min_ms": 58.57,
+      "rtt_max_ms": 58.57,
+      "jitter_ms": null
+    }
+  ],
+  "correlations": [],
+  "episodes": [
+    {
+      "interface": "ether1-ISP-A",
+      "target": "1.1.1.1",
+      "episodes": 0,
+      "total_duration_s": 0,
+      "median_duration_s": null
+    },
+    {
+      "interface": "ether2-ISP-B",
+      "target": "1.1.1.1",
+      "episodes": 0,
+      "total_duration_s": 0,
+      "median_duration_s": null
+    },
+    {
+      "interface": "ether3-ISP-C",
+      "target": "1.1.1.1",
+      "episodes": 0,
+      "total_duration_s": 0,
+      "median_duration_s": null
+    }
+  ],
+  "throughput": [
+    {
+      "interface": "ether1-ISP-A",
+      "samples": 1,
+      "rx_mean_mbps": 8.173,
+      "rx_p95_mbps": 8.173,
+      "tx_mean_mbps": 1.208,
+      "tx_p95_mbps": 1.208
+    },
+    {
+      "interface": "ether2-ISP-B",
+      "samples": 1,
+      "rx_mean_mbps": 9.911,
+      "rx_p95_mbps": 9.911,
+      "tx_mean_mbps": 0.516,
+      "tx_p95_mbps": 0.516
+    },
+    {
+      "interface": "ether3-ISP-C",
+      "samples": 1,
+      "rx_mean_mbps": 7.184,
+      "rx_p95_mbps": 7.184,
+      "tx_mean_mbps": 0.622,
+      "tx_p95_mbps": 0.622
+    },
+    {
+      "interface": "ether4",
+      "samples": 1,
+      "rx_mean_mbps": 2.59,
+      "rx_p95_mbps": 2.59,
+      "tx_mean_mbps": 17.753,
+      "tx_p95_mbps": 17.753
+    },
+    {
+      "interface": "ether5",
+      "samples": 1,
+      "rx_mean_mbps": 0.346,
+      "rx_p95_mbps": 0.346,
+      "tx_mean_mbps": 3.093,
+      "tx_p95_mbps": 3.093
+    },
+    {
+      "interface": "ether6",
+      "samples": 1,
+      "rx_mean_mbps": 0.043,
+      "rx_p95_mbps": 0.043,
+      "tx_mean_mbps": 0.086,
+      "tx_p95_mbps": 0.086
+    },
+    {
+      "interface": "ether7",
+      "samples": 1,
+      "rx_mean_mbps": 0.035,
+      "rx_p95_mbps": 0.035,
+      "tx_mean_mbps": 0.199,
+      "tx_p95_mbps": 0.199
+    },
+    {
+      "interface": "ether8",
+      "samples": 1,
+      "rx_mean_mbps": 0.185,
+      "rx_p95_mbps": 0.185,
+      "tx_mean_mbps": 0.409,
+      "tx_p95_mbps": 0.409
+    },
+    {
+      "interface": "ether9",
+      "samples": 1,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "ether10",
+      "samples": 1,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "ether11",
+      "samples": 1,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "ether12",
+      "samples": 1,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "ether13-Laptop",
+      "samples": 1,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "Bridge - Hotspot",
+      "samples": 1,
+      "rx_mean_mbps": 2.392,
+      "rx_p95_mbps": 2.392,
+      "tx_mean_mbps": 20.46,
+      "tx_p95_mbps": 20.46
+    },
+    {
+      "interface": "apim@mytunnel.id",
+      "samples": 1,
+      "rx_mean_mbps": 0.002,
+      "rx_p95_mbps": 0.002,
+      "tx_mean_mbps": 0.033,
+      "tx_p95_mbps": 0.033
+    },
+    {
+      "interface": "lo",
+      "samples": 1,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "onco@mytunnel.id",
+      "samples": 1,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "zerotier1",
+      "samples": 1,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    }
+  ],
+  "open_services": [
+    "api",
+    "api-ssl",
+    "btest",
+    "detnet",
+    "dhcp",
+    "dhcpclient",
+    "ftp",
+    "hotspot",
+    "ntp",
+    "ppp",
+    "resolver",
+    "reverse-proxy",
+    "snmp",
+    "ssh",
+    "telnet",
+    "winbox",
+    "wproxy",
+    "www",
+    "www-ssl"
+  ],
+  "files": [
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\11_Kolektor_Baseline\\data\\baseline_router_20261113_044301.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\11_Kolektor_Baseline\\data\\baseline_router_20261113_044313.jsonl"
+  ]
+}

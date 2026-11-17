@@ -1,0 +1,9 @@
+2026-11-13 05:04:31,392 INFO Menghubungkan ke router.example.local:6187
+2026-11-13 05:04:32,276 INFO Terhubung (read-only)
+2026-11-13 05:16:51,985 WARNING Gagal membaca /system/resource/print: The read operation timed out
+2026-11-13 05:16:51,986 INFO Menghubungkan ke router.example.local:6187
+2026-11-13 05:16:52,908 INFO Terhubung (read-only)
+2026-11-13 06:16:52,551 INFO Menghubungkan ke router.example.local:6187
+2026-11-13 06:16:53,407 INFO Terhubung (read-only)
+2026-11-13 07:16:54,805 INFO Menghubungkan ke router.example.local:6187
+2026-11-13 07:16:55,718 INFO Terhubung (read-only)
