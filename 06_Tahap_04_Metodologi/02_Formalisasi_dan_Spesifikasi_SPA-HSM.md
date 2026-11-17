@@ -21,7 +21,15 @@
 | $Q_i(t)$ | Skor kualitas link $i$ | $[0,1]$ |
 | $s_i(t)$ | State link $i$ | STABLE/DEGRADED |
 | $H_i(t)$ | Faktor headroom link $i$ | $[0,1]$ |
-| $W_i(t)$ | Proporsi target link $i$ | $[0,1]$, $\sum W_i = 1$ |
+| $S_i(t)$ | Stok koneksi lama di link $i$ | koneksi |
+| $F_i(t)$ | Laju koneksi baru ke link $i$ | koneksi/detik |
+| $L_i(t)$ | Pangsa beban efektif | $[0,1]$ |
+| $T_i(t)$ | Target kualitas | $[0,1]$ |
+| $W_i(t)$ | Proporsi alokasi koneksi baru | $[0,1]$, $\sum W_i = 1$ |
+| $\kappa$ | Gain koreksi stok | $[0,1]$ |
+| $W_{\min}/W_{\max}$ | Batas alokasi koneksi baru | $[0,1]$ |
+| ELS | *Effective load skew* | $[0,1]$ |
+| TTR | *Time-to-rebalance* | detik |
 | $b_i(t)$ | Jumlah bucket link $i$ | integer |
 | $N$ | Total bucket | 20 |
 | $\lambda$ | Bobot biaya sesi pada SIWG | $[0,1]$ |
@@ -136,15 +144,46 @@ $$H_i(t) = \max\left(\varepsilon, \; 1 - u_i(t)\right)$$
 dengan $u_i(t)$ adalah utilisasi link dari SNMP. Jika SNMP tidak tersedia,
 $H_i = 1$ dan statusnya dicatat sebagai *degraded mode*.
 
-### 5.2 Rasio saat kedua link STABLE
+### 5.2 Target kualitas
 
-$$W_i(t) = \frac{Q_i(t) H_i(t)}{\sum_{k} Q_k(t) H_k(t)}$$
+$$T_i(t) = \frac{Q_i(t) H_i(t)}{\sum_{k} Q_k(t) H_k(t)}$$
 
-### 5.3 Rasio saat salah satu DEGRADED
+$T_i(t)$ adalah target kualitas untuk koneksi baru. Jika alokasi hanya memakai
+$T_i$, koneksi lama yang tidak dapat dipindahkan diabaikan.
+
+### 5.3 Koreksi *stock-flow*
+
+Stok koneksi lama di link $i$:
+
+$$S_i(t) = \text{jumlah koneksi aktif dengan connection-mark link } i$$
+
+Pangsa beban efektif:
+
+$$L_i(t) = \frac{S_i(t)+F_i(t)}{\sum_k \left(S_k(t)+F_k(t)\right)}$$
+
+Alokasi koneksi baru yang dipakai:
+
+$$W_i(t)=\text{clip}\left(T_i(t)+\kappa\left(T_i(t)-\frac{S_i(t)}{\sum_k S_k(t)}\right),\;W_{\min},\;W_{\max}\right)$$
+
+dengan:
+
+- $\kappa=0$ → alokasi kualitas saja (kondisi F);
+- $\kappa>0$ → koreksi stok: jika stok lama melebihi target, alokasi koneksi baru
+  dikurangi; jika stok lama di bawah target, alokasi ditambah;
+- $W_{\min}/W_{\max}$ mencegah *starvation* dan *overload*.
+
+**Metrik rebalance:**
+
+$$\text{ELS}(t)=\frac{1}{2}\sum_i \left|L_i(t)-T_i(t)\right|$$
+
+**Time-to-rebalance:** waktu dari awal degradasi sampai $\text{ELS}(t) \le
+\varepsilon$ (mis. 0,05) dan bertahan minimal satu jendela evaluasi.
+
+### 5.4 Rasio saat salah satu DEGRADED
 
 | FO | LEO | $W_{FO}$ | $W_{LEO}$ |
 |---|---|---:|---:|
-| STABLE | STABLE | $QH$-based | $QH$-based |
+| STABLE | STABLE | $W_i$ stock-flow | $W_i$ stock-flow |
 | DEGRADED | STABLE | 0,15 | 0,85 |
 | STABLE | DEGRADED | 0,85 | 0,15 |
 | DEGRADED | DEGRADED | 0,50 | 0,50 |
@@ -153,7 +192,7 @@ $$W_i(t) = \frac{Q_i(t) H_i(t)}{\sum_{k} Q_k(t) H_k(t)}$$
 DEGRADED), seluruh trafik dialihkan ke link yang hidup, meskipun melampaui
 $b_{max}$. Ini adalah jalur *failover*, bukan operasi normal, dan dicatat terpisah.
 
-### 5.4 Pemetaan ke bucket
+### 5.5 Pemetaan ke bucket
 
 ```
 input: W[1..2], N, b_min, b_max
@@ -257,7 +296,8 @@ Adapter bertanggung jawab atas penerjemahan, verifikasi, dan rollback.
 init:
     warmup(60s)
     Q = compute_quality(read_metrics())
-    apply_ratio(bucket_map(ratio_policy(Q)))
+    S = read_stock(connection_marks)
+    apply_ratio(bucket_map(ratio_policy(Q, S)))
 
 loop every Ts:
     m = read_metrics()
@@ -265,7 +305,8 @@ loop every Ts:
     Q = saw(E, weights, fixed_bounds)
     for i in links:
         update_state(i, Q[i], theta_low, theta_high, k_down, k_up)
-    W = ratio_policy(states, Q, headroom)
+    S = read_stock(connection_marks)      # stok koneksi lama
+    W = ratio_policy(states, Q, headroom, S, kappa)
     b = bucket_map(W, N, b_min, b_max)
     if b != current_bucket:
         if affinity_on:
@@ -277,6 +318,10 @@ loop every Ts:
     if now - last_force_eval > T_max:
         force_eval()
 ```
+
+**Catatan:** `read_stock` harus membaca agregat koneksi per *connection mark*,
+bukan seluruh isi tabel *conntrack*. Jika pembacaan gagal, controller memakai
+nilai terakhir dan menandai `STOCK_UNAVAILABLE`.
 
 ---
 
@@ -310,3 +355,6 @@ loop every Ts:
 | $b_{max}$ | 17 | 85% |
 | $T_{max}$ | 10 menit | Degradasi lambat |
 | $\lambda$ | 1,0 | Primer; sensitivitas 0,25/0,5/1,0 |
+| $\kappa$ | 0 / 0,5 / 1,0 | Gain koreksi stok; 0 = kualitas saja |
+| $W_{\min}$ | 0,15 | Cegah starvation |
+| $W_{\max}$ | 0,85 | Cegah overload |

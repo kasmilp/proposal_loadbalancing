@@ -125,6 +125,23 @@ Berdasarkan korelasi A–B yang tinggi:
 
 ---
 
+## 5A. Implikasi untuk *Stock-Flow*
+
+Baseline 2,2 jam **belum mengukur** stok koneksi lama $S_i(t)$ dan aliran koneksi
+baru $F_i(t)$. Keduanya diperlukan untuk menghitung ELS dan time-to-rebalance.
+Yang tersedia baru kualitas link dan episode RTT.
+
+Implikasi:
+
+1. Kolektor perlu membaca **agregat koneksi per *connection mark***, bukan
+   seluruh isi tabel conntrack.
+2. Pembacaan harus ringan (interval 30 detik) agar tidak membebani router.
+3. ELS/time-to-rebalance belum dapat dihitung dari data baseline ini; akan
+   dihitung setelah pencatatan stok ditambahkan.
+4. Klaim H3c belum memiliki bukti awal; statusnya masih rencana pengujian.
+
+---
+
 ## 6. Langkah Berikutnya
 
 1. **Perpanjang baseline** menjadi 7 hari, mencakup:
@@ -140,7 +157,9 @@ Berdasarkan korelasi A–B yang tinggi:
    - $\theta_{low}/\theta_{high}$ dari distribusi Q,
    - $k_{down}$ dari durasi episode nyata (bukan hanya asumsi 15 detik).
 4. **Siapkan akun tulis terbatas** untuk pilot intervensi setelah staging lulus.
-5. **Jangan ubah konfigurasi** sampai protokol pilot dan rollback siap.
+5. **Tambahkan pencatatan stok koneksi** ($S_i$) per *connection mark* dan laju
+   koneksi baru ($F_i$) untuk menghitung ELS/time-to-rebalance.
+6. **Jangan ubah konfigurasi** sampai protokol pilot dan rollback siap.
 
 ---
 

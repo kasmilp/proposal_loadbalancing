@@ -122,6 +122,17 @@ sebelum memasukkannya ke Bab II.
 IEEE VTC2025-Spring dengan DOI `10.1109/vtc2025-spring65109.2025.11174614`.
 Register sudah diperbarui ke versi terbit.
 
+### 5.3 P-06 — Stock-flow dan session-aware allocation
+
+| Kode | Query | Hits | Catatan |
+|---|---|---:|---|
+| S8 | `("stock-flow" OR "session-aware") AND ("load balancing" OR "allocation") AND (network OR WAN)` | *belum dijalankan* | Target pembanding G-M3/G-E2 |
+| S9 | `("established connections" OR "connection stock") AND ("load balancing" OR "traffic steering")` | *belum dijalankan* | Cek istilah alternatif |
+| S10 | `("session persistence" OR "connection draining") AND ("SD-WAN" OR "multipath")` | *belum dijalankan* | Kontinuitas sesi |
+
+**Status:** P-06 belum dijalankan. Klaim *stock-flow* untuk sementara dinyatakan
+sebagai gap berdasarkan analisis, bukan sebagai hasil pencarian literatur.
+
 ---
 
 ## 6. Tindakan Lanjutan
@@ -129,5 +140,6 @@ Register sudah diperbarui ke versi terbit.
 - [ ] Jalankan query yang sama di Scopus dan IEEE Xplore, catat hit.
 - [ ] Saring 10 kandidat P-02/P-03 pada teks penuh.
 - [ ] Tambahkan 3–5 referensi P-02 dan 4 referensi P-03 ke register.
+- [ ] **Jalankan S8–S10 (P-06) untuk *stock-flow/session-aware allocation*.**
 - [ ] Perbarui §6 peta gap dengan hasil ini.
 - [ ] Tulis klaim gap dengan frasa "berdasarkan pencarian pada OpenAlex".

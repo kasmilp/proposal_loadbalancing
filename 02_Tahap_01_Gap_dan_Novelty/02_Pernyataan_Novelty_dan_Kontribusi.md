@@ -1,162 +1,175 @@
 # Tahap 1 — Pernyataan Novelty dan Kontribusi
 
 **Dokumen:** `02_Pernyataan_Novelty_dan_Kontribusi.md`
-**Status:** Draf kerja Tahap 1
+**Status:** Draf kerja Tahap 1 — diperbarui 17 November 2026
 **Fungsi:** Mengubah gap menjadi klaim kebaruan yang dapat dipertahankan.
+**Prinsip bahasa:** gunakan **memodifikasi** sebagai kata kerja utama. Hindari
+“merancang”, “menciptakan”, dan “membangun dari nol”.
 
 ---
 
 ## 1. Prinsip
 
-Novelty bukan "metode yang belum pernah dipakai". Novelty adalah **klaim bahwa
-pengetahuan atau kemampuan baru akan dihasilkan**, disertai pembanding dan bukti.
+Novelty bukan “metode yang belum pernah dipakai”. Novelty adalah **klaim bahwa
+kemampuan baru dihasilkan melalui modifikasi**, disertai pembanding dan bukti.
 
 Rumus yang dipakai:
 
-> **Berbeda dari** [pembanding], **penelitian ini** [apa yang dilakukan],
+> **Berbeda dari** [pembanding], **penelitian ini memodifikasi** [fungsi kontrol],
 > **sehingga** [kemampuan/bukti baru yang sebelumnya tidak tersedia].
 
-Setiap klaim di bawah ini harus lolos rumus tersebut.
+Yang dimodifikasi adalah **fungsi kontrol di atas kapabilitas PCC statis dan
+conntrack yang tersedia pada platform**—bukan Starlink, bukan algoritma PCC, dan
+bukan kontroler yang diklaim sudah beroperasi.
 
 ---
 
-## 2. Novelty Statement (Satu Paragraf)
+## 2. Novelty Statement
 
-> Penelitian ini tidak mengklaim menemukan metode MCDM, EWMA, atau histeresis yang
-> baru. Kebaruannya terletak pada **pengendalian trade-off antara stabilitas
-> keputusan dan kontinuitas sesi** pada WAN heterogen FO–LEO: parameter histeresis
-> diturunkan dari durasi transien LEO yang terukur, skor kualitas kontinu
-> dipetakan secara formal ke proporsi PCC diskret, dan dampaknya terhadap flapping
-> serta integritas sesi TCP dipisahkan melalui ablasi faktorial. Dengan demikian,
-> penelitian ini menghasilkan **aturan perancangan dan bukti empiris** yang belum
-> tersedia, bukan sekadar penggabungan empat komponen yang sudah dikenal.
-
----
-
-## 3. Empat Klaim Kebaruan
-
-### N1 — Kontribusi konseptual: stabilitas–kontinuitas sebagai satu masalah kendali
-
-**Klaim.** Flapping dan gangguan sesi diperlakukan sebagai dua kendala yang
-diselesaikan bersama, bukan dua masalah terpisah.
-
-**Pembanding.** Studi PCC yang ada mengoptimalkan QoS agregat dan mengasumsikan
-konsistensi sesi otomatis terjaga (Amalia et al., 2022; Arfianita et al., 2024;
-Nugroho et al., 2023). Studi histeresis mengoptimalkan osilasi keputusan tanpa
-memodelkan dampak sesi (Tournaire et al., 2023).
-
-**Bukti yang dihasilkan.** Rumusan kendali dengan dua batasan: laju perubahan
-aturan efektif dan laju gangguan sesi, serta analisis *trade-off* antara keduanya.
-
-**Kekuatan:** tinggi, karena mengubah cara masalah dirumuskan.
+> Penelitian ini memodifikasi fungsi kontrol di atas kapabilitas PCC statis dan
+> *connection tracking* yang tersedia pada platform. Kebaruan bukan pada “PCC
+> dinamis”, melainkan pada **kebijakan alokasi *stock-flow aware*** yang
+> mempertimbangkan stok koneksi lama dan aliran koneksi baru, serta pada
+> **evaluasi trade-off stabilitas–kontinuitas** yang memisahkan flapping, RST,
+> *effective load skew*, dan waktu rebalance. Mekanisme hasil modifikasi—SPA-HSM—
+> belum ditemukan dalam literatur; karena itu, kebaruannya terletak pada
+> modifikasi kebijakan kontrol dan bukti empirisnya.
 
 ---
 
-### N2 — Kontribusi metodologis: aturan dwell yang sadar-transien LEO
+## 3. Lima Klaim Kebaruan
 
-**Klaim.** Parameter histeresis tidak ditetapkan *ad hoc*, tetapi diturunkan dari
-hubungan antara interval sampling, durasi transien, dan jumlah sampel berturut-turut.
+### N1 — Modifikasi persepsi dan deteksi (pendukung)
 
-**Pembanding.** Parameter histeresis pada literatur *auto-scaling* dipilih
-berdasarkan simulasi beban, bukan karakteristik fisik link (Tournaire et al., 2023).
-Studi Starlink mengarakterisasi transien sekitar 15 detik, tetapi tidak
-menerjemahkannya menjadi parameter kendali (Garcia et al., 2025; Hammer et al., 2024;
-Mohan et al., 2024).
+**Klaim.** Penelitian ini memodifikasi cara controller mengamati kualitas ISP dan
+mendeteksi degradasi: dari metrik mentah/ambang tunggal menjadi EWMA–SAW dengan
+batas acuan tetap, dilanjutkan histeresis dua ambang dan *dwell*.
 
-**Bukti yang dihasilkan.** Aturan `k_down × T_s > durasi transien` (dengan margin),
-tabel parameter yang dapat dikalibrasi, dan analisis aliasing.
+**Pembanding.** Studi PCC umumnya menetapkan rasio dari kapasitas atau metrik
+tunggal (Amalia et al., 2022; Arfianita et al., 2024). Studi histeresis memakai
+ambang, tetapi tidak menurunkannya dari durasi transien link (Tournaire et al.,
+2023).
 
-**Kekuatan:** tinggi, karena dapat diuji secara analitis dan eksperimental.
+**Bukti.** Formalisasi $Q_i(t)$, tabel parameter, analisis aliasing, dan kurva
+flapping–recovery.
 
-**Catatan penting.** Ini adalah klaim paling kuat dan paling mudah dipertahankan.
-Letakkan di depan saat seminar.
-
----
-
-### N3 — Kontribusi empiris: ablasi yang memisahkan bentuk histeresis dan preservasi sesi
-
-**Klaim.** Penelitian ini menghasilkan bukti kuantitatif tentang kontribusi
-masing-masing komponen terhadap flapping, TCP RST rate, goodput, dan latensi p95.
-
-**Pembanding.** Studi PCC membandingkan metode secara statis (PCC vs ECMP vs NTH),
-bukan mengablationkan komponen internal (Nugroho et al., 2023; Mirsal dan Agtriadi,
-2026). Studi yang mengklaim preservasi sesi tidak mengukur RST.
-
-**Bukti yang dihasilkan.** Desain faktorial 2×2 (simetris/asimetris × affinity
-off/on) ditambah pembanding statis dan dynamic naive, dengan unit analisis episode
-degradasi.
-
-**Kekuatan:** tinggi, karena langsung menjawab G-E1.
-
-**Prasyarat:** mekanisme "tanpa affinity" harus didefinisikan teknis dan tidak
-dibuat gagal secara artifisial.
+**Kekuatan:** sedang. Ini fondasi, bukan novelty utama.
 
 ---
 
-### N4 — Kontribusi rekayasa: kontrak antarmuka yang dapat diuji
+### N2 — Modifikasi alokasi menjadi *stock-flow aware* (utama)
 
-**Klaim.** Logika keputusan dipisahkan dari eksekusi melalui kontrak abstrak,
-sehingga dapat diuji dengan *mock adapter* sebelum menyentuh jaringan produksi.
+**Klaim.** Penelitian ini memodifikasi kebijakan alokasi dari berbasis kualitas
+saja menjadi kebijakan yang mempertimbangkan **stok koneksi lama** $S_i(t)$ dan
+**aliran koneksi baru** $F_i(t)$.
 
-**Pembanding.** Implementasi PCC praktis tertanam pada konfigurasi vendor dan
-sulit direplikasi (MikroTik, n.d.; Putra dan Anton, 2024).
+**Pembanding.** Studi PCC dan *load balancing* umumnya menghitung rasio dari
+kondisi link saat ini dan mengabaikan bahwa koneksi lama tetap menempati link yang
+sedang memburuk (Kumar & Golash, 2009; Amalia et al., 2022; Nugroho et al., 2023).
+Literatur SD-WAN/DRL mengalokasikan *flow* pada level *overlay*, bukan pada
+granularitas koneksi PCC dan *conntrack* (Cruvellier et al., 2025; Giacometti et
+al., 2025).
 
-**Bukti yang dihasilkan.** Spesifikasi antarmuka, *mock adapter*, uji konformitas,
-dan bukti keputusan identik pada dua adapter.
+**Bukti.** Rumus koreksi stok:
 
-**Kekuatan:** sedang. Ini kontribusi pendukung, bukan novelty utama. Jangan
-mengklaim "platform-independent" — gunakan "dirancang portabel dan diuji melalui
-kontrak antarmuka".
+$$W_i(t)=\text{clip}\left(T_i(t)+\kappa\left(T_i(t)-\frac{S_i(t)}{\sum_k S_k(t)}\right),\;W_{\min},\;W_{\max}\right)$$
+
+serta metrik *effective load skew* (ELS) dan *time-to-rebalance*.
+
+**Kekuatan:** tinggi. Ini klaim paling utama.
+
+---
+
+### N3 — Modifikasi perlakuan sesi (utama)
+
+**Klaim.** Penelitian ini memodifikasi cara controller memperlakukan sesi: koneksi
+lama dipertahankan pada jalurnya, sedangkan koneksi baru diarahkan berdasarkan
+persentase terbaru. Preservasi sesi diperlakukan sebagai **batasan** dalam
+keputusan alokasi, bukan sebagai efek samping.
+
+**Pembanding.** Implementasi PCC praktis memanfaatkan *conntrack* secara implisit
+(MikroTik, n.d.). Literatur MPTCP menangani kontinuitas di level transport
+(Duchene & Bonaventure, 2017; Jiang et al., 2024), bukan di level kebijakan
+alokasi koneksi pada router.
+
+**Bukti.** Definisi teknis `AFFINITY_LOCK`, pengukuran RST *flow*, *session
+retention rate*, dan perbandingan dengan perlakuan *flush* selektif.
+
+**Kekuatan:** tinggi. Ini yang membedakan penelitian dari “PCC dinamis”.
+
+---
+
+### N4 — Modifikasi evaluasi (pendukung)
+
+**Klaim.** Penelitian ini memodifikasi evaluasi dari QoS agregat menjadi
+SIWG + ELS + *time-to-rebalance* + *session retention*.
+
+**Pembanding.** Studi PCC melaporkan throughput/delay/jitter/loss agregat
+(Amalia et al., 2022; Arfianita et al., 2024). Studi yang mengklaim preservasi
+sesi tidak mengukur RST atau stok koneksi lama.
+
+**Bukti.** Rumus SIWG, ELS, time-to-rebalance, RST flow, dan analisis sensitivitas
+$\lambda$.
+
+**Kekuatan:** sedang. Ini alat ukur, bukan novelty utama.
+
+---
+
+### N5 — Modifikasi kontrak antarmuka (rekayasa)
+
+**Klaim.** Penelitian ini memodifikasi cara logika keputusan dipisahkan dari
+eksekusi melalui kontrak antarmuka yang dapat diuji dengan *mock adapter*.
+
+**Pembanding.** Implementasi PCC praktis tertanam pada konfigurasi vendor
+(MikroTik, n.d.; Putra & Anton, 2024).
+
+**Bukti.** Spesifikasi antarmuka, *mock adapter*, uji konformitas, dan bukti
+keputusan identik pada dua adapter.
+
+**Kekuatan:** sedang. Kontribusi pendukung; jangan mengklaim portabilitas
+multi-vendor.
 
 ---
 
 ## 4. Mengapa Ini Bukan Sekadar Integrasi
 
-Keberatan yang paling mungkin muncul: *"Ini hanya menggabungkan EWMA, SAW,
-histeresis, dan PCC."*
-
-Jawaban yang harus disiapkan:
-
 | Keberatan | Jawaban |
 |---|---|
-| "Tinggal menempelkan empat metode." | Yang baru bukan penempelannya, tetapi **aturan penurunan parameter** (N2) dan **pengukuran trade-off** (N1/N3). Tanpa N2, integrasi memang inkremental. |
-| "Histeresis sudah lama ada." | Histeresis yang ada tidak diturunkan dari transien LEO dan tidak memperhitungkan biaya sesi. Asimetri waktu di sini berfungsi sebagai instrumen kendali, bukan sekadar ambang. |
-| "SAW sudah biasa." | SAW dipakai sebagai penyeragam skor agar dapat dibandingkan antar-waktu; kontribusinya bukan pada SAW, melainkan pada pemetaan skor ke bucket diskret (G-M2). |
-| "PCC sudah menangani sesi." | Itu asumsi yang justru diuji (G-E1). Jika benar, H2a akan menunjukkan non-inferioritas — hasil negatif yang tetap bernilai. |
-| "Tidak ada metode baru." | Benar, dan itu bukan klaim. Klaimnya adalah **aturan desain + bukti empiris**. |
-
-**Aturan presentasi:** sebut lebih dulu apa yang **bukan** klaim, lalu sebut
-kontribusi yang diklaim. Ini menurunkan ekspektasi penguji dan meningkatkan
-kredibilitas.
+| “Tinggal menempelkan EWMA, SAW, histeresis, dan PCC.” | Modifikasi mengubah **kopling** antar-komponen: stok koneksi lama masuk ke keputusan alokasi, dan preservasi sesi menjadi batasan. Ini bukan penempelan. |
+| “PCC sudah menangani sesi.” | PCC mempertahankan koneksi lama, tetapi justru itu yang menimbulkan **penumpukan stok** di link yang memburuk. Penelitian ini memodifikasi kebijakan untuk mengelolanya. |
+| “Histeresis sudah lama ada.” | Histeresis di sini dipakai untuk memisahkan transien dari degradasi sustained dan dihubungkan dengan perhitungan alokasi. |
+| “SAW sudah biasa.” | SAW adalah lapisan penyeragam skor, bukan klaim. Klaimnya ada pada kebijakan alokasi dan evaluasi. |
+| “Tidak ada metode baru.” | Benar. Klaimnya adalah **modifikasi kebijakan kontrol + bukti empiris**, bukan metode dasar baru. |
+| “Ini hanya PCC dinamis.” | PCC adalah aktuator. Yang dimodifikasi adalah fungsi kontrol yang menentukan kapan dan seberapa besar alokasi koneksi baru diubah. |
 
 ---
 
 ## 5. Peta Kontribusi
 
-| Kode | Kontribusi | Jenis | Gap yang dijawab | Bukti |
+| Kode | Kontribusi | Jenis | Gap | Bukti |
 |---|---|---|---|---|
-| K1 | Formulasi SPA-HSM: EWMA + SAW + histeresis asimetris + affinity | Konseptual/artefak | G-I1 | Formalisasi, pseudocode, tabel parameter |
-| K2 | Aturan dwell sadar-transien dan analisis aliasing | Metodologis | G-M1 | Turunan aturan, analisis sensitivitas, replay trace |
-| K3 | Formalisasi pemetaan skor → bucket PCC | Metodologis | G-M2 | Rumus, contoh perhitungan, uji granularitas |
-| K4 | Bukti ablasi terhadap flapping, RST, goodput, latensi | Empiris | G-E1, G-C1 | Dataset, uji statistik, effect size |
-| K5 | Kontrak antarmuka + mock adapter | Rekayasa | G-C2 | Uji konformitas, H3 |
-| K6 | Metrik *Session-Impact-Weighted Goodput* (SIWG) | Metrik/evaluasi | G-E1, G-I1 | Rumus, analisis sensitivitas λ, peringkat skenario |
+| K1 | Modifikasi persepsi & deteksi: EWMA–SAW + histeresis *dwell* | Metodologis | G-M1 | Formalisasi, kurva trade-off |
+| K2 | Modifikasi alokasi *stock-flow aware* | **Utama** | G-M3 | Rumus $W_i$, ELS, time-to-rebalance |
+| K3 | Modifikasi perlakuan sesi: preservasi + koneksi baru | **Utama** | G-E2 | RST flow, session retention |
+| K4 | Formalisasi pemetaan skor → bucket PCC | Pendukung | G-M2 | Rumus, uji granularitas |
+| K5 | SIWG + ELS + time-to-rebalance | Pendukung | G-E1 | Rumus, sensitivitas $\lambda$ |
+| K6 | Bukti ablasi A–H pada FO–LEO | **Utama** | G-E1, G-C1 | Dataset, effect size |
+| K7 | Kontrak antarmuka + mock adapter | Rekayasa | G-C2 | Uji konformitas |
 
-**Kontribusi utama yang harus dipertahankan:** **K2 + K4**.
-**Kontribusi pendukung:** K1, K3, K5.
+**Kontribusi utama:** **K2 + K3 + K6**.
+**Pendukung:** K1, K4, K5, K7.
 
 ---
 
 ## 6. Elevator Pitch (60 Detik)
 
-> "PCC pada MikroTik membagi trafik dengan rasio statis. Ketika Starlink mengalami
-> transien sekitar 15 detik, rasio statis tetap mengirim trafik ke jalur yang sedang
-> buruk. Solusi naif — memperbarui rasio setiap siklus — menimbulkan flapping dan
-> berpotensi mengganggu sesi TCP. Penelitian ini mengusulkan SPA-HSM: skor kualitas
-> dihaluskan, histeresis asimetris dengan dwell yang diturunkan dari durasi transien,
-> dan preservasi sesi melalui affinity lock. Yang baru bukan metode dasarnya, tetapi
-> aturan penurunan parameter dan bukti ablasi yang memisahkan kontribusi flapping
-> dan gangguan sesi pada WAN FO–LEO."
+> “PCC pada MikroTik membagi koneksi baru dengan rasio statis. Koneksi lama tetap
+> di jalurnya. Ketika Starlink memburuk, stok koneksi lama menumpuk di link yang
+> sedang buruk, sementara koneksi baru tetap bisa diarahkan. Penelitian ini
+> memodifikasi fungsi kontrol di atas kapabilitas PCC: mengamati kualitas,
+> mendeteksi degradasi sustained, menghitung ulang persentase koneksi baru dengan
+> mempertimbangkan stok koneksi lama, dan mempertahankan koneksi lama. Kebaruan
+> bukan ‘PCC dinamis’, tetapi kebijakan *stock-flow aware* dan bukti empirisnya.”
 
 ---
 
@@ -164,44 +177,49 @@ kredibilitas.
 
 Hal-hal berikut **tidak** diklaim:
 
+- Tidak mengklaim memodifikasi Starlink.
+- Tidak mengklaim mengubah algoritma PCC.
+- Tidak mengklaim bahwa kontroler adaptif yang identik sudah beroperasi.
 - Tidak mengklaim metode MCDM, EWMA, atau histeresis baru.
 - Tidak mengklaim generalisasi ke lebih dari dua ISP.
 - Tidak mengklaim portabilitas terbukti ke semua vendor.
-- Tidak mengklaim menggantikan SD-WAN enterprise.
+- Tidak mengklaim menggantikan SD-WAN *enterprise*.
 - Tidak mengklaim kestabilan formal *control loop*.
 - Tidak mengklaim QoE atau kepuasan pengguna.
 
 ---
 
-## 8. Opsi Penguatan Novelty (Jika Diperlukan)
+## 8. Opsi Penguatan
 
-Jika pembimbing menilai novelty masih lemah, ada dua penguatan yang masih
-terjangkau:
+Jika pembimbing menilai novelty masih lemah:
 
-### Opsi A — Tambahkan batas analitis flapping
+### Opsi A — Batas analitis *stock-flow convergence*
 
-Turunkan batas atas jumlah transisi state per jam sebagai fungsi dari `α`,
-`θ_low`, `θ_high`, `k_down`, `k_up`, dan varians derau. Ini mengubah kontribusi
-dari "eksperimental" menjadi "analitis + eksperimental".
+Turunkan batas waktu rebalance atau syarat konvergensi ELS sebagai fungsi
+$\kappa$, laju kedatangan koneksi, dan waktu *idle* conntrack.
 
-- **Kelebihan:** novelty naik signifikan.
-- **Risiko:** membutuhkan asumsi derau yang harus dipertahankan.
-- **Kelayakan:** sedang; bisa dibatasi pada kasus derau Gaussian dan replay trace.
+- **Kelebihan:** novelty analitis naik.
+- **Risiko:** membutuhkan asumsi laju kedatangan dan distribusi durasi sesi.
+- **Kelayakan:** sedang.
 
-### Opsi B — Usulkan metrik gabungan *session-impact-weighted goodput*
+### Opsi B — Perluas SIWG
 
-Metrik yang memasukkan biaya gangguan sesi ke dalam goodput, sehingga dua strategi
-dapat dibandingkan dengan satu angka.
+Tambahkan komponen ELS atau *session retention* ke dalam SIWG.
 
-- **Kelebihan:** mudah dikomunikasikan dan menonjolkan trade-off.
-- **Risiko:** pembobotan bisa diperdebatkan; harus disertai analisis sensitivitas.
+- **Kelebihan:** satu angka untuk trade-off.
+- **Risiko:** pembobotan perlu sensitivitas.
 - **Kelayakan:** tinggi.
 
-**Rekomendasi:** ambil **Opsi B** sebagai kontribusi tambahan, dan **Opsi A**
-sebagai lampiran analitis jika waktu memungkinkan. Jangan menunda Tahap 2 hanya
-untuk mengejar Opsi A.
+**Rekomendasi:** pertahankan SIWG sebagai metrik utama, tambahkan ELS dan
+time-to-rebalance sebagai metrik terpisah. Opsi A menjadi lampiran analitis jika
+waktu memungkinkan.
 
-**Keputusan 12-11-2026:** **Opsi B diadopsi** dan diberi nama SIWG
-(*Session-Impact-Weighted Goodput*). Rumus, definisi operasional, dan hipotesisnya
-berada di `03_Tahap_02_Rumusan_Masalah/02_Hipotesis_dan_Definisi_Operasional.md`.
-Opsi A tetap menjadi cadangan jika penguji meminta kontribusi analitis tambahan.
+---
+
+## 9. Catatan Pembaruan
+
+- Dokumen ini menggantikan versi sebelumnya yang menekankan “aturan dwell” dan
+  “pemetaan bucket” sebagai novelty utama.
+- Novelty utama sekarang adalah **stock-flow aware allocation + session
+  preservation**, dengan dukungan observasi/deteksi dan evaluasi.
+- Istilah “PCC dinamis” tidak dipakai sebagai klaim utama.

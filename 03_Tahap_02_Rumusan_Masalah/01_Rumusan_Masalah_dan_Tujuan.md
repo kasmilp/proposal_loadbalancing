@@ -1,8 +1,8 @@
 # Tahap 2 — Rumusan Masalah dan Tujuan
 
 **Dokumen:** `01_Rumusan_Masalah_dan_Tujuan.md`
-**Status:** Draf kerja Tahap 2
-**Arah penelitian:** Opsi D — SPA-HSM + metrik gabungan SIWG
+**Status:** Draf kerja Tahap 2 — diperbarui 17 November 2026
+**Arah penelitian:** Modifikasi fungsi kontrol + alokasi *stock-flow aware* + SIWG
 **Fungsi:** Menerjemahkan gap Tahap 1 menjadi pertanyaan payung, sub-pertanyaan,
 dan tujuan yang saling memetakan satu-satu.
 
@@ -10,17 +10,16 @@ dan tujuan yang saling memetakan satu-satu.
 
 ## 1. Pertanyaan Penelitian Payung
 
-> Sejauh mana **SPA-HSM** — *state machine* yang memadukan skor kualitas
-> multi-kriteria, penghalusan EWMA, histeresis asimetris sadar-transien, dan
-> `AFFINITY_LOCK` — mampu mengendalikan **trade-off antara stabilitas keputusan
-> dan kontinuitas sesi** pada WAN dual-ISP FO–LEO, dan bagaimana kontribusi
-> masing-masing komponen serta parameter *dwell* membentuk *frontier* trade-off
-> tersebut?
+> Bagaimana mekanisme kontrol adaptif pada WAN heterogen FO–LEO dapat
+> **memodifikasi cara mengamati kualitas ISP, mendeteksi degradasi, menghitung
+> ulang persentase alokasi koneksi baru dengan mempertimbangkan stok koneksi lama,
+> dan mempertahankan koneksi yang telah terbentuk**, sehingga trade-off antara
+> stabilitas keputusan, kontinuitas sesi, dan kinerja agregat dapat dikendalikan?
 
-Pertanyaan payung ini sengaja menyebut **trade-off**, bukan sekadar "peningkatan
-kinerja". Alasannya: setiap mekanisme yang menstabilkan keputusan berpotensi
-memperlambat pemulihan, dan setiap perubahan rasio berpotensi mengganggu sesi.
-Yang dinilai bukan salah satu sisi, melainkan posisi sistem pada kurva trade-off.
+Pertanyaan ini sengaja menyebut **modifikasi fungsi kontrol**, bukan “merancang
+kontroler” atau “PCC dinamis”. Yang dimodifikasi adalah kebijakan yang menentukan
+kapan dan seberapa besar alokasi koneksi baru diubah, dengan tetap menghormati
+koneksi lama yang tidak dapat dipindahkan.
 
 ---
 
@@ -28,13 +27,14 @@ Yang dinilai bukan salah satu sisi, melainkan posisi sistem pada kurva trade-off
 
 | Kode | Pertanyaan | Gap | Sifat |
 |---|---|---|---|
-| **RQ1** | Bagaimana merumuskan skor kualitas $Q_i(t)$ dari metrik QoS dengan normalisasi berbatas tetap dan bobot statis, lalu memetakannya menjadi proporsi PCC diskret yang memenuhi $\sum b_i = N$ serta batas $b_{min}$ dan $b_{max}$? | G-M2 | Formalisasi |
-| **RQ2** | Bagaimana merancang aturan *dwell* histeresis asimetris yang diturunkan dari durasi transien LEO terukur, dan bagaimana aturan itu menggeser trade-off antara *flapping rate* dan *recovery latency*? | G-M1 | Metodologis |
-| **RQ3** | Seberapa besar `AFFINITY_LOCK` menurunkan gangguan sesi TCP — diukur sebagai RST *rate* dan proporsi aliran terganggu — dan bagaimana interaksinya dengan bentuk histeresis? | G-E1 | Empiris |
-| **RQ4** | Bagaimana kinerja gabungan SPA-HSM diukur dengan *Session-Impact-Weighted Goodput* (SIWG), dan seberapa besar kontribusi tiap komponen berdasarkan ablasi pada konteks FO–LEO? | G-I1, G-C1 | Empiris/komparatif |
-| **RQ5** | Apakah *Algorithm Core* memenuhi kontrak antarmuka dan menghasilkan keputusan identik ketika dijalankan pada dua adapter berbeda? | G-C2 | Rekayasa |
+| **RQ1** | Bagaimana memodifikasi persepsi kualitas menjadi $Q_i(t)$ berbasis EWMA–SAW dan memetakannya ke bucket PCC diskret? | G-M2 | Formalisasi |
+| **RQ2** | Bagaimana memodifikasi deteksi degradasi dengan histeresis asimetris dan *dwell* yang diturunkan dari durasi transien LEO? | G-M1 | Metodologis |
+| **RQ3** | Bagaimana memodifikasi perlakuan sesi sehingga koneksi lama dipertahankan dan koneksi baru diarahkan tanpa pemutusan paksa? | G-E2 | Metodologis/empiris |
+| **RQ4** | Bagaimana memodifikasi kebijakan alokasi agar mempertimbangkan stok koneksi lama $S_i(t)$ dan aliran koneksi baru $F_i(t)$, dan seberapa besar pengaruhnya terhadap *effective load skew* dan *time-to-rebalance*? | **G-M3** | **Utama** |
+| **RQ5** | Seberapa besar modifikasi tersebut menurunkan flapping dan RST serta meningkatkan SIWG berdasarkan ablasi A–H pada konteks FO–LEO? | G-E1, G-I1, G-C1 | Empiris/komparatif |
+| **RQ6** | Apakah mekanisme hasil modifikasi memenuhi kontrak antarmuka dan menghasilkan keputusan identik pada dua adapter? | G-C2 | Rekayasa |
 
-**Aturan:** tidak ada sub-pertanyaan yang hanya bisa dijawab "ya/tidak". Setiap
+**Aturan:** tidak ada sub-pertanyaan yang hanya bisa dijawab “ya/tidak”. Setiap
 RQ harus menghasilkan angka, model, atau artefak yang dapat diperiksa.
 
 ---
@@ -43,19 +43,21 @@ RQ harus menghasilkan angka, model, atau artefak yang dapat diperiksa.
 
 ### Tujuan umum
 
-Mengembangkan dan mengevaluasi SPA-HSM sebagai mekanisme kendali proporsi PCC
-yang menjaga stabilitas keputusan sekaligus kontinuitas sesi pada WAN heterogen
-FO–LEO, serta menghasilkan panduan parameter yang dapat dipakai praktisi.
+Memodifikasi fungsi kontrol di atas kapabilitas PCC statis dan *conntrack* yang
+tersedia pada platform, sehingga mekanisme hasil modifikasi—SPA-HSM—dapat
+mengelola trade-off stabilitas keputusan, kontinuitas sesi, dan kinerja agregat
+pada WAN heterogen FO–LEO.
 
 ### Tujuan khusus
 
 | Kode | Tujuan | Menjawab | Luaran terukur |
 |---|---|---|---|
-| **T1** | Merumuskan $Q_i(t)$ berbasis EWMA–SAW dengan normalisasi berbatas tetap, serta pemetaan formal $Q_i(t) \rightarrow$ bucket PCC. | RQ1 | Rumus, tabel parameter, contoh perhitungan, uji granularitas |
-| **T2** | Merancang aturan *dwell* $k_{down}, k_{up}$ yang diturunkan dari durasi transien LEO, dan menganalisis pengaruhnya terhadap flapping dan recovery latency. | RQ2 | Turunan aturan, kurva trade-off, analisis sensitivitas |
-| **T3** | Mengimplementasikan `AFFINITY_LOCK` dan mengukur dampaknya terhadap RST rate serta proporsi aliran terganggu. | RQ3 | Mekanisme teknis, data RST, uji non-inferioritas |
-| **T4** | Mengevaluasi kontribusi histeresis dan affinity secara terpisah dan bersama melalui ablasi, menggunakan SIWG sebagai ukuran gabungan. | RQ4 | Dataset ablasi, effect size, peringkat SIWG |
-| **T5** | Menguji kontrak *Abstract Allocation Interface* dan portabilitas *Algorithm Core* melalui *mock adapter* dan adapter kedua. | RQ5 | Uji konformitas, bukti keputusan identik |
+| **T1** | Memodifikasi persepsi kualitas: $Q_i(t)$ berbasis EWMA–SAW dan pemetaan ke bucket PCC. | RQ1 | Rumus, tabel parameter, uji granularitas |
+| **T2** | Memodifikasi deteksi degradasi: histeresis dua ambang + *dwell* sadar-transien. | RQ2 | Aturan *dwell*, kurva trade-off |
+| **T3** | Memodifikasi perlakuan sesi: preservasi koneksi lama dan pengarahan koneksi baru. | RQ3 | Mekanisme, RST flow, session retention |
+| **T4** | **Memodifikasi kebijakan alokasi menjadi *stock-flow aware*** dengan $S_i(t)$, $F_i(t)$, dan koreksi $\kappa$. | **RQ4** | Rumus $W_i$, ELS, time-to-rebalance |
+| **T5** | Mengevaluasi kontribusi modifikasi melalui ablasi A–H dan SIWG. | RQ5 | Dataset, effect size, peringkat SIWG |
+| **T6** | Menguji kontrak *Abstract Allocation Interface* dan portabilitas inti. | RQ6 | Uji konformitas, keputusan identik |
 
 ---
 
@@ -63,28 +65,29 @@ FO–LEO, serta menghasilkan panduan parameter yang dapat dipakai praktisi.
 
 | Gap | RQ | Tujuan | Hipotesis | Metrik utama | Bab |
 |---|---|---|---|---|---|
-| G-M2 | RQ1 | T1 | — (formalisasi) | Galat pemetaan bucket, stabilitas granularitas | I, II |
-| G-M1 | RQ2 | T2 | H1, H2 | Flapping rate, recovery latency p95 | I, II |
-| G-E1 | RQ3 | T3 | H3a | RST rate, flow disruption ratio | I, II |
-| G-I1, G-C1 | RQ4 | T4 | H3b, H4 | Goodput, latency p95, SIWG | I, II |
-| G-C2 | RQ5 | T5 | H5 | Kesesuaian antarmuka, identik/tidak | I, II |
+| G-M2 | RQ1 | T1 | — (formalisasi) | Galat bucket, stabilitas granularitas | I, II |
+| G-M1 | RQ2 | T2 | H1, H2 | Flapping, recovery p95 | I, II |
+| G-E2 | RQ3 | T3 | H3a | RST flow, session retention | I, II |
+| **G-M3** | **RQ4** | **T4** | **H3c** | **ELS, time-to-rebalance** | I, II |
+| G-E1, G-I1, G-C1 | RQ5 | T5 | H3b, H4 | Goodput, latency, SIWG | I, II |
+| G-C2 | RQ6 | T6 | H5 | Kesesuaian antarmuka | I, II |
 
 **Uji konsistensi:** setiap RQ punya tepat satu tujuan; setiap tujuan punya
-minimal satu hipotesis atau luaran formal; setiap hipotesis punya metrik dan uji
-(di dokumen `02_Hipotesis_dan_Definisi_Operasional.md`).
+minimal satu hipotesis atau luaran formal; setiap hipotesis punya metrik dan uji.
 
 ---
 
-## 5. Batas Pertanyaan (Agar Tidak Melebar)
+## 5. Batas Pertanyaan
 
 | Hal yang tidak ditanyakan | Alasan |
 |---|---|
-| Apakah SPA-HSM lebih baik dari semua algoritma load balancing? | Tidak dapat diuji dengan satu penelitian |
-| Apakah sistem dapat memprediksi degradasi sebelum terjadi? | Itu Opsi C, di luar lingkup |
+| Apakah SPA-HSM lebih baik dari semua algoritma *load balancing*? | Tidak dapat diuji dengan satu penelitian |
+| Apakah sistem dapat memprediksi degradasi sebelum terjadi? | Di luar lingkup; mekanisme bersifat reaktif |
 | Apakah pengguna merasa lebih puas (QoE)? | Penelitian mengukur QoS, bukan persepsi |
-| Apakah metode ini optimal secara global? | Tidak ada klaim optimalitas; yang dicari adalah perbaikan terukur |
-| Apakah bobot SAW sebaiknya dipelajari otomatis? | Bobot statis adalah keputusan lingkup (K-03) |
-| Apakah sistem bekerja pada semua vendor? | Hanya satu adapter nyata + mock (K-04) |
+| Apakah metode ini optimal secara global? | Tidak ada klaim optimalitas |
+| Apakah bobot SAW sebaiknya dipelajari otomatis? | Bobot statis (K-03) |
+| Apakah sistem bekerja pada semua vendor? | Satu adapter nyata + mock (K-04) |
+| Apakah koneksi lama dipindahkan paksa? | Tidak; preservasi sesi adalah batasan |
 
 ---
 
@@ -92,31 +95,32 @@ minimal satu hipotesis atau luaran formal; setiap hipotesis punya metrik dan uji
 
 | RQ | Jawaban dianggap memuaskan jika |
 |---|---|
-| RQ1 | Semua simbol terdefinisi; pemetaan menghasilkan $\sum b_i = N$ untuk 10.000 kombinasi skor uji; tidak ada pelanggaran $b_{min}/b_{max}$ |
-| RQ2 | Ada aturan eksplisit yang menghubungkan $T_s$, durasi transien, dan $k_{down}$; kurva trade-off dihasilkan dari minimal 3 set parameter |
-| RQ3 | RST diukur, bukan diasumsikan; ada interval kepercayaan; perlakuan "tanpa affinity" didefinisikan teknis |
-| RQ4 | Ada effect size dan 95% CI; SIWG dihitung dengan analisis sensitivitas $\lambda$ |
-| RQ5 | Ada matriks uji konformitas dan perbandingan urutan keputusan |
+| RQ1 | Semua simbol terdefinisi; $\sum b_i=N$ untuk 10.000 kombinasi uji; tidak ada pelanggaran $b_{min}/b_{max}$ |
+| RQ2 | Ada aturan eksplisit yang menghubungkan $T_s$, $T_{tr}$, dan $k_{down}$; kurva trade-off dihasilkan |
+| RQ3 | Koneksi lama tetap; RST flow dan session retention terukur |
+| RQ4 | ELS dan time-to-rebalance turun dibanding alokasi kualitas saja; $\kappa$ diuji sensitivitasnya |
+| RQ5 | Ada effect size dan 95% CI; SIWG dihitung dengan sensitivitas $\lambda$ |
+| RQ6 | Ada matriks konformitas dan perbandingan urutan keputusan |
 
 ---
 
-## 7. Rumusan Masalah untuk Naskah (Versi Ringkas)
-
-Versi ini yang akan dipakai di Bab I:
+## 7. Rumusan Masalah untuk Naskah
 
 > Pengelolaan proporsi trafik PCC pada WAN heterogen FO–LEO masih bertumpu pada
 > rasio statis yang tidak merespons degradasi link secara *real-time*. Pembaruan
-> rasio secara naif menimbulkan flapping dan berpotensi mengganggu sesi TCP,
-> sedangkan parameter histeresis yang ada tidak diturunkan dari dinamika transien
-> LEO dan dampaknya terhadap sesi tidak diukur. Penelitian ini merumuskan dan
-> mengevaluasi SPA-HSM untuk mengendalikan trade-off stabilitas–kontinuitas–kinerja,
-> serta mengukur kontribusi masing-masing komponennya melalui ablasi.
+> rasio secara naif menimbulkan flapping, dan karena PCC bersifat *session-oriented*,
+> koneksi lama dapat menumpuk pada link yang sedang memburuk. Penelitian ini
+> memodifikasi fungsi kontrol di atas kapabilitas PCC: mengamati kualitas ISP,
+> mendeteksi degradasi sustained, menghitung ulang persentase koneksi baru dengan
+> mempertimbangkan stok koneksi lama, dan mempertahankan koneksi yang telah
+> terbentuk. Mekanisme hasil modifikasi dievaluasi melalui flapping, RST, goodput,
+> latensi, ELS, time-to-rebalance, dan SIWG.
 
 ---
 
 ## 8. Yang Dibutuhkan Sebelum Tahap 3
 
-- [ ] Konfirmasi pembimbing atas lima sub-RQ (terutama RQ5, yang bersifat opsional).
-- [ ] Penetapan jumlah skenario (D-02) karena memengaruhi kekuatan H2 dan H4.
-- [ ] Konfirmasi ketersediaan data untuk RQ3 dan RQ4 (pilot).
-- [ ] Persetujuan penggunaan SIWG sebagai metrik tambahan (D-04).
+- [ ] Konfirmasi pembimbing atas enam sub-RQ.
+- [ ] Konfirmasi kondisi H (*stock-aware*) dan H3c.
+- [ ] Konfirmasi ketersediaan data *conntrack* per *connection mark*.
+- [ ] Konfirmasi judul kerja baru.

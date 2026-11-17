@@ -163,20 +163,18 @@ rect(s, 0, 0, 0.18, 7.5, TEAL, shape=MSO_SHAPE.RECTANGLE)
 rect(s, 10.7, 0.0, 2.633, 7.5, RGBColor(0x10, 0x30, 0x55), shape=MSO_SHAPE.RECTANGLE)
 text(s, "PROPOSAL TESIS MAGISTER", 0.85, 0.85, 9.8, 0.3, 12, True, TEAL)
 text(s, "SPA-HSM", 0.85, 1.35, 9.6, 0.9, 46, True, WHITE)
-text(s, "Kendali Proporsi Aliran Adaptif dan Sadar-Sesi\npada WAN Heterogen Fiber Optic–LEO",
-     0.85, 2.30, 9.8, 1.15, 25, True, WHITE)
-text(s, "Studi Kasus Jaringan RT/RW Net Dual-ISP", 0.85, 3.55, 9.8, 0.35, 15, False, MID, italic=True)
+text(s, "Mekanisme Kontrol Adaptif untuk Alokasi Koneksi Sadar-Sesi\npada Jaringan Heterogen FO–LEO",
+     0.85, 2.28, 9.8, 1.20, 24, True, WHITE)
+text(s, "Implementasi dan Evaluasi pada Platform MikroTik PCC", 0.85, 3.58, 9.8, 0.35, 15, False, MID, italic=True)
 rect(s, 0.85, 4.18, 2.2, 0.05, ORANGE, shape=MSO_SHAPE.RECTANGLE)
 text(s, "Kasmil Papalia  •  D082252011", 0.85, 4.45, 9.8, 0.32, 15, True, WHITE)
 text(s, "Magister Teknik Informatika  •  Universitas Hasanuddin", 0.85, 4.85, 9.8, 0.30, 13, False, MID)
-text(s, "14 November 2026", 0.85, 5.25, 9.8, 0.30, 12, False, GRAY)
+text(s, "17 November 2026", 0.85, 5.25, 9.8, 0.30, 12, False, GRAY)
 
 # Ornamen kanan
-for i, (label, color) in enumerate([("EWMA", TEAL), ("SAW", TEAL), ("HISTERESIS", ORANGE), ("AFFINITY", ORANGE)]):
+for i, (label, color) in enumerate([("EWMA", TEAL), ("STOCK-FLOW", ORANGE), ("HISTERESIS", ORANGE), ("AFFINITY", TEAL), ("SIWG", TEAL)]):
     rect(s, 10.95, 1.55 + i * 1.05, 1.75, 0.62, color, radius=0.25)
     text(s, label, 10.95, 1.66 + i * 1.05, 1.75, 0.28, 10, True, WHITE, align=PP_ALIGN.CENTER)
-rect(s, 10.95, 5.75, 1.75, 0.62, RGBColor(0x1B, 0x4D, 0x7A), radius=0.25)
-text(s, "SIWG", 10.95, 5.86, 1.75, 0.28, 10, True, WHITE, align=PP_ALIGN.CENTER)
 add_notes(s, "Perkenalkan judul, fokus pada SPA-HSM dan WAN FO–LEO. Tegaskan bahwa MikroTik adalah adapter, bukan objek penelitian.")
 
 # =====================================================================
@@ -221,10 +219,11 @@ cols = [
         "Rain fade dan outage",
         "Transien rekonfigurasi ~15 detik (literatur)",
     ], ORANGE),
-    ("PCC RouterOS", "Konsisten per sesi", [
+    ("PCC = Aktuator", "Session-oriented, bukan objek", [
         "Connection mark + routing mark",
         "Sesi lama bertahan di conntrack",
         "Rasio umumnya statis",
+        "Stok lama menumpuk saat link memburuk",
     ], NAVY),
 ]
 for i, (head, sub, body, color) in enumerate(cols):
@@ -233,11 +232,11 @@ for i, (head, sub, body, color) in enumerate(cols):
     rect(s, x, 1.40, 3.85, 0.12, color, shape=MSO_SHAPE.RECTANGLE)
     text(s, head, x + 0.22, 1.65, 3.4, 0.32, 18, True, color)
     text(s, sub, x + 0.22, 2.00, 3.4, 0.28, 11, False, GRAY, italic=True)
-    bullets(s, body, x + 0.22, 2.45, 3.4, 2.3, 12, DARK, space=8)
-    impl = ["→ perlu skor multi-kriteria", "→ perlu histeresis & dwell", "→ perlu rasio adaptif"][i]
+    bullets(s, body, x + 0.22, 2.45, 3.4, 2.3, 11, DARK, space=7)
+    impl = ["→ perlu skor multi-kriteria", "→ perlu histeresis & dwell", "→ perlu alokasi stock-flow"][i]
     text(s, impl, x + 0.22, 5.05, 3.4, 0.28, 10, True, color)
 rect(s, 0.6, 6.15, 12.13, 0.62, NAVY, radius=0.12)
-text(s, "Tantangan: rasio statis tidak merespons degradasi; pembaruan naif memicu flapping dan gangguan sesi.",
+text(s, "Tantangan: rasio statis tidak merespons degradasi; koneksi lama menumpuk di link yang memburuk.",
      0.8, 6.30, 11.7, 0.30, 13, True, WHITE)
 footer(s, 3)
 add_notes(s, "Tegaskan dua skala waktu: FO lambat, LEO cepat. PCC menjaga sesi tetapi rasionya statis. Inilah titik masalah.")
@@ -250,7 +249,7 @@ title_bar(s, "Masalah Penelitian", "Tiga kegagalan mekanisme statis")
 problems = [
     ("01", "Flapping", "Derau metrik dan transien LEO membuat rasio berubah bolak-balik bila diperbarui setiap siklus.", ORANGE),
     ("02", "Gangguan sesi", "Perubahan aturan PCC dapat memengaruhi sesi TCP: reordering, retransmisi, hingga RST.", RED),
-    ("03", "Parameter ad hoc", "Dwell histeresis tidak diturunkan dari durasi transien; dampaknya ke sesi tidak diukur.", TEAL),
+    ("03", "Stok menumpuk", "Koneksi lama tetap di link yang memburuk; alokasi berbasis kualitas saja tidak menurunkan beban efektif.", TEAL),
 ]
 for i, (num, head, body, color) in enumerate(problems):
     x = 0.7 + i * 4.2
@@ -258,13 +257,13 @@ for i, (num, head, body, color) in enumerate(problems):
     rect(s, x, 1.55, 0.12, 3.55, color, shape=MSO_SHAPE.RECTANGLE)
     text(s, num, x + 0.25, 1.72, 0.7, 0.4, 24, True, color)
     text(s, head, x + 0.95, 1.78, 2.7, 0.35, 19, True, DARK)
-    text(s, body, x + 0.28, 2.35, 3.25, 1.9, 13, False, GRAY)
-    ind = ["Indikator: flapping rate", "Indikator: RST flow", "Indikator: recovery & parameter"][i]
+    text(s, body, x + 0.28, 2.35, 3.25, 1.9, 12, False, GRAY)
+    ind = ["Indikator: flapping rate", "Indikator: RST flow", "Indikator: ELS & time-to-rebalance"][i]
     text(s, ind, x + 0.28, 4.55, 3.25, 0.25, 9, True, color)
 rect(s, 0.7, 5.45, 11.95, 1.05, LIGHT, line=MID)
 text(s, "Akibat", 0.95, 5.60, 1.4, 0.30, 12, True, NAVY)
-text(s, "Alokasi tidak sadar-kondisi → QoS agregat turun, sesi berisiko, dan praktisi tidak punya dasar kuantitatif memilih parameter.",
-     2.15, 5.58, 10.2, 0.70, 13, False, DARK)
+text(s, "Alokasi tidak sadar-kondisi → QoS turun, sesi berisiko, dan link yang memburuk tetap menanggung stok koneksi lama.",
+     2.15, 5.58, 10.2, 0.70, 12, False, DARK)
 footer(s, 4)
 add_notes(s, "Tiga masalah ini yang harus dijawab bersama, bukan terpisah. Flapping dan gangguan sesi adalah dua sisi dari trade-off yang sama.")
 
@@ -276,65 +275,68 @@ title_bar(s, "Research Gap", "Apa yang belum tersedia")
 rows = [
     ["Gap", "Kondisi literatur", "Yang belum ada"],
     ["G-M1", "Histeresis dipakai di cloud/handover", "Dwell tidak diturunkan dari transien LEO terukur"],
+    ["**G-M3**", "**Alokasi dari kualitas link saat ini**", "**Belum mempertimbangkan stok koneksi lama**"],
+    ["**G-E2**", "**Conntrack mempertahankan sesi lama**", "**Akumulasi stok di link buruk belum diukur**"],
     ["G-M2", "SAW menghasilkan skor kontinu", "Pemetaan formal skor → bucket PCC diskret"],
     ["G-E1", "PCC mengklaim menjaga sesi", "Dampak perubahan rasio ke RST belum diukur"],
     ["G-C1", "PCC diuji pada ISP homogen/lab", "Evaluasi lapangan dual-ISP FO–LEO"],
 ]
-table(s, rows, 0.65, 1.35, 12.0, 3.2, col_widths=[1.1, 5.2, 5.7], font_size=12)
-rect(s, 0.65, 4.85, 12.0, 0.75, NAVY, radius=0.12)
-text(s, "Pencarian OpenAlex 2015–2026: PCC × histeresis/dwell = 0 hit; PCC × preservasi sesi = 2 studi lokal tanpa RST.",
-     0.85, 5.02, 11.6, 0.40, 12, True, WHITE)
-text(s, "Posisi: bukan menciptakan MCDM/EWMA/histeresis baru, tetapi menyatukan dan mengukur trade-off-nya.",
-     0.65, 5.95, 12.0, 0.35, 13, False, GRAY, italic=True)
+table(s, rows, 0.65, 1.25, 12.0, 3.85, col_widths=[1.0, 5.3, 5.7], font_size=9.5)
+rect(s, 0.65, 5.30, 12.0, 0.70, NAVY, radius=0.12)
+text(s, "Pencarian OpenAlex: PCC × histeresis/dwell = 0 hit; PCC × preservasi sesi = 2 studi lokal tanpa RST.",
+     0.85, 5.46, 11.6, 0.36, 11, True, WHITE)
+text(s, "Posisi: memodifikasi kebijakan alokasi agar mempertimbangkan stok koneksi lama dan aliran koneksi baru.",
+     0.65, 6.20, 12.0, 0.35, 12, False, GRAY, italic=True)
 footer(s, 5)
-add_notes(s, "Gap utama ada di G-M1 dan G-E1. G-I1 integrasi hanya payung. Sebutkan pencarian OpenAlex sebagai bukti awal, bukan klaim universal.")
+add_notes(s, "Gap utama adalah G-M3 dan G-E2: alokasi tidak mempertimbangkan stok, dan akumulasi stok belum diukur. G-M1/G-E1 menjadi pendukung.")
 
 # =====================================================================
 # 6. NOVELTY
 # =====================================================================
 s = new_slide()
-title_bar(s, "Novelty", "Tiga kontribusi yang diklaim")
+title_bar(s, "Novelty", "Modifikasi kebijakan kontrol")
 cards = [
-    ("N1", "Dwell sadar-transien", "k_down·T_s > T_tr + m\nT_tr ≈ 15 detik (literatur)\nmenekan flapping tanpa recovery berlebih.", TEAL),
-    ("N2", "Formalisasi skor → bucket", "Σb_i = N; b_min ≤ b_i ≤ b_max\nmenjembatani Q_i kontinu dan PCC diskret.", ORANGE),
-    ("N3", "SIWG + ablasi", "Mengukur trade-off stabilitas–kontinuitas\nlewat flapping, RST, goodput, latensi.", NAVY),
+    ("N1", "Alokasi stock-flow aware", "S_i, F_i, L_i + koreksi κ.\nMenurunkan ELS dan\ntime-to-rebalance.", ORANGE),
+    ("N2", "Preservasi sesi", "Koneksi lama tetap;\nkoneksi baru diarahkan.\nRST + session retention.", TEAL),
+    ("N3", "Evaluasi SIWG + ELS", "Trade-off stabilitas,\nkontinuitas, kinerja\ndiukur bersama.", NAVY),
 ]
 for i, (num, head, body, color) in enumerate(cards):
     x = 0.65 + i * 4.25
     rect(s, x, 1.45, 3.95, 3.9, WHITE, line=MID)
     rect(s, x, 1.45, 3.95, 0.10, color, shape=MSO_SHAPE.RECTANGLE)
     text(s, num, x + 0.25, 1.65, 0.8, 0.4, 22, True, color)
-    text(s, head, x + 0.95, 1.70, 2.7, 0.55, 16, True, DARK)
+    text(s, head, x + 0.95, 1.70, 2.7, 0.55, 15, True, DARK)
     text(s, body, x + 0.28, 2.45, 3.35, 2.0, 12, False, GRAY)
-    bukti = ["Bukti: kurva flapping–recovery", "Bukti: uji 10.000 kombinasi skor", "Bukti: ablasi A–G + SIWG"][i]
+    bukti = ["Bukti: F vs H", "Bukti: C/E vs D/F", "Bukti: ablasi A–H"][i]
     text(s, bukti, x + 0.28, 4.55, 3.35, 0.25, 9, True, color)
 rect(s, 0.65, 5.65, 12.0, 0.62, LIGHT, line=MID)
-text(s, "Integrasi EWMA + SAW + histeresis + affinity adalah payung sistem, bukan novelty tunggal.",
-     0.85, 5.80, 11.6, 0.30, 12, True, NAVY)
+text(s, "“PCC dinamis” bukan novelty: PCC adalah aktuator. Novelty = kebijakan stock-flow aware + preservasi sesi.",
+     0.85, 5.80, 11.6, 0.30, 11, True, NAVY)
 footer(s, 6)
-add_notes(s, "Urutan klaim: N1 aturan desain, N2 formalisasi, N3 bukti empiris. Hindari klaim metode dasar baru.")
+add_notes(s, "N1 adalah kontribusi utama. N2 menjaga sesi. N3 adalah cara mengukur. Jangan menjual PCC dinamis sebagai novelty.")
 
 # =====================================================================
 # 7. PERTANYAAN PENELITIAN
 # =====================================================================
 s = new_slide()
-title_bar(s, "Pertanyaan Penelitian", "Satu payung, lima sub-pertanyaan")
-text(s, "Sejauh mana SPA-HSM mengendalikan trade-off stabilitas keputusan dan kontinuitas sesi pada WAN FO–LEO?",
-     0.65, 1.30, 12.0, 0.60, 15, True, NAVY)
+title_bar(s, "Pertanyaan Penelitian", "Satu payung, enam sub-pertanyaan")
+text(s, "Bagaimana mekanisme kontrol adaptif mengamati kualitas ISP, mendeteksi degradasi, menghitung alokasi stock-flow aware, dan mempertahankan sesi?",
+     0.65, 1.22, 12.0, 0.65, 13, True, NAVY)
 rqs = [
-    ("RQ1", "Bagaimana merumuskan Q_i(t) dan memetakannya ke bucket PCC?"),
-    ("RQ2", "Bagaimana aturan dwell sadar-transien menggeser flapping vs recovery?"),
-    ("RQ3", "Seberapa besar AFFINITY_LOCK menurunkan RST dan gangguan aliran?"),
-    ("RQ4", "Bagaimana SIWG dan ablasi menunjukkan kontribusi tiap komponen?"),
-    ("RQ5", "Apakah Algorithm Core memenuhi kontrak dan portabel di dua adapter?"),
+    ("RQ1", "Bagaimana memodifikasi persepsi Q_i(t) dan memetakannya ke bucket PCC?"),
+    ("RQ2", "Bagaimana memodifikasi deteksi degradasi dengan dwell sadar-transien?"),
+    ("RQ3", "Bagaimana mempertahankan koneksi lama dan mengarahkan koneksi baru?"),
+    ("RQ4", "Bagaimana memodifikasi alokasi agar mempertimbangkan S_i dan F_i?"),
+    ("RQ5", "Seberapa besar dampaknya pada flapping, RST, SIWG, dan ELS?"),
+    ("RQ6", "Apakah mekanisme hasil modifikasi memenuhi kontrak dan portabel?"),
 ]
 for i, (code, body) in enumerate(rqs):
-    y = 2.10 + i * 0.92
-    rect(s, 0.65, y, 0.75, 0.55, TEAL if i % 2 == 0 else ORANGE, radius=0.25)
-    text(s, code, 0.65, y + 0.11, 0.75, 0.28, 11, True, WHITE, align=PP_ALIGN.CENTER)
-    text(s, body, 1.65, y + 0.03, 10.9, 0.50, 14, False, DARK)
+    y = 1.98 + i * 0.80
+    rect(s, 0.65, y, 0.75, 0.50, TEAL if i % 2 == 0 else ORANGE, radius=0.25)
+    text(s, code, 0.65, y + 0.11, 0.75, 0.26, 10, True, WHITE, align=PP_ALIGN.CENTER)
+    text(s, body, 1.62, y + 0.02, 11.0, 0.46, 12.5, False, DARK)
 footer(s, 7)
-add_notes(s, "RQ2 dan RQ3 adalah inti novelty. RQ5 validasi rekayasa, bukan klaim portabilitas multi-vendor.")
+add_notes(s, "RQ4 adalah inti novelty stock-flow. RQ6 validasi rekayasa, bukan klaim portabilitas multi-vendor.")
 
 # =====================================================================
 # 8. TUJUAN & HIPOTESIS
@@ -344,12 +346,13 @@ title_bar(s, "Tujuan & Hipotesis", "Apa yang diuji dan dengan ambang apa")
 text(s, "Tujuan", 0.65, 1.30, 3.2, 0.30, 15, True, TEAL)
 tujuan = [
     "Formalisasi Q_i(t) dan bucket PCC.",
-    "Aturan dwell sadar-transien.",
-    "Implementasi dan pengukuran AFFINITY_LOCK.",
-    "Ablasi + SIWG.",
-    "Uji kontrak dan portabilitas inti.",
+    "Dwell sadar-transien.",
+    "Preservasi sesi + koneksi baru.",
+    "Alokasi stock-flow aware.",
+    "Ablasi + SIWG + ELS.",
+    "Uji kontrak dan portabilitas.",
 ]
-bullets(s, tujuan, 0.65, 1.70, 3.55, 3.6, 12, DARK, space=9)
+bullets(s, tujuan, 0.65, 1.65, 3.55, 3.8, 11, DARK, space=7)
 text(s, "Hipotesis", 4.55, 1.30, 3.2, 0.30, 15, True, TEAL)
 rows = [
     ["ID", "Klaim", "Ambang"],
@@ -357,29 +360,30 @@ rows = [
     ["H2", "Asimetri memperbaiki trade-off", "IRR < 0,7; Δrecovery ≤ 30 s"],
     ["H3a", "Affinity menjaga sesi", "Non-inferior +0,5 pp; sekunder <1%"],
     ["H3b", "Kinerja agregat naik", "Goodput ≥1,10×; latency ≤0,85×"],
+    ["H3c", "Stock-flow mempercepat rebalance", "ELS/TTR ≤0,8×; RST non-inferior"],
     ["H4", "SIWG lebih tinggi", "Rasio ≥1,15; CI >1,00"],
     ["H5", "Inti portabel", "100% keputusan identik"],
 ]
-table(s, rows, 4.55, 1.70, 8.1, 4.5, col_widths=[0.75, 3.15, 4.2], font_size=10)
+table(s, rows, 4.55, 1.62, 8.1, 4.75, col_widths=[0.7, 3.25, 4.15], font_size=9)
 text(s, "Catatan: ambang final dikalibrasi setelah pilot; definisi operasional dikunci sebelum data.",
-     4.55, 6.35, 8.1, 0.30, 10, False, GRAY, italic=True)
+     4.55, 6.48, 8.1, 0.28, 9, False, GRAY, italic=True)
 footer(s, 8)
-add_notes(s, "Jangan membaca semua baris. Tekankan H1/H2 untuk stabilitas, H3a untuk sesi, H4 untuk trade-off gabungan.")
+add_notes(s, "Tekankan H1/H2 untuk stabilitas, H3a untuk sesi, H3c untuk stock-flow, H4 untuk trade-off gabungan.")
 
 # =====================================================================
 # 9. KERANGKA TEORI
 # =====================================================================
 s = new_slide()
-title_bar(s, "Kerangka Teori", "Dari degradasi link ke SIWG")
+title_bar(s, "Kerangka Teori", "Dari degradasi link ke alokasi stock-flow")
 stages = [
     ("Degradasi\nlink", "FO/LEO"),
     ("Metrik\nQoS", "delay, jitter,\nloss, throughput"),
     ("EWMA", "α = 0,20"),
     ("Q_i(t)", "SAW,\nbatas tetap"),
     ("Histeresis", "θ, k_down,\nk_up"),
-    ("Bucket\nPCC", "N = 20"),
-    ("Flapping &\nsesi", "RST, goodput"),
-    ("SIWG", "trade-off"),
+    ("Alokasi\nstock-flow", "S_i, F_i, κ"),
+    ("Flapping,\nELS, sesi", "RST, goodput"),
+    ("SIWG", "SIWG + ELS"),
 ]
 x = 0.55
 for i, (head, sub) in enumerate(stages):
@@ -394,12 +398,12 @@ for i, (head, sub) in enumerate(stages):
 text(s, "Transien ~15 detik: Garcia et al. (2025); Hammer et al. (2024); Mohan et al. (2024).  Histeresis: Tournaire et al. (2023); Alhabo et al. (2017).",
      0.65, 3.55, 12.0, 0.45, 10, False, GRAY, italic=True)
 rect(s, 0.65, 4.20, 12.0, 1.85, LIGHT, line=MID)
-text(s, "Dua proposisi yang diuji", 0.85, 4.38, 5.0, 0.30, 13, True, NAVY)
+text(s, "Tiga proposisi yang diuji", 0.85, 4.38, 5.0, 0.30, 13, True, NAVY)
 bullets(s, [
     "P1 — Memilih k_down·T_s > T_tr + m mencegah transien periodik memicu DEGRADED berulang, dengan biaya detection delay.",
     "P2 — Untuk θ tetap, menaikkan k_up menurunkan flapping tetapi menaikkan recovery latency; pasangan ini membentuk frontier trade-off.",
-    "Implikasi — empat komponen diuji bersama; efek tidak dapat diatribusikan jika dipisah.",
-], 0.85, 4.72, 11.5, 1.2, 10.5, DARK, space=5)
+    "P3 — Koreksi stok κ menurunkan ELS dan time-to-rebalance tanpa memutus koneksi lama atau menaikkan RST.",
+], 0.85, 4.70, 11.5, 1.2, 10, DARK, space=4)
 footer(s, 9)
 add_notes(s, "Rantai ini menjelaskan mengapa komponen tidak bisa dinilai terpisah. P1 dan P2 adalah proposisi desain yang diuji, bukan teorema formal.")
 
@@ -407,15 +411,15 @@ add_notes(s, "Rantai ini menjelaskan mengapa komponen tidak bisa dinilai terpisa
 # 10. ARSITEKTUR
 # =====================================================================
 s = new_slide()
-title_bar(s, "Arsitektur SPA-HSM", "Tiga lapis + bidang pengukuran dan evaluasi")
+title_bar(s, "Arsitektur Mekanisme", "Tiga lapis + pengukuran + evaluasi")
 # Kiri
 rect(s, 0.55, 1.45, 2.55, 4.65, WHITE, line=MID)
 text(s, "Measurement", 0.75, 1.62, 2.2, 0.30, 13, True, TEAL)
 text(s, "Field", 0.75, 1.95, 2.2, 0.25, 10, False, GRAY)
-bullets(s, ["Probe per WAN", "SNMP counter", "Starlink telemetry", "Cuaca"], 0.75, 2.35, 2.15, 2.6, 11, DARK, space=6)
+bullets(s, ["Probe per WAN", "SNMP counter", "Stok S_i / F_i", "Starlink telemetry", "Cuaca"], 0.75, 2.32, 2.15, 3.0, 10, DARK, space=5)
 # Tengah: tiga lapis
 layers = [
-    ("Algorithm Core", "EWMA  •  SAW  •  State machine  •  Ratio mapper", NAVY, 1.45, 1.25),
+    ("Algorithm Core", "EWMA  •  SAW  •  State machine  •  Stock-flow policy", NAVY, 1.45, 1.25),
     ("Abstract Allocation Interface", "read_metrics  •  set_ratio  •  set_affinity  •  verify  •  rollback", TEAL, 3.05, 1.10),
     ("Platform Adapter", "MikroTikAdapter (PCC, conntrack)  •  MockAdapter (unit test)", ORANGE, 4.50, 1.10),
 ]
@@ -430,7 +434,7 @@ for y in (2.72, 4.18):
 rect(s, 9.85, 1.45, 2.9, 4.65, WHITE, line=MID)
 text(s, "Evaluation", 10.05, 1.62, 2.5, 0.30, 13, True, ORANGE)
 text(s, "& Ablation", 10.05, 1.92, 2.5, 0.25, 10, False, GRAY)
-bullets(s, ["Skenario A–G", "Flapping", "RST flow", "Goodput", "Latency p95", "SIWG"], 10.05, 2.32, 2.45, 2.9, 11, DARK, space=5)
+bullets(s, ["Skenario A–H", "Flapping", "RST flow", "ELS / TTR", "Session retention", "SIWG"], 10.05, 2.32, 2.45, 2.9, 10, DARK, space=5)
 text(s, "Inti tidak mengimpor API vendor.", 9.85, 6.25, 2.9, 0.30, 10, True, NAVY, align=PP_ALIGN.CENTER)
 footer(s, 10)
 add_notes(s, "Tiga lapis memisahkan keputusan, kontrak, dan eksekusi. MockAdapter memungkinkan uji tanpa menyentuh produksi.")
@@ -449,54 +453,58 @@ text(s, "α = 0,20  •  N_eff ≈ 9  •  w = (0,35; 0,30; 0,15; 0,20)", 0.75, 
 text(s, "Normalisasi berbatas tetap: throughput (benefit), delay/jitter/loss (cost).", 0.75, 3.10, 5.6, 0.55, 10, False, GRAY)
 # Kanan
 rect(s, 6.85, 1.35, 5.95, 2.55, WHITE, line=MID)
-text(s, "Histeresis & rasio", 7.05, 1.50, 5.5, 0.30, 13, True, ORANGE)
-text(s, "STABLE → DEGRADED: Q < θ_low selama k_down", 7.05, 1.88, 5.5, 0.30, 11, False, DARK)
-text(s, "DEGRADED → STABLE: Q > θ_high selama k_up", 7.05, 2.20, 5.5, 0.30, 11, False, DARK)
-text(s, "k_down·T_s > T_tr + m   (T_tr ≈ 15 s)", 7.05, 2.56, 5.5, 0.30, 12, True, NAVY, font="Consolas")
-text(s, "T_s = 1 s; k_down = 20; k_up = 20/60; θ = 0,60/0,80", 7.05, 2.94, 5.5, 0.30, 10, False, GRAY)
-text(s, "W_i = Q_i·H_i / Σ Q_k·H_k;  b_i = round(N·W_i)", 7.05, 3.30, 5.5, 0.30, 11, False, DARK, font="Consolas")
+text(s, "Histeresis & alokasi", 7.05, 1.50, 5.5, 0.30, 13, True, ORANGE)
+text(s, "STABLE → DEGRADED: Q < θ_low selama k_down", 7.05, 1.82, 5.5, 0.26, 9.5, False, DARK)
+text(s, "DEGRADED → STABLE: Q > θ_high selama k_up", 7.05, 2.08, 5.5, 0.26, 9.5, False, DARK)
+text(s, "k_down·T_s > T_tr + m", 7.05, 2.36, 5.5, 0.26, 10, True, NAVY, font="Consolas")
+text(s, "T_i = Q_i·H_i / Σ Q_k·H_k", 7.05, 2.64, 5.5, 0.26, 9.5, False, DARK, font="Consolas")
+text(s, "W_i = clip(T_i + κ(T_i − S_i/ΣS), 0,15; 0,85)", 7.05, 2.92, 5.5, 0.26, 9.5, False, DARK, font="Consolas")
+text(s, "ELS = ½ Σ |L_i − T_i|", 7.05, 3.20, 5.5, 0.26, 10, True, ORANGE, font="Consolas")
+text(s, "T_s=1 s; k_down=20; k_up=20/60; κ=0/0,5/1", 7.05, 3.48, 5.5, 0.26, 8.5, False, GRAY)
 # Bawah
 rect(s, 0.55, 4.20, 12.25, 1.95, LIGHT, line=MID)
 text(s, "Mengapa ini bukan sekadar integrasi", 0.75, 4.36, 11.8, 0.30, 13, True, NAVY)
 bullets(s, [
-    "N1: parameter dwell diturunkan dari durasi transien, bukan dipilih ad hoc.",
-    "N2: skor kontinu dipetakan ke bucket integer dengan jaminan Σb_i = N dan batas b_min/b_max.",
-    "N3: SIWG dan ablasi memisahkan kontribusi histeresis vs preservasi sesi.",
-    "Ukuran keberhasilan: flapping turun, recovery ≤ R_max, dan SIWG naik.",
-], 0.75, 4.74, 11.5, 1.2, 10.5, DARK, space=5)
+    "N1: alokasi memakai stok koneksi lama S_i dan aliran baru F_i, bukan hanya kualitas link.",
+    "N2: koneksi lama dipertahankan; koneksi baru diarahkan; RST dan retention diukur.",
+    "N3: SIWG + ELS + time-to-rebalance mengukur trade-off stabilitas–kontinuitas–kinerja.",
+    "Ukuran keberhasilan: flapping turun, ELS/TTR turun, RST tidak naik.",
+], 0.75, 4.74, 11.5, 1.2, 10, DARK, space=4)
 footer(s, 11)
-add_notes(s, "Tunjukkan dua blok: skor kualitas dan keputusan. Tekankan aturan dwell sebagai kontribusi N1 dan bucket mapping sebagai N2.")
+add_notes(s, "Tekankan rumus W_i stock-flow: koreksi κ terhadap selisih target dan stok. Ini inti novelty, bukan PCC dinamis.")
 
 # =====================================================================
 # 12. DESAIN EKSPERIMEN
 # =====================================================================
 s = new_slide()
-title_bar(s, "Desain Eksperimen", "Tujuh kondisi, faktorial 2×2 + pembanding")
+title_bar(s, "Desain Eksperimen", "Delapan kondisi, 2×2 + pembanding + H")
 rows = [
-    ["Kondisi", "Histeresis", "k_up", "Affinity", "Peran"],
-    ["A", "Tidak ada (statis 50:50)", "—", "—", "Baseline statis"],
-    ["B", "Tidak ada (dinamis)", "—", "Off", "Dynamic naive"],
-    ["C", "Simetris", "20", "Off", "Isolasi bentuk"],
-    ["D", "Asimetris", "60", "Off", "Isolasi asimetri"],
-    ["E", "Simetris", "20", "On", "Affinity pada simetris"],
-    ["F", "Asimetris", "60", "On", "SPA-HSM (usulan)"],
-    ["G", "Tidak ada", "—", "—", "Baseline netwatch"],
+    ["Kondisi", "Alokasi", "Histeresis", "k_up", "Aff.", "Peran"],
+    ["A", "Statis", "Tidak ada", "—", "—", "Baseline"],
+    ["B", "Kualitas", "Tidak ada", "—", "Off", "Dynamic naive"],
+    ["C", "Kualitas", "Simetris", "20", "Off", "Isolasi bentuk"],
+    ["D", "Kualitas", "Asimetris", "60", "Off", "Isolasi asimetri"],
+    ["E", "Kualitas", "Simetris", "20", "On", "Affinity simetris"],
+    ["F", "Kualitas", "Asimetris", "60", "On", "Proposed tanpa stock"],
+    ["G", "Statis+netwatch", "—", "—", "—", "Baseline praktisi"],
+    ["H", "Stock-flow", "Asimetris", "60", "On", "Proposed utama"],
 ]
-table(s, rows, 0.65, 1.35, 7.4, 3.8, col_widths=[0.9, 2.9, 0.8, 0.9, 1.9], font_size=10)
-text(s, "Perbandingan kunci", 8.4, 1.35, 4.2, 0.30, 13, True, TEAL)
+table(s, rows, 0.65, 1.30, 7.7, 4.05, col_widths=[0.7,1.55,2.0,0.65,0.65,1.55], font_size=8)
+text(s, "Perbandingan kunci", 8.65, 1.30, 4.0, 0.30, 13, True, TEAL)
 bullets(s, [
     "H1: B vs C; B vs D.",
     "H2: C vs D; E vs F.",
     "H3a: C vs E; D vs F; F vs A.",
-    "H3b: F vs A; F vs G.",
-    "H4: F vs semua kondisi.",
-], 8.4, 1.72, 4.3, 2.3, 11, DARK, space=6)
-rect(s, 8.4, 4.10, 4.3, 1.55, LIGHT, line=MID)
-text(s, "Kontrol", 8.58, 4.24, 3.9, 0.25, 11, True, NAVY)
-text(s, "Latin square 7×7; washout 10 menit; dua jendela waktu; 30 episode/kondisi; dual-ISP A+C, B validasi.",
-     8.58, 4.56, 3.95, 1.0, 9, False, GRAY)
-text(s, "Staging: tc netem + trace replay + MockAdapter.  Lapangan: RT/RW Net produksi.",
-     0.65, 5.55, 12.0, 0.55, 11, False, GRAY)
+    "H3b: H vs A; H vs G.",
+    "H3c: H vs F.",
+    "H4: H vs semua kondisi.",
+], 8.65, 1.68, 4.0, 2.5, 10, DARK, space=5)
+rect(s, 8.65, 4.30, 4.0, 1.45, LIGHT, line=MID)
+text(s, "Kontrol", 8.82, 4.42, 3.6, 0.25, 10, True, NAVY)
+text(s, "Latin square 8×8; washout 10 menit; 30 episode/kondisi; dual-ISP A+C; B validasi.",
+     8.82, 4.72, 3.7, 0.95, 8.5, False, GRAY)
+text(s, "Staging: tc netem + replay + MockAdapter.  Lapangan: RT/RW Net produksi.",
+     0.65, 5.55, 12.0, 0.55, 10, False, GRAY)
 footer(s, 12)
 add_notes(s, "Jelaskan bahwa A–F bukan 3×2 penuh. H1 memakai B vs C/D karena affinity off, agar terisolasi.")
 
@@ -512,18 +520,23 @@ rows = [
     ["RST flow", "% aliran TCP dengan ≥1 RST", "tcpdump/Wireshark"],
     ["Goodput", "Byte aplikasi / durasi", "iperf3 / HTTP"],
     ["Latency p95", "RTT probe per WAN", "Router /ping per interface"],
-    ["SIWG", "G_eff × (1 − λ·RST_flow)", "Dihitung per episode"],
+    ["ELS", "½ Σ |L_i − T_i|", "Dihitung"],
+    ["Time-to-rebalance", "Waktu ELS ≤ ε", "Dihitung"],
+    ["Session retention", "% koneksi lama tetap", "Conntrack + capture"],
+    ["SIWG", "G_eff × (1 − λ·RST_flow)", "Dihitung"],
 ]
-table(s, rows, 0.65, 1.35, 8.0, 3.9, col_widths=[1.7, 3.0, 3.3], font_size=10)
-rect(s, 8.95, 1.35, 3.85, 2.35, NAVY, radius=0.12)
-text(s, "SIWG", 9.15, 1.52, 3.4, 0.30, 15, True, WHITE)
-text(s, "SIWG = G_eff × (1 − λ·RST_flow)", 9.15, 1.90, 3.4, 0.30, 11, False, WHITE, font="Consolas")
-text(s, "λ = 1 primer; sensitivitas 0,25 / 0,5 / 1,0", 9.15, 2.28, 3.4, 0.30, 9, False, MID)
-text(s, "Membuat biaya gangguan sesi eksplisit.", 9.15, 2.70, 3.4, 0.55, 9, False, MID)
-rect(s, 8.95, 4.00, 3.85, 1.25, LIGHT, line=MID)
-text(s, "Prinsip", 9.15, 4.14, 3.4, 0.25, 11, True, ORANGE)
-text(s, "RST diukur di luar router. Probe per WAN memakai routing mark/interface eksplisit.",
-     9.15, 4.46, 3.45, 0.65, 9, False, GRAY)
+table(s, rows, 0.65, 1.30, 8.0, 4.55, col_widths=[1.7, 3.0, 3.3], font_size=8.5)
+rect(s, 8.95, 1.30, 3.85, 2.55, NAVY, radius=0.12)
+text(s, "SIWG + ELS", 9.15, 1.45, 3.4, 0.30, 14, True, WHITE)
+text(s, "SIWG = G_eff × (1 − λ·RST_flow)", 9.15, 1.80, 3.4, 0.28, 10, False, WHITE, font="Consolas")
+text(s, "ELS = ½ Σ |L_i − T_i|", 9.15, 2.12, 3.4, 0.28, 10, False, WHITE, font="Consolas")
+text(s, "TTR = waktu ELS ≤ ε", 9.15, 2.44, 3.4, 0.28, 10, False, WHITE, font="Consolas")
+text(s, "λ = 1 primer; sensitivitas 0,25/0,5/1,0", 9.15, 2.80, 3.4, 0.28, 8.5, False, MID)
+text(s, "Membuat biaya sesi dan rebalance eksplisit.", 9.15, 3.12, 3.4, 0.55, 8.5, False, MID)
+rect(s, 8.95, 4.05, 3.85, 1.30, LIGHT, line=MID)
+text(s, "Prinsip", 9.15, 4.18, 3.4, 0.25, 11, True, ORANGE)
+text(s, "RST diukur di luar router. Stok koneksi dibaca per connection mark, bukan dump penuh.",
+     9.15, 4.48, 3.45, 0.70, 8.5, False, GRAY)
 text(s, "Kalibrasi pilot 24–48 jam: SNMP vs probe vs capture; uji RST terkontrol; fail-static; rollback <60 detik.",
      0.65, 5.65, 12.0, 0.55, 10, False, GRAY, italic=True)
 footer(s, 13)
@@ -536,10 +549,10 @@ s = new_slide()
 title_bar(s, "Rencana Analisis", "Model sesuai jenis data")
 text(s, "Outcome", 0.65, 1.35, 3.0, 0.30, 13, True, TEAL)
 bullets(s, [
-    "Primer: flapping, RST flow, goodput, SIWG.",
-    "Sekunder: recovery p95, RST packet, latensi p95, jitter, loss, overhead.",
+    "Primer: flapping, RST flow, goodput, SIWG, ELS.",
+    "Sekunder: recovery p95, latensi p95, TTR, session retention.",
     "Effect size: IRR, Cohen's d, Cliff's δ.",
-], 0.65, 1.72, 3.5, 1.7, 10, DARK, space=6)
+], 0.65, 1.72, 3.5, 1.7, 9.5, DARK, space=5)
 rect(s, 0.65, 3.35, 3.45, 1.15, LIGHT, line=MID)
 text(s, "Unit analisis", 0.82, 3.48, 3.1, 0.25, 10, True, NAVY)
 text(s, "Episode degradasi / jam / aliran — bukan setiap sampel 1 detik.", 0.82, 3.78, 3.1, 0.60, 9, False, GRAY)
@@ -548,10 +561,11 @@ rows = [
     ["H1, H2", "Negative binomial campuran + offset jam", "IRR + 95% CI"],
     ["H3a", "Logistik/beta campuran + bootstrap", "Selisih pp + CI"],
     ["H3b", "LMM log(goodput), log(latency p95)", "Rasio + CI"],
+    ["H3c", "LMM ELS/log(TTR); beta untuk RST/retention", "Rasio + CI"],
     ["H4", "LMM SIWG + sensitivitas λ", "Rasio + CI"],
     ["H5", "Uji konformitas + exact match", "% identik"],
 ]
-table(s, rows, 4.35, 1.35, 8.25, 3.25, col_widths=[1.1, 4.4, 2.75], font_size=10)
+table(s, rows, 4.35, 1.32, 8.25, 3.75, col_widths=[1.0, 4.6, 2.65], font_size=8.5)
 rect(s, 4.35, 4.95, 8.25, 1.25, LIGHT, line=MID)
 text(s, "Kekuatan & keputusan", 4.55, 5.08, 7.8, 0.25, 11, True, NAVY)
 text(s, "30–40 episode/kondisi; Holm–Bonferroni; effect size + 95% CI; data hilang dilaporkan, bukan diimputasi.",
@@ -596,9 +610,10 @@ text(s, "Temuan", 0.65, 3.70, 12.0, 0.30, 13, True, TEAL)
 bullets(s, [
     "Heterogenitas nyata: jitter Starlink ~7 ms vs FO ~0,3 ms; episode pendek Starlink jauh lebih sering.",
     "Dua Starlink berkorelasi: residual r = 0,68–0,70; A–C dan B–C ≈ 0.",
+    "Snapshot conntrack 17 Nov: 15.914 koneksi; A 5.669 / B 5.786 / C 3.711 — stok nyata dan tidak sepele.",
     "Implikasi: dual-ISP formal A+C; ISP-B sebagai validasi eksternal, bukan link formal ketiga.",
     "Baseline 2,2 jam cukup untuk pilot; belum mewakili jam sibuk, hujan, dan variasi harian.",
-], 0.65, 4.00, 12.0, 1.7, 10.5, DARK, space=4)
+], 0.65, 3.92, 12.0, 1.9, 9.5, DARK, space=3)
 rect(s, 0.65, 5.85, 12.1, 0.62, LIGHT, line=MID)
 text(s, "Catatan: klaim transien ~15 detik dikunci dari literatur (Garcia 2025; Hammer 2024; Mohan 2024). Baseline RTT belum mengonfirmasi siklus 15 detik; perlu throughput 1 detik.",
      0.85, 5.94, 11.7, 0.45, 9, False, GRAY, italic=True)
@@ -611,8 +626,8 @@ add_notes(s, "Jangan mengklaim 15 detik dari baseline RTT. Klaim itu dari litera
 s = new_slide()
 title_bar(s, "Kontribusi yang Diharapkan", "Teoretis, metodologis, praktis")
 cols = [
-    ("Teoretis", ["Trade-off stabilitas–kontinuitas sebagai masalah kendali.", "Aturan dwell yang menghubungkan T_s, T_tr, dan k_down.", "Frontier parameter, bukan satu titik optimal."], TEAL),
-    ("Metodologis", ["Pemetaan formal skor kontinu → bucket PCC.", "SIWG sebagai ukuran gabungan.", "Ablasi 2×2 + pembanding untuk atribusi komponen."], ORANGE),
+    ("Teoretis", ["Stock-flow aware allocation sebagai masalah kendali.", "Aturan dwell yang menghubungkan T_s, T_tr, k_down.", "Frontier stabilitas–kontinuitas–kinerja."], TEAL),
+    ("Metodologis", ["Rumus W_i dengan koreksi κ(S_i, F_i).", "SIWG + ELS + time-to-rebalance.", "Ablasi A–H untuk atribusi komponen."], ORANGE),
     ("Praktis", ["Panduan parameter untuk RT/RW Net.", "Fail-static dan rollback.", "Kontrak antarmuka yang dapat direplikasi."], NAVY),
 ]
 for i, (head, body, color) in enumerate(cols):
@@ -620,42 +635,42 @@ for i, (head, body, color) in enumerate(cols):
     rect(s, x, 1.45, 3.9, 3.8, WHITE, line=MID)
     rect(s, x, 1.45, 3.9, 0.12, color, shape=MSO_SHAPE.RECTANGLE)
     text(s, head, x + 0.25, 1.65, 3.4, 0.35, 17, True, color)
-    bullets(s, body, x + 0.25, 2.15, 3.4, 2.8, 11, DARK, space=8)
+    bullets(s, body, x + 0.25, 2.15, 3.4, 2.8, 10.5, DARK, space=7)
 rect(s, 0.65, 5.60, 12.0, 0.65, NAVY, radius=0.12)
-text(s, "Kontribusi utama: N1 + N3. N2 dan K5 adalah pendukung. Integrasi bukan klaim tunggal.",
-     0.85, 5.76, 11.6, 0.30, 12, True, WHITE)
+text(s, "Kontribusi utama: alokasi stock-flow aware + preservasi sesi + bukti ablasi A–H.",
+     0.85, 5.76, 11.6, 0.30, 11, True, WHITE)
 footer(s, 16)
-add_notes(s, "Jangan mengklaim metode MCDM/EWMA/histeresis baru. Klaim pada aturan desain dan bukti empiris.")
+add_notes(s, "Jangan mengklaim metode MCDM/EWMA/histeresis baru. Klaim pada modifikasi kebijakan alokasi dan bukti empiris.")
 
 # =====================================================================
 # 17. JADWAL
 # =====================================================================
 s = new_slide()
-title_bar(s, "Jadwal Penelitian", "20 minggu + penyangga")
+title_bar(s, "Jadwal Penelitian", "22 minggu + penyangga")
 phases = [
     ("Minggu 1–2", ["Desain & kontrak", "MockAdapter", "Finalisasi parameter"], TEAL),
     ("Minggu 3–4", ["Pilot 24–48 jam", "Kalibrasi probe/SNMP", "Uji RST & rollback"], TEAL),
-    ("Minggu 5–6", ["tc netem", "Trace replay", "20 replay/kondisi"], ORANGE),
-    ("Minggu 7–13", ["7 kondisi A–G", "Latin square", "30 episode/kondisi"], ORANGE),
-    ("Minggu 14–17", ["NB/LMM/beta", "Holm + effect size", "Robustness"], NAVY),
-    ("Minggu 18–20", ["Bab IV–V", "Format & sitasi", "Naskah siap"], NAVY),
+    ("Minggu 5–6", ["tc netem", "Trace replay", "20 replay A–H"], ORANGE),
+    ("Minggu 7–14", ["8 kondisi A–H", "Latin square", "30 episode/kondisi"], ORANGE),
+    ("Minggu 15–18", ["NB/LMM/beta", "Holm + effect size", "ELS/TTR"], NAVY),
+    ("Minggu 19–22", ["Bab IV–V", "Format & sitasi", "Naskah siap"], NAVY),
 ]
 for i, (weeks, body, color) in enumerate(phases):
     x = 0.55 + i * 2.12
     rect(s, x, 1.55, 1.95, 2.5, WHITE, line=MID)
     rect(s, x, 1.55, 1.95, 0.45, color, radius=0.08)
-    text(s, weeks, x, 1.63, 1.95, 0.28, 9, True, WHITE, align=PP_ALIGN.CENTER)
-    bullets(s, body, x + 0.12, 2.18, 1.72, 1.7, 8.5, DARK, space=3)
+    text(s, weeks, x, 1.63, 1.95, 0.28, 8.5, True, WHITE, align=PP_ALIGN.CENTER)
+    bullets(s, body, x + 0.12, 2.18, 1.72, 1.7, 8, DARK, space=3)
 rect(s, 0.55, 4.45, 12.1, 0.10, MID, shape=MSO_SHAPE.RECTANGLE)
 for i in range(6):
     rect(s, 0.85 + i * 2.12, 4.37, 0.22, 0.22, TEAL if i < 2 else (ORANGE if i < 4 else NAVY), shape=MSO_SHAPE.OVAL)
-text(s, "Penyangga 2 minggu untuk cuaca, gangguan Starlink, dan revisi. Jika habis: turunkan ke A, B, D, F dan catat sebagai penyimpangan.",
-     0.65, 5.15, 12.0, 0.60, 11, False, GRAY)
+text(s, "Penyangga 2 minggu untuk cuaca, gangguan Starlink, dan revisi. Jika habis: turunkan ke A, B, D, F, H dan catat sebagai penyimpangan.",
+     0.65, 5.15, 12.0, 0.60, 10, False, GRAY)
 rect(s, 0.65, 5.95, 12.0, 0.55, LIGHT, line=MID)
 text(s, "Milestone: M1 instrumen siap • M2 staging selesai • M3 lapangan selesai • M4 analisis selesai • M5 naskah siap",
-     0.85, 6.10, 11.6, 0.30, 10, True, NAVY)
+     0.85, 6.10, 11.6, 0.30, 9.5, True, NAVY)
 footer(s, 17)
-add_notes(s, "Jadwal realistis 20 minggu. Sebutkan penyangga dan fallback 4 skenario.")
+add_notes(s, "Jadwal 22 minggu. Kondisi H menambah beban; fallback A, B, D, F, H.")
 
 # =====================================================================
 # 18. RISIKO & ETIKA

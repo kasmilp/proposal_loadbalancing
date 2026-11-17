@@ -19,7 +19,17 @@
 | $Q_i(t)$ | Skor kualitas link $i$ | $[0,1]$ |
 | $H_i(t)$ | Faktor *headroom* link $i$ | $[0,1]$ |
 | $u_i(t)$ | Utilisasi link $i$ | $[0,1]$ |
-| $W_i(t)$ | Proporsi target link $i$ | $[0,1]$ |
+| $S_i(t)$ | Stok koneksi lama di link $i$ | koneksi |
+| $F_i(t)$ | Laju koneksi baru ke link $i$ | koneksi/detik |
+| $T_i(t)$ | Target kualitas | $[0,1]$ |
+| $L_i(t)$ | Pangsa beban efektif | $[0,1]$ |
+| $W_i(t)$ | Proporsi alokasi koneksi baru | $[0,1]$ |
+| $\kappa$ | Gain koreksi stok | $[0,1]$ |
+| $W_{\min}$ | Batas bawah alokasi koneksi baru | 0,15 |
+| $W_{\max}$ | Batas atas alokasi koneksi baru | 0,85 |
+| ELS | *Effective Load Skew* | $[0,1]$ |
+| TTR | *Time-to-rebalance* | detik |
+| Session retention | Proporsi koneksi lama tetap di jalur | $[0,1]$ |
 | $b_i(t)$ | Jumlah bucket link $i$ | integer |
 | $N$ | Total bucket PCC | 20 |
 | $b_{min}, b_{max}$ | Batas bucket | 3, 17 |

@@ -135,9 +135,24 @@ log(latency_p95) ~ scenario + severity + (1 | day) + (1 | run)
 - Effect size: Cohen's $d$ atau Cliff's $\delta$.
 
 Kriteria:
-- goodput F/A ≥ 1,10 (batas bawah CI > 1,00),
-- latency p95 F/A ≤ 0,85 (batas atas CI < 1,00),
+- goodput H/A ≥ 1,10 (batas bawah CI > 1,00),
+- latency p95 H/A ≤ 0,85 (batas atas CI < 1,00),
 - non-inferior vs G dengan margin yang ditetapkan setelah pilot.
+
+### H3c — ELS, time-to-rebalance, dan session retention
+
+```
+els ~ scenario + severity + (1 | day) + (1 | run)
+log(time_to_rebalance) ~ scenario + severity + (1 | day) + (1 | run)
+rst_flow ~ scenario + (1 | run)          # beta/logistic
+retention ~ scenario + (1 | run)         # beta/logistic
+```
+
+- Kontras utama: **H vs F**.
+- 95% CI dengan *bootstrap*; effect size Cohen's $d$ atau beda median.
+- Kriteria: ELS(H) ≤ 0,8 × ELS(F); TTR(H) ≤ 0,8 × TTR(F); batas atas 95% CI
+  RST(H−F) ≤ +0,5 pp; retention H non-inferior terhadap F.
+- Sensitivitas $\kappa \in \{0;\ 0{,}5;\ 1{,}0\}$.
 
 ### H4 — SIWG
 
@@ -145,7 +160,7 @@ Kriteria:
 siwg ~ scenario + severity + (1 | day) + (1 | run)
 ```
 
-- Kontras F vs kondisi terbaik.
+- Kontras H vs kondisi terbaik.
 - Rasio ≥ 1,15; batas bawah 95% CI > 1,00.
 - Sensitivitas $\lambda \in \{0{,}25;\ 0{,}5;\ 1{,}0\}$.
 - Jika arah berubah pada salah satu $\lambda$, klaim diturunkan menjadi
@@ -162,20 +177,22 @@ siwg ~ scenario + severity + (1 | day) + (1 | run)
 ## 5. Kekuatan Uji dan Ukuran Sampel
 
 1. **Pilot** menghasilkan estimasi ICC, varians, dan laju episode/hari.
-2. **Target:** 30–40 episode per kondisi.
+2. **Target:** 30–40 episode per kondisi; 8 kondisi (A–H).
 3. **Perhitungan awal:** dua sisi $\alpha=0{,}05$, *power* 0,80, $d=0{,}5$
    → sekitar 34 per kelompok.
 4. **Koreksi Holm** menurunkan *power*; karena itu target 40 lebih aman.
-5. **Power simulasi:** jalankan simulasi NB/LMM dengan parameter pilot untuk
+5. **H3c:** minimal 30 pasangan episode F–H; prioritaskan staging jika lapangan
+   tidak mencukupi.
+6. **Power simulasi:** jalankan simulasi NB/LMM dengan parameter pilot untuk
    memastikan *minimum detectable effect* realistis.
-6. **Jika target tidak tercapai:** laporkan CI dan presisi; jangan mengklaim
+7. **Jika target tidak tercapai:** laporkan CI dan presisi; jangan mengklaim
    hasil tidak konklusif sebagai "tidak ada efek".
 
 ---
 
 ## 6. Koreksi Multiplisitas
 
-- Keluarga uji: H1, H2, H3a, H3b, H4.
+- Keluarga uji: H1, H2, H3a, H3b, H3c, H4.
 - Gunakan **Holm–Bonferroni** dalam keluarga ini.
 - H2 memiliki dua kontras (C–D, E–F); keduanya masuk keluarga yang sama.
 - H5 dilaporkan terpisah sebagai validasi rekayasa.

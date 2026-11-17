@@ -19,9 +19,15 @@
 | Waktu pemulihan | ***recovery latency*** | *recovery time* |
 | RST | **RST flow** (proporsi 0–1), **RST flow %** (persen) | mencampur proporsi dan persen |
 | Direktif | **`AFFINITY_LOCK`** (kode), *affinity lock* (prosa) | *session lock* |
-| Baseline | **baseline G** | baseline H (istilah lama) |
+| Baseline | **baseline G** | “baseline H” (H = kondisi stock-aware) |
 | Platform | **MikroTik sebagai adapter/testbed** | "PCC MikroTik" sebagai objek |
-| Desain | **faktorial 2×2 + pembanding** | faktorial 3×2 penuh |
+| Desain | **faktorial 2×2 + pembanding + H** | faktorial 3×2 penuh |
+| Alokasi | ***stock-flow aware*** | “PCC dinamis” sebagai novelty |
+| Stok koneksi | **$S_i(t)$** | “jumlah sesi” tanpa simbol |
+| Aliran baru | **$F_i(t)$** | “trafik baru” tanpa pembeda |
+| Beban efektif | **$L_i(t)$** | “rasio” tanpa konteks |
+| Rebalance | **ELS**, **time-to-rebalance** | “load balance” tanpa metrik |
+| Sesi lama | **session retention** | “session preservation” tanpa angka |
 
 ---
 
@@ -40,9 +46,11 @@
 | $b_{min}$ / $b_{max}$ | 3 / 17 | Bab III |
 | $R_{max}$ | 90 detik | Bab I, II, III |
 | $\lambda$ primer | 1,0 | Bab I, II, III |
-| Jumlah kondisi | 7 (A–G) | Bab I, III |
+| $\kappa$ | 0 / 0,5 / 1,0 | Bab III |
+| $W_{\min}/W_{\max}$ | 0,15 / 0,85 | Bab III |
+| Jumlah kondisi | 8 (A–H) | Bab I, III |
 | Episode per kondisi | 30 | Bab III |
-| Durasi kampanye | 20 minggu | Bab III |
+| Durasi kampanye | 22 minggu | Bab III |
 
 **Pengecualian yang sah:** "60 detik" hanya boleh muncul sebagai waktu pemulihan
 `netwatch` pada baseline G, bukan sebagai batas *recovery latency* H1/H2.
@@ -55,9 +63,10 @@
 |---|---|---|---|---|
 | RQ1 | 1.2 butir 1 | 2.5, 2.10.2 | 3.5.1, 3.5.2, 3.5.4 | — |
 | RQ2 | 1.2 butir 2 | 2.7, 2.10.3 | 3.5.3, 3.4.2 | H1, H2 |
-| RQ3 | 1.2 butir 3 | 2.8 | 3.5.5, 3.6 | H3a |
-| RQ4 | 1.2 butir 4 | 2.10.4, 2.11 | 3.4, 3.6.3, 3.8 | H3b, H4 |
-| RQ5 | 1.2 butir 5 | 2.9 | 3.5.6 | H5 |
+| RQ3 | 1.2 butir 3 | 2.8, 2.8.1 | 3.5.5, 3.6 | H3a |
+| **RQ4** | **1.2 butir 4** | **2.8.2, 2.11** | **3.5.4, 3.8** | **H3c** |
+| RQ5 | 1.2 butir 5 | 2.10.4, 2.11 | 3.4, 3.6.3, 3.8 | H3b, H4 |
+| RQ6 | 1.2 butir 6 | 2.9 | 3.5.6 | H5 |
 
 ---
 
@@ -71,7 +80,11 @@
 | "Sistem terbukti portabel" | Hanya satu adapter nyata | "Dirancang portabel dan diuji melalui kontrak" |
 | "Histeresis menjamin stabilitas" | Tidak ada bukti formal | "Histeresis menurunkan flapping secara empiris" |
 | "SIWG adalah standar" | Metrik internal | "SIWG adalah alat pembanding internal" |
-| "Faktorial 3×2" | Desain aktual 2×2 + pembanding | "Faktorial 2×2 + pembanding" |
+| "Faktorial 3×2" | Desain aktual 2×2 + pembanding + H | "Faktorial 2×2 + pembanding + H" |
+| “PCC dinamis adalah novelty” | PCC hanya aktuator | "Novelty adalah alokasi *stock-flow aware*" |
+| “Kontroler adaptif yang identik sudah beroperasi” | Tidak dapat dibuktikan | "Memodifikasi fungsi kontrol di atas kapabilitas platform" |
+| “Merancang kontroler/Starlink/PCC” | Bukan objek penelitian | "Memodifikasi fungsi kontrol" |
+| “Session preservation sudah selesai” | Koneksi lama bisa menumpuk | "Preservasi diukur melalui session retention dan ELS" |
 
 ---
 
@@ -83,12 +96,14 @@
 | ALQI/TLABA tidak muncul | Lulus | Tidak ada di Bab I–III |
 | Batas recovery konsisten | Lulus | 90 detik |
 | RST proporsi vs persen | Lulus | Didefinisikan terpisah |
-| Jumlah kondisi konsisten | Lulus | 7 kondisi A–G |
-| Desain 2×2 konsisten | Lulus | Bab I, III, evaluasi |
+| Jumlah kondisi konsisten | Lulus | 8 kondisi A–H |
+| Desain 2×2 + H konsisten | Lulus | Bab I, III, evaluasi |
 | H1 mengisolasi affinity | Lulus | B vs C/D |
 | H3a kriteria primer/sekunder | Lulus | Non-inferior primer |
+| **H3c stock-flow** | Lulus | H vs F; ELS/TTR/RST/retention |
+| **Stock-flow terms** | Lulus | S_i, F_i, L_i, κ, ELS, TTR |
 | SIWG muncul di tiga bab | Lulus | Bab I, II, III |
-| Klaim SOTA vs konteks | Sebagian | P-02 belum dijalankan |
+| Klaim SOTA vs konteks | Sebagian | P-02 sudah; tambahan tetap terbuka |
 | Klaim "belum ditemukan" | Sebagian | P-01 OpenAlex selesai; Scopus/IEEE belum |
 | Angka rain fade/15 detik | Lulus | P-04 selesai (hlm. 5 / hlm. 1) |
 | Gaya sitasi | Belum | D-10 |
@@ -97,7 +112,8 @@
 
 ## 6. Tindakan Berikutnya
 
-1. Jalankan P-01 dan P-04 sebelum naskah final.
-2. Tambah P-02 dan P-03, lalu perbarui 2.4.1 dan 2.11.
+1. Jalankan P-05 (audit sitasi) sebelum naskah final.
+2. Tambah **P-06**: pencarian literatur *stock-flow/session-aware allocation*.
 3. Konfirmasi D-10 (APA 7) ke pedoman kampus.
-4. Setelah itu, kunci naskah dan lanjut ke abstrak + daftar isi/tabel/gambar.
+4. Kunci judul kerja baru dan perbarui abstrak.
+5. Setelah itu, kunci naskah dan lanjut ke daftar isi/tabel/gambar.

@@ -27,10 +27,17 @@
 ### Keberatan 1 — "Ini hanya integrasi metode yang sudah ada."
 
 **Jawaban.** Betul bahwa metode dasarnya bukan hal baru, dan proposal tidak
-mengklaim itu. Kontribusi yang diklaim adalah (a) aturan penurunan parameter
-histeresis dari durasi transien LEO, dan (b) bukti ablasi yang memisahkan
-flapping dari gangguan sesi. Keduanya belum tersedia di literatur. Jika penguji
-tetap menilai kurang, Opsi A (batas analitis flapping) disiapkan sebagai penguatan.
+mengklaim itu. Kontribusi yang diklaim adalah **modifikasi kebijakan alokasi**
+menjadi *stock-flow aware*: keputusan tidak hanya memakai kualitas link saat ini,
+tetapi juga **stok koneksi lama** yang masih menempati link yang memburuk. PCC
+hanya aktuator; yang dimodifikasi adalah fungsi kontrol yang menentukan kapan dan
+seberapa besar persentase koneksi baru diubah. Bukti yang dihasilkan adalah ELS,
+*time-to-rebalance*, dan *session retention*, bukan sekadar integrasi EWMA–SAW–
+histeresis.
+
+Jika penguji bertanya “apa bedanya dengan PCC dinamis?”, jawabannya: PCC dinamis
+mengubah rasio; modifikasi ini mengubah **cara rasio dihitung** dengan
+mempertimbangkan stok koneksi lama dan aliran koneksi baru.
 
 ---
 
@@ -48,10 +55,13 @@ luar lingkup.
 
 ### Keberatan 3 — "Kalau PCC sudah menjaga sesi, apa gunanya affinity lock?"
 
-**Jawaban.** Itu justru hipotesis yang diuji, bukan asumsi. Jika PCC memang sudah
-menjaga sesi, H2a akan menunjukkan non-inferioritas, dan itu tetap merupakan
-kontribusi: klaim praktisi menjadi terverifikasi. Yang tidak boleh terjadi adalah
-mengklaim manfaat tanpa mengukur.
+**Jawaban.** PCC memang mempertahankan koneksi lama, dan itu bukan masalah yang
+ingin disangkal. Justru karena koneksi lama tetap di jalurnya, link yang memburuk
+dapat menampung **stok koneksi lama** yang tidak dapat dipindahkan. `AFFINITY_LOCK`
+bukan novelty utama; ia adalah batasan implementasi. Yang diuji adalah apakah
+kebijakan *stock-flow aware* mampu menurunkan ELS dan *time-to-rebalance* tanpa
+menaikkan RST. Jika PCC sudah cukup, H3c akan menunjukkan non-inferioritas—hasil
+yang tetap bernilai karena klaim praktisi menjadi terverifikasi.
 
 ---
 
@@ -70,8 +80,10 @@ agar efek perlakuan dapat dipisahkan dari efek kebetulan.
 B→D mengubah bentuk histeresis; D→F mengubah affinity. Dengan keputusan
 6 skenario (A–F), desain yang dipakai adalah **faktorial 2×2** (simetris/asimetris
 × affinity off/on) ditambah **dua pembanding** (A statis dan B dynamic naive) serta
-**satu baseline praktisi** (G). Interaksi "tanpa histeresis × affinity" tidak diuji;
-ini diakui sebagai keterbatasan, bukan diklaim sebagai faktorial penuh 3×2.
+**satu baseline praktisi** (G). Untuk novelty *stock-flow*, ditambahkan **kondisi H**
+(stock-aware) dan dibandingkan dengan **F** (kualitas saja). Interaksi "tanpa
+histeresis × affinity" tidak diuji; ini diakui sebagai keterbatasan, bukan diklaim
+sebagai faktorial penuh 3×2.
 
 ---
 

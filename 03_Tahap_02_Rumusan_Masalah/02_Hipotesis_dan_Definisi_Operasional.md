@@ -89,25 +89,57 @@ $\lambda$ yang diuji sensitivitasnya.
 **Batas klaim:** SIWG adalah alat pembanding internal, bukan standar industri.
 Jangan mengklaim validitas eksternal di luar korpus penelitian ini.
 
-### 1.9 *Baseline* praktisi
+### 1.9 *Stock-flow* dan Metrik Rebalance
+
+| Simbol | Arti | Sumber |
+|---|---|---|
+| $S_i(t)$ | Jumlah koneksi lama yang masih aktif di link $i$ | Tabel *conntrack* per *connection mark* |
+| $F_i(t)$ | Laju koneksi baru yang dialokasikan ke link $i$ | Log pembentukan koneksi baru |
+| $L_i(t)$ | Pangsa beban efektif: $(S_i+F_i)/\sum_k(S_k+F_k)$ | Dihitung |
+| $T_i(t)$ | Target kualitas: $Q_iH_i/\sum_k Q_kH_k$ | Dihitung |
+| $W_i(t)$ | Persentase alokasi untuk koneksi baru | Keputusan controller |
+
+**Effective Load Skew (ELS):**
+
+$$\text{ELS}(t)=\frac{1}{2}\sum_i \left|L_i(t)-T_i(t)\right|$$
+
+Nilai 0 berarti pangsa beban efektif sama dengan target kualitas.
+
+**Time-to-rebalance:** waktu dari awal degradasi sampai $\text{ELS}(t) \le \varepsilon$
+(mis. $\varepsilon=0{,}05$) dan bertahan minimal satu jendela evaluasi.
+
+**Session retention rate:** proporsi koneksi lama yang tetap berada di link
+awalnya selama episode. Nilai tinggi berarti preservasi bekerja; nilai rendah
+berarti ada pemutusan atau pemindahan paksa.
+
+**Kebijakan alokasi *stock-flow aware*:**
+
+$$W_i(t)=\text{clip}\left(T_i(t)+\kappa\left(T_i(t)-\frac{S_i(t)}{\sum_k S_k(t)}\right),\;W_{\min},\;W_{\max}\right)$$
+
+dengan $\kappa$ sebagai gain koreksi stok, diuji pada $\kappa \in \{0;\ 0{,}5;\ 1{,}0\}$.
+$\kappa=0$ berarti alokasi berbasis kualitas saja (kondisi F).
+
+### 1.10 *Baseline* praktisi
 
 PCC dengan `netwatch`/health-check failover: jika probe gagal, rute dialihkan.
 Rasio tetap; tidak ada histeresis multi-ambang dan tidak ada affinity eksplisit.
 
-### 1.10 Peta Skenario yang Dirujuk
+### 1.11 Peta Skenario yang Dirujuk
 
-| Skenario | Histeresis | Affinity | Peran |
-|---|---|---|---|
-| A | Tidak ada (rasio statis) | — | Baseline statis |
-| B | Tidak ada (rasio dinamis) | Off | *Dynamic naive* |
-| C | Simetris | Off | Isolasi bentuk histeresis |
-| D | Asimetris | Off | Isolasi asimetri waktu |
-| E | Simetris | On | Affinity pada simetris |
-| F | Asimetris | On | **SPA-HSM (usulan)** |
-| G | — | — | Baseline praktisi (`netwatch`) |
+| Skenario | Alokasi | Histeresis | Affinity | Peran |
+|---|---|---|---|---|
+| A | Statis 50:50 | — | — | Baseline statis |
+| B | Dinamis kualitas saja | Tidak ada | Off | *Dynamic naive* |
+| C | Dinamis kualitas saja | Simetris | Off | Isolasi bentuk histeresis |
+| D | Dinamis kualitas saja | Asimetris | Off | Isolasi asimetri waktu |
+| E | Dinamis kualitas saja | Simetris | On | Affinity pada simetris |
+| F | Dinamis kualitas saja | Asimetris | On | Proposed tanpa stock |
+| G | Statis + netwatch | — | — | Baseline praktisi |
+| **H** | **Stock-flow aware** | **Asimetris** | **On** | **Proposed utama** |
 
 Perbandingan kunci: **B→D** (efek histeresis), **C→D** (efek asimetri),
-**D→F** (efek affinity), **A→F** (efek total), **G→F** (efek vs praktik).
+**D→F** (efek affinity), **F→H** (efek *stock-flow*), **A→H** (efek total),
+**G→H** (efek vs praktik).
 
 
 ---
@@ -189,6 +221,27 @@ absolut $\text{RST}_{flow}\%$ di bawah **1%** dilaporkan sebagai **kriteria seku
 
 ---
 
+### H3c — Alokasi stock-flow aware mempercepat rebalance tanpa mengganggu sesi
+
+**Pernyataan.** Alokasi *stock-flow aware* (H) menurunkan *effective load skew*
+dan *time-to-rebalance* dibanding alokasi berbasis kualitas saja (F), tanpa
+menaikkan RST flow dan tanpa menurunkan *session retention*.
+
+- **Perbandingan:** H vs F; keduanya memakai histeresis asimetris dan affinity on.
+- **Metrik:** ELS, time-to-rebalance, RST flow, session retention.
+- **Uji:** model linier campuran pada ELS/time-to-rebalance level episode;
+  regresi beta/logistik untuk RST; *bootstrap* untuk selisih median.
+- **Diterima jika:** ELS(H) ≤ 0,8 × ELS(F); time-to-rebalance(H) ≤ 0,8 ×
+  time-to-rebalance(F); batas atas 95% CI RST(H−F) ≤ +0,5 pp; session retention
+  H tidak inferior terhadap F.
+- **Effect size:** Cohen's d atau beda median dengan 95% CI.
+
+**Mengapa hipotesis ini penting.** Inilah klaim utama modifikasi: controller tidak
+hanya bereaksi terhadap kualitas link, tetapi mengelola stok koneksi lama yang
+tidak dapat dipindahkan. Tanpa H3c, novelty *stock-flow* tidak terbukti.
+
+---
+
 ### H4 — SIWG SPA-HSM lebih tinggi dari semua pembanding
 
 **Pernyataan.** SIWG SPA-HSM lebih tinggi minimal **15%** dibanding baseline
@@ -229,7 +282,8 @@ untuk dataset *replay* yang sama.
 | H2 | Asymmetric vs symmetric | Flapping rate, recovery p95 | NB mixed + non-inferiority | IRR < 0,7; Δrecovery ≤ 30 s; keduanya ≤ 90 s | IRR, Δ dengan CI |
 | H3a | Affinity vs no-affinity; vs statis | RST flow, RST packet | Beta/logistic mixed + bootstrap | Primer: F−D < 0; F−A ≤ +0,5 pp. Sekunder: < 1% | Selisih pp, 95% CI |
 | H3b | SPA-HSM vs statis/praktisi | Goodput, latency p95 | LMM + bootstrap | Rasio ≥ 1,10; ≤ 0,85; non-inferior | d / Cliff's δ |
-| H4 | SPA-HSM vs baseline terbaik | SIWG | LMM + bootstrap | Rasio ≥ 1,15; CI > 1,00 | d, 95% CI |
+| **H3c** | **H (stock-aware) vs F (kualitas saja)** | **ELS, time-to-rebalance, RST, retention** | **LMM/GLM + bootstrap** | **ELS ≤ 0,8×; TTR ≤ 0,8×; RST non-inferior; retention non-inferior** | **d / beda median** |
+| H4 | SPA-HSM (H) vs baseline terbaik | SIWG | LMM + bootstrap | Rasio ≥ 1,15; CI > 1,00 | d, 95% CI |
 | H5 | Dua adapter | Urutan keputusan | Uji konformitas + exact match | 100% identik | — |
 
 ---
@@ -239,19 +293,21 @@ untuk dataset *replay* yang sama.
 Angka ini **sementara** dan diperbarui setelah pilot.
 
 1. **Unit analisis:** episode degradasi (bukan sampel polling).
-2. **Kondisi:** 6 skenario (A–F) + baseline praktisi G = 7 kondisi.
-3. **Target awal:** 30 episode per kondisi; prioritas analisis inti pada A, B, D, F.
-   Total indikatif 210 episode; jika lapangan tidak mencukupi, kekurangan ditutup
-   dengan *replay* staging dan dilaporkan terpisah.
-4. **Justifikasi:** untuk uji dua sisi $\alpha = 0{,}05$, *power* 0,80, dan
+2. **Kondisi:** 7 kondisi inti (A–G) + kondisi H (*stock-aware*) = 8 kondisi.
+3. **Target awal:** 30 episode per kondisi; prioritas analisis inti pada A, B, D,
+   F, dan H. Total indikatif 240 episode; jika lapangan tidak mencukupi,
+   kekurangan ditutup dengan *replay* staging dan dilaporkan terpisah.
+4. **H3c:** dapat memakai episode berpasangan F–H pada staging dan subset lapangan;
+   minimal 30 pasangan.
+5. **Justifikasi:** untuk uji dua sisi $\alpha = 0{,}05$, *power* 0,80, dan
    *minimum detectable effect* $d = 0{,}5$, dibutuhkan sekitar 34 episode per
    kelompok; 30–40 adalah kompromi dengan keterbatasan lapangan.
-5. **Jika episode lapangan kurang:** lengkapi dengan *replay* staging terkontrol
+6. **Jika episode lapangan kurang:** lengkapi dengan *replay* staging terkontrol
    dan laporkan secara terpisah; jangan mencampur tanpa model yang mengakomodasi
    sumber data.
-6. **Koreksi multiplisitas:** Holm–Bonferroni dalam satu keluarga hipotesis
-   (H1–H4). H5 bersifat konfirmatori rekayasa dan dilaporkan terpisah.
-7. **Efek acak:** hari pengamatan dan run, untuk mengakomodasi autokorelasi dan
+7. **Koreksi multiplisitas:** Holm–Bonferroni dalam satu keluarga hipotesis
+   (H1–H4 + H3c). H5 bersifat konfirmatori rekayasa dan dilaporkan terpisah.
+8. **Efek acak:** hari pengamatan dan run, untuk mengakomodasi autokorelasi dan
    variasi cuaca.
 
 ---
@@ -283,16 +339,19 @@ melalui log keputusan dan dijelaskan sebagai penyimpangan protokol.
 | *Hawthorne*/intervensi operator | Bias | Protokol run otomatis, log intervensi |
 | Episode sedikit | CI lebar | Replay staging + laporkan presisi |
 | Kegagalan controller | Kehilangan data/risiko | Fail-static, watchdog, rollback teruji |
+| Tabel conntrack tidak terbaca/timeout | Stok $S_i$ tidak diketahui | Baca bertahap/filter per *connection mark*; cache; SNMP |
+| Estimasi stok salah | Koreksi alokasi bias | Validasi dengan dua metode; sensitivitas $\kappa$ |
+| Beban pembacaan conntrack | Overhead router | Interval rendah (30 s), agregasi, bukan dump penuh |
 
 ---
 
 ## 7. Ringkasan yang Akan Masuk Bab I
 
-- **RQ payung:** trade-off stabilitas–kontinuitas–kinerja.
-- **Lima sub-RQ** dan lima tujuan.
-- **Enam hipotesis:** H1 flapping, H2 asimetri, H3a sesi, H3b kinerja, H4 SIWG,
-  H5 portabilitas.
-- **Satu metrik gabungan:** SIWG.
-- **Satu aturan baru:** *dwell* sadar-transien.
+- **RQ payung:** trade-off stabilitas–kontinuitas–kinerja melalui modifikasi fungsi kontrol.
+- **Enam sub-RQ** dan enam tujuan.
+- **Tujuh hipotesis:** H1 flapping, H2 asimetri, H3a sesi, H3b kinerja,
+  **H3c stock-flow**, H4 SIWG, H5 portabilitas.
+- **Metrik:** SIWG + ELS + time-to-rebalance + session retention.
+- **Satu kebijakan utama:** alokasi *stock-flow aware*.
 
 Jika bagian ini kunci, Bab I dan Bab II tidak perlu ditulis ulang dari nol.

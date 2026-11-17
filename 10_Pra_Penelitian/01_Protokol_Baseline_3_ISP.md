@@ -90,6 +90,8 @@ Jika uji tulis berhasil, hentikan kegiatan dan perbaiki group sebelum melanjutka
 | Utilisasi | SNMP `ifHCInOctets`/`ifHCOutOctets` | 10 detik | Per interface |
 | Error/discard | SNMP | 10 detik | Indikator tambahan |
 | Telemetri Starlink | gRPC dish (jika tersedia) | 1 detik | Dua dish, dua vantage |
+| Stok koneksi $S_i$ | Tabel conntrack per *connection mark* | 30 detik | Untuk ELS/time-to-rebalance |
+| Koneksi baru $F_i$ | Log pembentukan koneksi | 10 detik | Untuk laju aliran |
 | Cuaca | Stasiun/BMKG | 10 menit | Kovariat |
 | Log API | Controller | Setiap request | Untuk audit read-only |
 

@@ -352,6 +352,40 @@ conntrack flush* setelah aturan baru diterapkan, agar perbandingan tidak menjadi
 *strawman*. (4) Temuan MPTCP/StarTCP dipakai sebagai bukti bahwa gangguan sesi
 nyata, tetapi solusi yang diuji tetap berada di level PCC.
 
+### 2.8.2 *Stock-flow control*: koneksi lama sebagai state
+
+Sifat *session-oriented* PCC memiliki konsekuensi yang jarang dimodelkan. Ketika
+link $i$ memburuk, controller dapat menurunkan alokasi koneksi baru ke link
+tersebut, tetapi **koneksi lama tetap berada di sana**. Link yang memburuk karena
+itu tidak hanya menerima aliran baru, tetapi juga menanggung **stok** koneksi lama
+yang tidak dapat dipindahkan.
+
+Penelitian ini memodifikasi cara controller memandang kondisi tersebut dengan
+membedakan:
+
+| Simbol | Arti |
+|---|---|
+| $S_i(t)$ | Stok koneksi lama di link $i$ |
+| $F_i(t)$ | Laju koneksi baru yang dialokasikan ke link $i$ |
+| $L_i(t)$ | Pangsa beban efektif: $(S_i+F_i)/\sum_k(S_k+F_k)$ |
+| $T_i(t)$ | Target kualitas: $Q_iH_i/\sum_k Q_kH_k$ |
+| $W_i(t)$ | Persentase alokasi untuk koneksi baru |
+
+Kebijakan kualitas saja $W_i=T_i$ tidak cukup ketika $S_i/\sum S_k$ menyimpang
+jauh dari $T_i$. Modifikasi yang dipakai adalah koreksi stok:
+
+$$W_i(t)=\text{clip}\left(T_i(t)+\kappa\left(T_i(t)-\frac{S_i(t)}{\sum_k S_k(t)}\right),\;W_{\min},\;W_{\max}\right)$$
+
+Jika stok lama melebihi target, alokasi koneksi baru dikurangi; jika stok lama di
+bawah target, alokasi koneksi baru ditambah. Gain $\kappa$ mengatur agresivitas
+koreksi, sedangkan $W_{\min}$ dan $W_{\max}$ mencegah *starvation* dan *overload*.
+
+**Metrik.** *Effective Load Skew* (ELS) mengukur selisih pangsa beban efektif
+terhadap target; *time-to-rebalance* mengukur waktu hingga ELS mengecil;
+*session retention* mengukur proporsi koneksi lama yang tetap di jalurnya. Ketiga
+metrik ini membuat klaim “mempertimbangkan koneksi lama” dapat diuji, bukan hanya
+diasumsikan.
+
 ---
 
 ## 2.9 Arsitektur Kontrol dan Pola Adapter
@@ -474,9 +508,9 @@ ETSI, 2000), karakteristik FO/LEO (Ma et al., 2023; Garcia et al., 2025), PCC da
 varian *load balancing* (Kumar & Golash, 2009; Amalia et al., 2022; Arfianita et
 al., 2024), MCDM/SAW (Vafaei et al., 2021; Wang & Kuo, 2013), serta histeresis
 pada sistem adaptif (Tournaire et al., 2023; Alhabo et al., 2017). Namun, belum
-ditemukan studi yang menyatukan keempatnya dalam satu *state machine* yang
-mengendalikan proporsi PCC, menjaga sesi, dan dipisahkan dari vendor—lalu mengukur
-kontribusi tiap komponen melalui ablasi.
+ditemukan studi yang **memodifikasi kebijakan alokasi PCC agar mempertimbangkan
+stok koneksi lama** yang tidak dapat dipindahkan, lalu mengukur akibatnya terhadap
+ELS, *time-to-rebalance*, dan *session retention*.
 
 Klaim "belum ditemukan" telah diuji melalui pencarian OpenAlex (P-01): irisan
 PCC × histeresis/dwell menghasilkan 0 hit, sedangkan irisan PCC × preservasi sesi
@@ -493,18 +527,21 @@ keputusan proporsi PCC di router. Belum ada studi yang menempatkan skor kualitas
 *dwell* sadar-transien, preservasi *conntrack*, dan ablasi komponen dalam satu
 loop kendali pada WAN FO–LEO.
 
-Kebaruan penelitian ini terletak pada tiga hal:
+Kebaruan penelitian ini bukan “PCC dinamis”, melainkan **modifikasi fungsi
+kontrol** di atas kapabilitas PCC statis dan conntrack yang tersedia pada
+platform:
 
-1. **Aturan *dwell* sadar-transien** yang menghubungkan $T_s$, durasi transien
-   LEO, dan $k_{down}$ (Proposisi 1).
-2. **Formalisasi pemetaan skor kontinu ke bucket PCC diskret** dengan jaminan
-   $\sum b_i = N$ dan batas $b_{min}/b_{max}$.
-3. **SIWG dan bukti ablasi** yang memisahkan kontribusi histeresis dan preservasi
-   sesi terhadap *flapping*, RST, *goodput*, dan latensi.
+1. **Modifikasi persepsi dan deteksi** — EWMA–SAW + histeresis *dwell*.
+2. **Modifikasi alokasi menjadi *stock-flow aware*** — $S_i(t)$, $F_i(t)$,
+   $L_i(t)$, dan koreksi $\kappa$. Ini kontribusi utama.
+3. **Modifikasi perlakuan sesi** — koneksi lama dipertahankan, koneksi baru
+   diarahkan; RST dan *session retention* diukur.
+4. **Modifikasi evaluasi** — SIWG + ELS + *time-to-rebalance* + *session
+   retention*.
 
-Integrasi empat komponen (EWMA, SAW, histeresis, *affinity*) adalah payung sistem,
-bukan novelty tunggal. Penelitian ini juga tidak mengklaim metode MCDM, EWMA, atau
-histeresis yang baru.
+PCC adalah aktuator; Starlink adalah lingkungan uji; yang diteliti adalah
+kebijakan controller yang menghubungkan keduanya. Penelitian ini tidak mengklaim
+metode MCDM, EWMA, atau histeresis yang baru.
 
 Dari sisi kualitas bukti, Bab II memakai kebijakan tier: referensi T1 untuk SOTA
 inti, T2 sebagai pendukung, dan T3 hanya untuk konteks. Studi PCC lokal tetap
@@ -522,5 +559,7 @@ ditetapkan sebelum seminar.
 4. SAW memerlukan normalisasi berbatas tetap agar skor komparabel.
 5. EWMA menghaluskan derau; histeresis mencegah osilasi; keduanya berbeda peran.
 6. Preservasi sesi harus diukur, bukan diasumsikan.
-7. Arsitektur tiga lapis memungkinkan pengujian tanpa menyentuh produksi.
-8. Kerangka teoritis menghasilkan dua proposisi yang dapat diuji dan enam hipotesis.
+7. Koneksi lama adalah **stok** yang tidak dapat dipindahkan; alokasi harus
+   *stock-flow aware*.
+8. Arsitektur tiga lapis memungkinkan pengujian tanpa menyentuh produksi.
+9. Kerangka teoritis menghasilkan dua proposisi dan tujuh hipotesis (termasuk H3c).

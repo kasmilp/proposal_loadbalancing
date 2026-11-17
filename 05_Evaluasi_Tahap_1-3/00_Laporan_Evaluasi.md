@@ -210,3 +210,31 @@ Pekerjaan Tahap 1–3 sudah cukup untuk masuk Tahap 4 **setelah empat perbaikan
 wajib**. Kekuatan utamanya adalah alinyemen dan kejujuran lingkup. Kelemahan
 utamanya bukan ide, melainkan **kualitas bukti** dan **konsistensi ambang**.
 Keduanya dapat diperbaiki tanpa mengubah arah penelitian.
+
+---
+
+## 10. Pembaruan Positioning — 17 November 2026
+
+Posisi penelitian diperbarui:
+
+- Kontribusi dijelaskan dengan kata kerja **memodifikasi**, bukan “merancang”,
+  “menciptakan”, atau “membangun dari nol”.
+- Yang dimodifikasi adalah **fungsi kontrol di atas kapabilitas PCC statis dan
+  conntrack yang tersedia pada platform**; penelitian tidak mengklaim kontroler
+  yang identik sudah beroperasi.
+- Novelty utama bergeser dari “aturan dwell + bucket mapping” menjadi
+  **alokasi stock-flow aware + preservasi sesi**.
+- Ditambahkan kondisi **H** (stock-aware) dan hipotesis **H3c**.
+- Ditambahkan metrik **ELS**, **time-to-rebalance**, dan **session retention**.
+
+**Dampak:** seluruh dokumen 01–12 perlu konsisten dengan posisi ini. Dokumen
+kanonik: `01_Manajemen_Proposal/02_Posisi_dan_Fokus_Penelitian.md`.
+
+**Skor ulang setelah pembaruan:**
+
+| Aspek | Sebelum | Sesudah |
+|---|:---:|:---:|
+| Ketajaman gap | 4/5 | **5/5** (G-M3/G-E2 eksplisit) |
+| Kekuatan novelty | 4/5 | **4,5/5** (stock-flow utama) |
+| Metodologi | 3/5 | 3/5 (perlu kalibrasi & power) |
+| Kelayakan operasional | 3/5 | 3/5 (perlu akun tulis & stok) |

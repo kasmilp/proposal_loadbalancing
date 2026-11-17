@@ -21,25 +21,27 @@
 | D6 | Konteks FO–LEO heterogen | Apakah menggabungkan link terestrial dan satelit LEO? |
 | D7 | Validasi lapangan dual-ISP | Apakah diuji pada jaringan produksi, bukan hanya simulasi? |
 | D8 | Portabilitas platform teruji | Apakah logika dipisahkan dan diuji lintas adapter? |
+| **D9** | ***Stock-flow awareness*** | Apakah alokasi mempertimbangkan koneksi lama dan koneksi baru? |
+| **D10** | **Metrik rebalance/session retention** | Apakah ELS, time-to-rebalance, atau session retention diukur? |
 
 ---
 
 ## 2. Matriks
 
-| No | Studi | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 |
-|---|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| 1 | Amalia et al. (2022) — PCC + failover dual ISP | ○ | ○ | ○ | ○ | ◐ | ○ | ◐ | ○ |
-| 2 | Arfianita et al. (2024) — PCC tiga ISP (GNS3) | ○ | ○ | ○ | ○ | ◐ | ○ | ○ | ○ |
-| 3 | Nugroho et al. (2023) — PCC vs ECMP vs NTH | ○ | ○ | ○ | ◐ | ◐ | ○ | ○ | ○ |
-| 4 | Putra & Anton (2024) — PCC + failover | ○ | ○ | ○ | ○ | ◐ | ○ | ◐ | ○ |
-| 5 | Mirsal & Agtriadi (2026) — PCC vs Queue Tree | ○ | ○ | ○ | ○ | ◐ | ○ | ○ | ○ |
-| 6 | Ali et al. (2025) — hub multi-ISP berbasis ANN | ◐ | ○ | ○ | ○ | ◐ | ◐ | ○ | ○ |
-| 7 | Ma et al. (2023); Garcia et al. (2025); Hammer et al. (2024); Mohan et al. (2024) — karakterisasi Starlink | ○ | ○ | ○ | — | ○ | ◐ | ◐ | ○ |
-| 8 | Ullah et al. (2025); Boeckenholt et al. (2024) — rain fade Starlink | ○ | ○ | ○ | — | ○ | ◐ | ◐ | ○ |
-| 9 | Wang & Kuo (2013); Vafaei et al. (2021) — MCDM/SAW | ● | ○ | ○ | — | ○ | ○ | ○ | ○ |
-| 10 | Tournaire et al. (2023) — ambang optimal histeresis | ○ | ◐ | ● | — | ○ | ○ | ○ | ○ |
-| 11 | Komathi et al. (2024); Lilhore et al. (2025) — load balancing cloud | ◐ | ○ | ○ | ○ | ◐ | ○ | ○ | ○ |
-| 12 | **SPA-HSM (usulan)** | ● | ● | ● | ● | ● | ● | ● | ◐ |
+| No | Studi | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 | D9 | D10 |
+|---|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 1 | Amalia et al. (2022) — PCC + failover dual ISP | ○ | ○ | ○ | ○ | ◐ | ○ | ◐ | ○ | ○ | ○ |
+| 2 | Arfianita et al. (2024) — PCC tiga ISP (GNS3) | ○ | ○ | ○ | ○ | ◐ | ○ | ○ | ○ | ○ | ○ |
+| 3 | Nugroho et al. (2023) — PCC vs ECMP vs NTH | ○ | ○ | ○ | ◐ | ◐ | ○ | ○ | ○ | ○ | ○ |
+| 4 | Putra & Anton (2024) — PCC + failover | ○ | ○ | ○ | ○ | ◐ | ○ | ◐ | ○ | ○ | ○ |
+| 5 | Mirsal & Agtriadi (2026) — PCC vs Queue Tree | ○ | ○ | ○ | ○ | ◐ | ○ | ○ | ○ | ○ | ○ |
+| 6 | Ali et al. (2025) — hub multi-ISP berbasis ANN | ◐ | ○ | ○ | ○ | ◐ | ◐ | ○ | ○ | ◐ | ○ |
+| 7 | Ma et al. (2023); Garcia et al. (2025); Hammer et al. (2024); Mohan et al. (2024) — karakterisasi Starlink | ○ | ○ | ○ | — | ○ | ◐ | ◐ | ○ | — | — |
+| 8 | Ullah et al. (2025); Boeckenholt et al. (2024) — rain fade Starlink | ○ | ○ | ○ | — | ○ | ◐ | ◐ | ○ | — | — |
+| 9 | Wang & Kuo (2013); Vafaei et al. (2021) — MCDM/SAW | ● | ○ | ○ | — | ○ | ○ | ○ | ○ | ○ | ○ |
+| 10 | Tournaire et al. (2023) — ambang optimal histeresis | ○ | ◐ | ● | — | ○ | ○ | ○ | ○ | ○ | ○ |
+| 11 | Komathi et al. (2024); Lilhore et al. (2025) — load balancing cloud | ◐ | ○ | ○ | ○ | ◐ | ○ | ○ | ○ | ◐ | ○ |
+| 12 | **SPA-HSM (mekanisme hasil modifikasi)** | ● | ● | ● | ● | ● | ● | ● | ◐ | ● | ● |
 
 ---
 
@@ -54,13 +56,16 @@ satu lagi studi PCC statis tidak menghasilkan novelty.
    preservasi sesi diklaim tanpa pengukuran. Titik temu keduanya kosong.
 2. **D2 + D3 + D6 belum pernah bertemu.** Penghalusan dan histeresis dipelajari
    pada sistem umum, bukan pada transien LEO yang terukur.
-3. **D7 + D6 hampir kosong.** Studi lapangan dual-ISP ada, tetapi tidak pada
+3. **D9 + D10 hampir kosong.** Alokasi tidak mempertimbangkan stok koneksi lama,
+   dan metrik rebalance/session retention tidak diukur.
+4. **D7 + D6 hampir kosong.** Studi lapangan dual-ISP ada, tetapi tidak pada
    kombinasi FO–LEO.
-4. **D8 kosong secara metodologis.** Portabilitas biasanya diklaim, bukan diuji.
+5. **D8 kosong secara metodologis.** Portabilitas biasanya diklaim, bukan diuji.
 
 **Kesimpulan matriks.** Sel yang benar-benar kosong dan dapat diisi dalam satu
-penelitian adalah **D3 × D4 × D6**: histeresis yang sadar-transien, diukur
-dampaknya terhadap sesi, pada konteks FO–LEO. Inilah irisan novelty yang dipakai.
+penelitian adalah **D9 × D4 × D6**: alokasi yang mempertimbangkan stok koneksi
+lama, dampaknya terhadap sesi diukur, pada konteks FO–LEO. Inilah irisan novelty
+yang dipakai; D3 dan D10 menjadi pendukung.
 
 ---
 
@@ -79,8 +84,9 @@ Bayangkan dua sumbu:
 | **Kanan atas** | **Adaptif dan sadar sesi** | **Kosong → SPA-HSM** |
 
 Posisi penelitian ini adalah kuadran kanan atas. Yang membuatnya bukan sekadar
-"adaptif + conntrack" adalah **pengukuran** biaya sesi dan **aturan parameter**
-yang mengikat keduanya.
+"adaptif + conntrack" adalah **pengukuran stok koneksi lama**, **kebijakan alokasi
+stock-flow aware**, dan **metrik rebalance/session retention** yang mengikat
+keduanya.
 
 ---
 

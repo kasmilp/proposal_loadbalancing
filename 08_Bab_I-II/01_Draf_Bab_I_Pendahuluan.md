@@ -2,9 +2,9 @@
 # PENDAHULUAN
 
 **Status:** Draf kerja — belum naskah final
-**Judul kerja:** SPA-HSM: Kendali Proporsi Aliran Adaptif dan Sadar-Sesi pada
-WAN Heterogen Fiber Optic–LEO
-**Subjudul:** Studi Kasus Jaringan RT/RW Net Dual-ISP
+**Judul kerja:** Mekanisme Kontrol Adaptif untuk Alokasi Koneksi Sadar-Sesi pada
+Jaringan Heterogen FO–LEO
+**Subjudul:** Implementasi dan Evaluasi pada Platform MikroTik PCC
 
 ---
 
@@ -93,27 +93,38 @@ sedang berjalan; tanpa mekanisme preservasi, koneksi TCP dapat mengalami
 praktik load balancing umumnya dipilih secara *ad hoc*, tidak diturunkan dari
 durasi transien link, dan dampaknya terhadap sesi tidak diukur.
 
-Berdasarkan uraian tersebut, penelitian ini mengusulkan *Session-Preserving
-Asymmetric Hysteresis State Machine* (SPA-HSM), yaitu arsitektur kendali
-lingkaran tertutup tiga lapis. Lapis *Algorithm Core* menghaluskan metrik dengan
-*Exponentially Weighted Moving Average* (EWMA), menghitung skor kualitas link
-dengan *Simple Additive Weighting* (SAW), menentukan status link melalui
-histeresis asimetris, dan memetakan status/skor menjadi proporsi PCC diskret.
-Lapis *Abstract Allocation Interface* menerjemahkan keputusan menjadi direktif
-abstrak, termasuk `AFFINITY_LOCK` untuk menjaga sesi berjalan. Lapis *Platform
-Adapter* menerjemahkan direktif menjadi aturan *mangle/routing* PCC pada RouterOS
-MikroTik melalui REST API, dengan pembaruan yang dibatasi pada
-`connection-state=new`.
+Berdasarkan uraian tersebut, penelitian ini **memodifikasi fungsi kontrol** di atas
+kapabilitas PCC statis dan *connection tracking* yang tersedia pada platform.
+Modifikasi diwujudkan dalam *Session-Preserving Asymmetric Hysteresis State
+Machine* (SPA-HSM), yaitu mekanisme hasil modifikasi yang terdiri atas tiga lapis.
+Lapis *Algorithm Core* menghaluskan metrik dengan *Exponentially Weighted Moving
+Average* (EWMA), menghitung skor kualitas link dengan *Simple Additive Weighting*
+(SAW), menentukan status link melalui histeresis asimetris, dan memetakan
+status/skor menjadi alokasi koneksi baru. Lapis *Abstract Allocation Interface*
+menerjemahkan keputusan menjadi direktif abstrak, termasuk `AFFINITY_LOCK` untuk
+menjaga sesi berjalan. Lapis *Platform Adapter* menerjemahkan direktif menjadi
+aturan *mangle/routing* PCC pada RouterOS MikroTik, dengan pembaruan yang dibatasi
+pada `connection-state=new`.
+
+Penelitian ini **tidak** mengklaim bahwa kontroler adaptif yang identik sudah
+beroperasi, **tidak** memodifikasi teknologi Starlink, dan **tidak** mengubah
+algoritma PCC. Yang dimodifikasi adalah kebijakan controller yang mengamati,
+memutuskan, dan mengalokasikan.
+
+Modifikasi utama terletak pada cara controller menghitung alokasi. PCC bersifat
+*session-oriented*: koneksi lama mempertahankan jalurnya, sedangkan perubahan
+aturan terutama memengaruhi koneksi baru. Ketika link memburuk, koneksi lama dapat
+menumpuk di link tersebut. Karena itu, penelitian ini memodifikasi alokasi dari
+berbasis kualitas saja menjadi **stock-flow aware**: controller mempertimbangkan
+stok koneksi lama $S_i(t)$, aliran koneksi baru $F_i(t)$, dan pangsa beban efektif
+$L_i(t)$, lalu mengoreksi persentase alokasi koneksi baru melalui gain $\kappa$.
 
 Kebaruan penelitian ini bukan pada penemuan metode MCDM, EWMA, atau histeresis
-yang baru. Kebaruannya terletak pada tiga hal: (1) **aturan *dwell* sadar-transien**
-yang menghubungkan interval sampling, durasi transien LEO, dan jumlah sampel
-berturut-turut; (2) **formalisasi pemetaan skor kualitas kontinu menjadi proporsi
-PCC diskret** dengan jaminan jumlah bucket dan batas alokasi; serta (3) **metrik
-*Session-Impact-Weighted Goodput* (SIWG)** dan bukti ablasi yang memisahkan
-kontribusi histeresis dan preservasi sesi. Dengan posisi ini, penelitian tidak
-mengklaim menggantikan metode yang ada, tetapi menawarkan kerangka rekayasa yang
-dapat direplikasi dan dievaluasi.
+yang baru, dan bukan pada “PCC dinamis”. Kebaruannya terletak pada **modifikasi
+kebijakan alokasi stock-flow aware** dan **perlakuan sesi sebagai batasan**, yang
+diukur melalui ELS, time-to-rebalance, session retention, RST, dan SIWG. Dengan
+posisi ini, penelitian tidak mengklaim menggantikan metode yang ada, tetapi
+menawarkan mekanisme adaptasi yang dapat direplikasi dan dievaluasi.
 
 Ruang lingkup penelitian dibatasi pada topologi dual-ISP FO–LEO, Starlink sebagai
 kasus acuan *upper bound* untuk transien, bobot SAW statis yang dikalibrasi di
@@ -127,48 +138,50 @@ bukan solusi *enterprise* yang menggantikan SD-WAN komersial.
 
 Berdasarkan latar belakang tersebut, pertanyaan penelitian payung adalah:
 
-> Sejauh mana SPA-HSM—yang memadukan skor kualitas multi-kriteria, penghalusan
-> EWMA, histeresis asimetris sadar-transien, dan `AFFINITY_LOCK`—mampu
-> mengendalikan trade-off antara stabilitas keputusan dan kontinuitas sesi pada
-> WAN dual-ISP FO–LEO, dan bagaimana kontribusi masing-masing komponen serta
-> parameter *dwell* membentuk *frontier* trade-off tersebut?
+> Bagaimana mekanisme kontrol adaptif pada WAN heterogen FO–LEO dapat
+> **memodifikasi cara mengamati kualitas ISP, mendeteksi degradasi, menghitung
+> ulang persentase alokasi koneksi baru dengan mempertimbangkan stok koneksi lama,
+> dan mempertahankan koneksi yang telah terbentuk**, sehingga trade-off antara
+> stabilitas keputusan, kontinuitas sesi, dan kinerja agregat dapat dikendalikan?
 
-Pertanyaan payung tersebut dijabarkan menjadi lima sub-pertanyaan:
+Pertanyaan payung tersebut dijabarkan menjadi enam sub-pertanyaan:
 
-1. Bagaimana merumuskan skor kualitas $Q_i(t)$ dari metrik QoS dengan normalisasi
-   berbatas tetap dan bobot statis, lalu memetakannya menjadi proporsi PCC diskret
-   yang memenuhi jumlah bucket dan batas alokasi?
-2. Bagaimana merancang aturan *dwell* histeresis asimetris yang diturunkan dari
-   durasi transien LEO, dan bagaimana aturan itu menggeser trade-off antara
-   *flapping rate* dan *recovery latency*?
-3. Seberapa besar `AFFINITY_LOCK` menurunkan gangguan sesi TCP—diukur sebagai RST
-   *rate* dan proporsi aliran terganggu—dan bagaimana interaksinya dengan bentuk
-   histeresis?
-4. Bagaimana kinerja gabungan SPA-HSM diukur dengan SIWG, dan seberapa besar
-   kontribusi tiap komponen berdasarkan ablasi pada konteks FO–LEO?
-5. Apakah *Algorithm Core* memenuhi kontrak antarmuka dan menghasilkan keputusan
-   identik ketika dijalankan pada dua adapter berbeda?
+1. Bagaimana memodifikasi persepsi kualitas menjadi $Q_i(t)$ berbasis EWMA–SAW
+   dan memetakannya ke bucket PCC diskret?
+2. Bagaimana memodifikasi deteksi degradasi dengan histeresis asimetris dan
+   *dwell* yang diturunkan dari durasi transien LEO?
+3. Bagaimana memodifikasi perlakuan sesi sehingga koneksi lama dipertahankan dan
+   koneksi baru diarahkan tanpa pemutusan paksa?
+4. Bagaimana memodifikasi kebijakan alokasi agar mempertimbangkan stok koneksi
+   lama $S_i(t)$ dan aliran koneksi baru $F_i(t)$, dan seberapa besar pengaruhnya
+   terhadap *effective load skew* dan *time-to-rebalance*?
+5. Seberapa besar modifikasi tersebut menurunkan flapping dan RST serta
+   meningkatkan SIWG berdasarkan ablasi A–H pada konteks FO–LEO?
+6. Apakah mekanisme hasil modifikasi memenuhi kontrak antarmuka dan menghasilkan
+   keputusan identik pada dua adapter?
 
 ---
 
 ## 1.3 Tujuan Penelitian
 
-Tujuan umum penelitian ini adalah mengembangkan dan mengevaluasi SPA-HSM sebagai
-mekanisme kendali proporsi PCC yang menjaga stabilitas keputusan sekaligus
-kontinuitas sesi pada WAN heterogen FO–LEO, serta menghasilkan panduan parameter
-yang dapat dipakai praktisi.
+Tujuan umum penelitian ini adalah **memodifikasi fungsi kontrol** di atas
+kapabilitas PCC statis dan *connection tracking* yang tersedia pada platform,
+sehingga mekanisme hasil modifikasi—SPA-HSM—dapat mengelola trade-off stabilitas
+keputusan, kontinuitas sesi, dan kinerja agregat pada WAN heterogen FO–LEO.
 
 Tujuan khusus:
 
-1. merumuskan $Q_i(t)$ berbasis EWMA–SAW dengan normalisasi berbatas tetap, serta
-   pemetaan formal dari skor ke bucket PCC;
-2. merancang aturan *dwell* yang diturunkan dari durasi transien LEO dan
-   menganalisis pengaruhnya terhadap *flapping* dan *recovery latency*;
-3. mengimplementasikan `AFFINITY_LOCK` dan mengukur dampaknya terhadap RST *rate*
-   serta proporsi aliran terganggu;
-4. mengevaluasi kontribusi histeresis dan affinity secara terpisah dan bersama
-   melalui ablasi, menggunakan SIWG sebagai ukuran gabungan;
-5. menguji kontrak *Abstract Allocation Interface* dan portabilitas *Algorithm
+1. memodifikasi persepsi kualitas menjadi $Q_i(t)$ berbasis EWMA–SAW dan
+   memetakannya ke bucket PCC;
+2. memodifikasi deteksi degradasi dengan histeresis dua ambang dan *dwell*
+   sadar-transien;
+3. memodifikasi perlakuan sesi sehingga koneksi lama dipertahankan dan koneksi
+   baru diarahkan tanpa pemutusan paksa;
+4. **memodifikasi kebijakan alokasi menjadi *stock-flow aware*** dengan
+   mempertimbangkan $S_i(t)$, $F_i(t)$, dan gain koreksi $\kappa$;
+5. mengevaluasi kontribusi modifikasi melalui ablasi A–H, SIWG, ELS, dan
+   *time-to-rebalance*;
+6. menguji kontrak *Abstract Allocation Interface* dan portabilitas *Algorithm
    Core* melalui *mock adapter* dan adapter kedua.
 
 ---
@@ -195,12 +208,18 @@ baseline PCC statis dengan margin 0,5 poin persentase. Nilai absolut
 $\text{RST}_{flow}\%$ di bawah 1% dilaporkan sebagai kriteria sekunder.
 
 **H3b — Kinerja agregat meningkat saat degradasi.** Pada episode degradasi,
-SPA-HSM meningkatkan *goodput* minimal 10% dan menurunkan latensi p95 minimal 15%
-dibanding PCC statis, serta tidak inferior terhadap baseline praktisi.
+mekanisme hasil modifikasi (kondisi H) meningkatkan *goodput* minimal 10% dan
+menurunkan latensi p95 minimal 15% dibanding PCC statis, serta tidak inferior
+terhadap baseline praktisi.
 
-**H4 — SIWG SPA-HSM lebih tinggi.** SIWG SPA-HSM lebih tinggi minimal 15%
-dibanding baseline terbaik, dengan interval kepercayaan yang konsisten pada
-analisis sensitivitas $\lambda$.
+**H3c — Alokasi stock-flow aware mempercepat rebalance.** Alokasi yang
+mempertimbangkan stok koneksi lama (H) menurunkan *effective load skew* dan
+*time-to-rebalance* minimal 20% dibanding alokasi berbasis kualitas saja (F),
+tanpa menaikkan RST flow dan tanpa menurunkan *session retention*.
+
+**H4 — SIWG mekanisme hasil modifikasi lebih tinggi.** SIWG kondisi H lebih
+tinggi minimal 15% dibanding baseline terbaik, dengan interval kepercayaan yang
+konsisten pada analisis sensitivitas $\lambda$.
 
 **H5 — Portabilitas inti algoritma.** *Algorithm Core* lulus seluruh uji
 konformitas kontrak dan menghasilkan urutan keputusan yang identik pada dua
@@ -213,24 +232,25 @@ adapter untuk dataset *replay* yang sama.
 ### 1.5.1 Manfaat teoretis
 
 Penelitian ini diharapkan memperkaya literatur *load balancing* adaptif dengan
-menyatukan empat elemen yang selama ini dikaji terpisah: skor kualitas
-multi-kriteria, penghalusan deret waktu, histeresis asimetris, dan preservasi
-sesi. Kontribusi teoretis utamanya adalah rumusan trade-off stabilitas–kontinuitas
-sebagai masalah kendali, serta aturan *dwell* yang menghubungkan parameter kendali
-dengan karakteristik transien link.
+memodifikasi cara alokasi dipahami: bukan hanya sebagai fungsi kualitas link saat
+ini, tetapi sebagai **pengendalian stok koneksi lama dan aliran koneksi baru**.
+Kontribusi teoretis utamanya adalah rumusan *stock-flow aware allocation* dan
+trade-off stabilitas–kontinuitas sebagai masalah kendali, serta aturan *dwell*
+yang menghubungkan parameter kendali dengan karakteristik transien link.
 
 ### 1.5.2 Manfaat praktis
 
 1. Bagi pengelola RT/RW Net, penelitian ini menawarkan mekanisme penyesuaian
-   proporsi beban yang berjalan otomatis dan dapat dikembalikan ke konfigurasi
-   statis ketika controller gagal.
+   proporsi beban yang memperhitungkan koneksi lama dan dapat dikembalikan ke
+   konfigurasi statis ketika controller gagal.
 2. Bagi organisasi di wilayah dengan keterbatasan infrastruktur terestrial,
    kombinasi FO dan satelit LEO dapat dikelola tanpa ketergantungan pada solusi
    *proprietary*.
 3. Bagi peneliti dan praktisi, arsitektur tiga lapis dan kontrak antarmuka
    menyediakan kerangka yang dapat direplikasi pada platform lain.
 4. Bagi industri, hasil penelitian berpotensi menjadi masukan untuk pengembangan
-   fitur *adaptive WAN* pada perangkat kelas SOHO.
+   fitur *adaptive WAN* pada perangkat kelas SOHO, khususnya pengelolaan sesi
+   yang tidak dapat dipindahkan.
 
 ---
 
@@ -261,12 +281,16 @@ Agar penelitian tetap fokus dan hasilnya terukur, ditetapkan batasan berikut.
 9. Stabilitas sistem dievaluasi secara empiris melalui ablasi dan analisis
    statistik, bukan melalui pembuktian formal kestabilan *control loop*.
 10. Desain ablasi adalah faktorial 2×2 (simetris/asimetris × affinity off/on)
-    ditambah pembanding statis, *dynamic naive*, dan baseline praktisi. Kombinasi
-    "tanpa histeresis + affinity on" tidak diuji, sehingga interaksi tersebut
-    tidak diklaim.
+    ditambah pembanding statis, *dynamic naive*, baseline praktisi, dan kondisi H
+    (*stock-aware*). Kombinasi "tanpa histeresis + affinity on" tidak diuji,
+    sehingga interaksi tersebut tidak diklaim.
 11. Hasil tidak dimaksudkan untuk menggantikan solusi SD-WAN komersial skala
     *enterprise*; kontribusinya adalah kerangka adaptif yang ringan, terbuka, dan
     dapat direplikasi pada skala kecil-menengah.
+12. Stok koneksi $S_i(t)$ bergantung pada keterbacaan tabel *conntrack*; estimasi
+    dapat bias dan dilaporkan sebagai keterbatasan pengukuran.
+13. Kondisi H menambah beban eksperimen; jika waktu terbatas, H diuji di staging
+    dan subset lapangan, bukan seluruh kampanye.
 
 ---
 
@@ -274,8 +298,17 @@ Agar penelitian tetap fokus dan hasilnya terukur, ditetapkan batasan berikut.
 
 | Istilah | Definisi |
 |---|---|
-| **SPA-HSM** | *Session-Preserving Asymmetric Hysteresis State Machine*, arsitektur kendali tiga lapis yang diusulkan |
+| **SPA-HSM** | Mekanisme hasil modifikasi: *Session-Preserving Asymmetric Hysteresis State Machine* |
 | **$Q_i(t)$** | Skor kualitas link $i$ pada waktu $t$, hasil EWMA–SAW, rentang 0–1 |
+| **$S_i(t)$** | Stok koneksi lama yang masih aktif di link $i$ |
+| **$F_i(t)$** | Laju koneksi baru yang dialokasikan ke link $i$ |
+| **$L_i(t)$** | Pangsa beban efektif: $(S_i+F_i)/\sum(S_k+F_k)$ |
+| **$T_i(t)$** | Target kualitas: $Q_iH_i/\sum Q_kH_k$ |
+| **$W_i(t)$** | Persentase alokasi untuk koneksi baru |
+| **$\kappa$** | Gain koreksi stok pada kebijakan alokasi |
+| **ELS** | *Effective Load Skew*: $\frac{1}{2}\sum|L_i-T_i|$ |
+| **Time-to-rebalance** | Waktu hingga ELS mengecil setelah degradasi |
+| **Session retention** | Proporsi koneksi lama yang tetap di jalurnya |
 | **Episode degradasi** | Periode ketika $Q_i < \theta_{low}$ selama $k_{down}$ sampel dan berakhir saat $Q_i > \theta_{high}$ selama $k_{up}$ sampel |
 | **Flap** | Perubahan aturan PCC efektif yang diikuti perubahan arah sebaliknya dalam jendela 5 menit |
 | **Flapping rate** | Jumlah flap per jam pengamatan |

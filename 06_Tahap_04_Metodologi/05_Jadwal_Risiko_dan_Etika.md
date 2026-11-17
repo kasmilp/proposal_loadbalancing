@@ -9,19 +9,22 @@ produksi dan selesai dalam waktu yang realistis.
 
 ## 1. Jadwal Indikatif
 
-Total: **20 minggu** (di luar waktu tunggu seminar dan revisi).
+Total: **22 minggu** (di luar waktu tunggu seminar dan revisi).
 
 | Minggu | Aktivitas | Luaran |
 |---:|---|---|
 | 1–2 | Finalisasi desain, kontrak antarmuka, `MockAdapter` | Spesifikasi dan mock |
 | 3–4 | Pilot 24–48 jam, kalibrasi instrumen, uji RST | Laporan pilot |
-| 5–6 | Replay staging A–G | Dataset staging |
+| 5–6 | Replay staging A–H | Dataset staging |
 | 7 | Perbaikan parameter berdasarkan pilot | Parameter final |
-| 8–13 | Kampanye lapangan (6 minggu) | Dataset lapangan |
-| 14 | Pembersihan dan audit data | Dataset bersih |
-| 15–17 | Analisis statistik dan robustness | Tabel hasil |
-| 18–19 | Penulisan Bab IV–V | Draf hasil |
-| 20 | Konsolidasi, cek format, reproduksibilitas | Naskah siap seminar |
+| 8–14 | Kampanye lapangan (7 minggu) | Dataset lapangan |
+| 15 | Pembersihan dan audit data | Dataset bersih |
+| 16–18 | Analisis statistik dan robustness | Tabel hasil |
+| 19–20 | Penulisan Bab IV–V | Draf hasil |
+| 21–22 | Konsolidasi, cek format, reproduksibilitas | Naskah siap seminar |
+
+**Catatan H:** kondisi H menambah satu kondisi dan analisis ELS/time-to-rebalance.
+Jika waktu ketat, H diuji di staging + subset lapangan; A–G tetap ablasi inti.
 
 ### 1.1 Milestone
 
@@ -63,6 +66,7 @@ penyimpangan (bukan mengubah hasil).
 | R10 | Etika/izin terlambat | Rendah | Tinggi | Urus izin sebelum pilot |
 | R11 | Beban probe mengganggu pelanggan | Sedang | Sedang | Probe ringan, jam rendah, monitor keluhan |
 | R12 | Konflik jadwal pembimbing | Sedang | Rendah | Jadwal tetap, laporan mingguan |
+| R13 | Tabel conntrack tidak terbaca | Sedang | Tinggi | Baca agregat per *connection mark*; cache; SNMP |
 
 **Aturan eskalasi:** risiko R2, R4, R6, dan R10 menghentikan run sampai
 ditangani. Risiko lain dicatat dan dilanjutkan dengan catatan.

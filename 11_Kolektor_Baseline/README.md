@@ -8,7 +8,7 @@ hanya memanggil endpoint `/print` dan `/ping` (test); tidak ada operasi
 
 | Berkas | Fungsi |
 |---|---|
-| `collector.py` | Kolektor JSONL: resource, interface, route, mangle, NAT, service, group, netwatch, probe |
+| `collector.py` | Kolektor JSONL: resource, interface, route, mangle, NAT, service, group, netwatch, probe, **stok koneksi** |
 | `analyze_baseline.py` | Analisis: loss, RTT, jitter, periodisitas, korelasi, episode, throughput |
 | `analyze_periodicity.py` | Analisis lanjutan: FFT periode dominan, ACF residual, korelasi dan tumpang tindih episode |
 | `config.example.env` | Contoh konfigurasi; salin menjadi `.env` |
@@ -68,6 +68,17 @@ Dengan ping per WAN (dijalankan **di router** melalui `/ping interface=...`):
 ```bash
 python collector.py --once
 ```
+
+Dengan stok koneksi per *connection mark*:
+
+```bash
+python collector.py --once --connections
+```
+
+`--connections` menghasilkan record `connection_stock` berisi total koneksi dan
+jumlah per *mark*. Ini dipakai untuk $S_i(t)$, ELS, dan time-to-rebalance.
+Pada tabel besar (mis. 15.000 koneksi), pembacaan dapat memakan 1–2 menit;
+gunakan interval ≥120 detik.
 
 Jika berhasil, akan muncul path data dan log di akhir.
 
@@ -163,7 +174,8 @@ Satu baris JSON per observasi:
 ```
 
 `kind`: `meta`, `resource`, `identity`, `interface`, `ethernet`, `address`,
-`route`, `mangle`, `nat`, `service`, `group`, `netwatch`, `probe`, `error`.
+`route`, `mangle`, `nat`, `service`, `group`, `netwatch`, `probe`,
+`connection_stock`, `error`.
 
 ## Keamanan
 
