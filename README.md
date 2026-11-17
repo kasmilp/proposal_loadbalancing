@@ -44,6 +44,7 @@ spesifik dan terukur.
 | `14_Tahapan_Penelitian.md` | Roadmap tahap demi tahap (T0–T10) + gate & jadwal |
 | `15_Arsitektur_Sistem.md` | Arsitektur tri-link: diagram, kontrak antarmuka, state machine, deployment |
 | `16_Arsitektur_Jaringan_MikroTik.md` | Desain jaringan Multi-WAN 3 ISP: PCC, failover, LAN, RouterOS v7 |
+| `17_Uji_Kelayakan_dan_Risiko_Penguji.md` | Uji kelayakan dari sudut penguji (skor ±70; syarat B1–B6) |
 | `arsitektur/` | Skrip & gambar arsitektur (`arsitektur_ALQI_SAW.*`, `arsitektur_jaringan_mikrotik.*`) |
 
 ## Aturan kerja
@@ -68,6 +69,8 @@ spesifik dan terukur.
 - [x] Audit & perbaikan naskah lama (`12`–`13`)
 - [x] Roadmap tahapan penelitian (`14`)
 - [x] Revisi topologi: tri-link 1 FO + 2 Starlink (18 Nov 2026)
+- [x] Arsitektur sistem & jaringan Multi-WAN (`15`–`16`)
+- [x] Uji kelayakan dari sudut pandang penguji (`17`) — skor ±70
 - [ ] Verifikasi literatur lintas basis data (lihat `11_...`)
 - [ ] Kunci lingkup (Varian A/B/C) dan keputusan D-1 s.d. D-6
 - [ ] Tulis Bab I + kerangka Bab III
