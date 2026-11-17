@@ -157,6 +157,8 @@ class Collector:
             "group": int(env("INTERVAL_SERVICE", "3600")),
             "netwatch": 60,
         }
+        if self.connections:
+            self.intervals["connections"] = int(env("INTERVAL_CONNECTIONS", "120"))
         self.probe_interval = float(env("INTERVAL_PROBE", "2"))
 
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -297,7 +299,14 @@ class Collector:
     def read_connections(self):
         try:
             rows = list(self.ensure_api()("/ip/firewall/connection/print"))
-            self.emit("connection", rows)
+            counts = {}
+            for row in rows:
+                mark = row.get("connection-mark") or row.get("mark") or "unmarked"
+                counts[str(mark)] = counts.get(str(mark), 0) + 1
+            self.emit("connection_stock", {
+                "total": len(rows),
+                "by_mark": counts,
+            })
         except Exception as exc:
             self.emit("error", {
                 "path": "/ip/firewall/connection/print",
@@ -327,7 +336,10 @@ class Collector:
 
             for name, interval in self.intervals.items():
                 if now >= next_run[name]:
-                    self.snapshot(name)
+                    if name == "connections":
+                        self.read_connections()
+                    else:
+                        self.snapshot(name)
                     next_run[name] = now + interval
 
             if self.probe and now >= next_run["probe"]:

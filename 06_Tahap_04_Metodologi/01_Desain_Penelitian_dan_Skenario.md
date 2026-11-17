@@ -2,9 +2,9 @@
 
 **Dokumen:** `01_Desain_Penelitian_dan_Skenario.md`
 **Status:** Draf kerja Tahap 4
-**Fungsi:** Menetapkan desain evaluasi yang menjawab H1–H5 secara terukur.
-**Keputusan terkunci:** 6 skenario (A–F) + baseline praktisi G; baseline G =
-`netwatch` failover.
+**Fungsi:** Menetapkan desain evaluasi yang menjawab H1–H5 dan H3c secara terukur.
+**Keputusan terkunci:** 7 kondisi inti (A–G) + kondisi H (*stock-aware*); baseline
+G = `netwatch` failover.
 
 ---
 
@@ -50,15 +50,16 @@ statis terakhir (*fail-static*).
 
 ### 3.1 Tabel kondisi
 
-| Kondisi | Histeresis | $k_{up}$ | Affinity | Peran |
-|---|---|:---:|---|---|
-| **A** | Tidak ada (rasio statis 50:50) | — | — | Baseline statis |
-| **B** | Tidak ada (rasio dinamis) | — | Off | *Dynamic naive* |
-| **C** | Simetris | 20 | Off | Isolasi bentuk histeresis |
-| **D** | Asimetris | 60 | Off | Isolasi asimetri waktu |
-| **E** | Simetris | 20 | On | Affinity pada simetris |
-| **F** | Asimetris | 60 | On | **SPA-HSM (usulan)** |
-| **G** | Tidak ada ($k$ tidak berlaku) | — | — | Baseline praktisi `netwatch` |
+| Kondisi | Alokasi | Histeresis | $k_{up}$ | Affinity | Peran |
+|---|---|---|---|:---:|---|
+| **A** | Statis 50:50 | Tidak ada | — | — | Baseline statis |
+| **B** | Kualitas saja | Tidak ada | — | Off | *Dynamic naive* |
+| **C** | Kualitas saja | Simetris | 20 | Off | Isolasi bentuk histeresis |
+| **D** | Kualitas saja | Asimetris | 60 | Off | Isolasi asimetri waktu |
+| **E** | Kualitas saja | Simetris | 20 | On | Affinity pada simetris |
+| **F** | Kualitas saja | Asimetris | 60 | On | Proposed tanpa stock |
+| **G** | Statis + `netwatch` | — | — | — | Baseline praktisi |
+| **H** | **Stock-flow aware** | **Asimetris** | **60** | **On** | **Proposed utama** |
 
 Parameter yang sama untuk semua kondisi kecuali yang disebut:
 
@@ -72,6 +73,8 @@ Parameter yang sama untuk semua kondisi kecuali yang disebut:
 | $N$ | 20 bucket | Granularitas PCC |
 | $b_{min}$ / $b_{max}$ | 3 / 17 | 15% dan 85% dari $N$ |
 | $T_{max}$ | 10 menit | Evaluasi ulang paksa |
+| $\kappa$ | 0 / 0,5 / 1,0 | Gain koreksi stok; 0 = F |
+| $W_{\min}$ / $W_{\max}$ | 0,15 / 0,85 | Batas alokasi koneksi baru |
 
 ### 3.2 Mengapa bukan faktorial 3×2 penuh
 
@@ -80,14 +83,16 @@ off/on) ditambah **dua pembanding**:
 
 - A = baseline statis,
 - B = *dynamic naive* (tanpa histeresis, tanpa affinity),
-- G = baseline praktisi.
+- G = baseline praktisi,
+- **H = kondisi stock-aware** untuk mengisolasi kontribusi koreksi stok.
 
 Kombinasi "tanpa histeresis + affinity on" **tidak** dijalankan. Konsekuensinya,
 interaksi antara ketiadaan histeresis dan affinity tidak dapat diuji. Ini dicatat
 sebagai keterbatasan, bukan diklaim sebagai faktorial penuh 3×2.
 
-**Alasan:** menambah satu kondisi lagi (8 total) menambah beban lapangan sekitar
-15% tanpa menjawab hipotesis utama. H1–H4 tidak memerlukan sel tersebut.
+**Alasan H:** H3c memerlukan perbandingan F (kualitas saja) vs H (stock-aware).
+Tanpa H, klaim utama modifikasi tidak dapat diuji. Total kondisi menjadi **8**
+(A–H), dengan prioritas analisis pada A, B, D, F, H.
 
 ---
 
@@ -98,8 +103,9 @@ sebagai keterbatasan, bukan diklaim sebagai faktorial penuh 3×2.
 | H1 | B vs C; B vs D | Apakah histeresis menekan flapping? (affinity off) |
 | H2 | C vs D; E vs F | Apakah asimetri waktu memperbaiki trade-off? |
 | H3a | C vs E; D vs F; F vs A | Apakah affinity menjaga sesi? |
-| H3b | F vs A; F vs G | Apakah kinerja agregat meningkat? |
-| H4 | F vs semua kondisi | Apakah SIWG tertinggi? |
+| H3b | H vs A; H vs G | Apakah kinerja agregat meningkat? |
+| **H3c** | **H vs F** | **Apakah koreksi stok mempercepat rebalance tanpa menaikkan RST?** |
+| H4 | H vs semua kondisi | Apakah SIWG tertinggi? |
 | H5 | Dua adapter | Apakah inti portabel? |
 
 Perbandingan H2 dilakukan dua kali (dengan affinity off dan on) untuk menguji
@@ -192,11 +198,14 @@ variabel `source`.
 |---|---|---:|---|
 | Staging | Episode | 20 per kondisi | Kondisi terkendali |
 | Lapangan | Episode | ≥ 10 per kondisi | Validitas eksternal |
-| Total | Episode | 30 per kondisi | 7 kondisi ≈ 210 episode |
+| Total | Episode | 30 per kondisi | 8 kondisi ≈ 240 episode |
 
 Untuk uji dua sisi $\alpha=0{,}05$, *power* 0,80, dan $d=0{,}5$, dibutuhkan
 sekitar 34 per kelompok. Target 30–40 adalah kompromi; *power* final dihitung
 setelah pilot dengan mempertimbangkan ICC dan korelasi dalam blok.
+
+**H3c:** gunakan episode berpasangan F–H; minimal 30 pasangan. Jika lapangan
+tidak mencukupi, tambah *replay* staging dengan skenario degradasi terkendali.
 
 ---
 
@@ -204,10 +213,11 @@ setelah pilot dengan mempertimbangkan ICC dan korelasi dalam blok.
 
 | Kategori | Variabel |
 |---|---|
-| Manipulasi | kondisi, mode histeresis, $k_{up}$, affinity |
+| Manipulasi | kondisi, mode histeresis, $k_{up}$, affinity, kebijakan alokasi |
 | Link | RTT, jitter, loss, throughput, goodput, utilisasi |
 | Keputusan | $Q_i$, state, rasio target, bucket, rule change |
-| Sesi | RST flow, RST packet, retransmisi, flow count |
+| Stok-flow | $S_i$, $F_i$, $L_i$, ELS, time-to-rebalance |
+| Sesi | RST flow, RST packet, retransmisi, flow count, session retention |
 | Lingkungan | cuaca, curah hujan, jam, suhu, daya |
 | Operasional | versi firmware, paket ISP, intervensi operator |
 

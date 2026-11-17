@@ -35,6 +35,12 @@ yang sama pada semua kondisi.
 | Rule change | Perubahan bucket efektif | Log controller | Controller | Per kejadian |
 | RST packet | Paket TCP RST | `tcpdump`/Wireshark | LAN capture | Kontinu |
 | RST flow | Aliran dengan ≥1 RST | Analisis capture | LAN capture | Per episode |
+| Stok $S_i$ | Jumlah koneksi lama per *connection mark* | Tabel conntrack/API | Router | 30 s |
+| Aliran $F_i$ | Koneksi baru per link | Log pembentukan koneksi | Controller | 10 s |
+| Beban efektif $L_i$ | $(S_i+F_i)/\sum(S+F)$ | Dihitung | Controller | Per episode |
+| ELS | $\frac{1}{2}\sum|L_i-T_i|$ | Dihitung | Controller | Per episode |
+| Time-to-rebalance | Waktu ELS ≤ ε | Dihitung | Controller | Per episode |
+| Session retention | Proporsi koneksi lama tetap | Conntrack + capture | Controller/LAN | Per episode |
 | Retransmisi | Paket TCP retransmit | `tcpdump`/Wireshark | LAN capture | Kontinu |
 | Starlink telemetry | Latency, drop, obstruction | gRPC dish (jika tersedia) | Dish | 1 s |
 | Cuaca | Curah hujan | Stasiun cuaca/BMKG | Lokasi | 10 menit |
@@ -159,7 +165,7 @@ Satu baris per sampel skoring:
 | Kolom | Tipe | Keterangan |
 |---|---|---|
 | `timestamp` | ISO 8601 | NTP tersinkron |
-| `scenario` | string | A–G |
+| `scenario` | string | A–H |
 | `run_id` | string | blok + urutan |
 | `link_id` | string | FO/LEO |
 | `rtt_ms` | float | — |
@@ -170,9 +176,14 @@ Satu baris per sampel skoring:
 | `utilization` | float | 0–1 |
 | `q_score` | float | 0–1 |
 | `state` | string | STABLE/DEGRADED |
-| `ratio_target` | float | — |
+| `ratio_target` | float | $T_i$ |
+| `ratio_applied` | float | $W_i$ |
 | `bucket` | int | — |
 | `rule_change` | bool | — |
+| `stock_conn` | int | $S_i$ (koneksi lama) |
+| `new_conn` | int | $F_i$ (koneksi baru) |
+| `effective_share` | float | $L_i$ |
+| `els` | float | — |
 | `rst_count` | int | kumulatif per interval |
 | `tcp_pkt_count` | int | — |
 | `flow_count` | int | — |
@@ -195,6 +206,9 @@ Satu baris per episode:
 | `latency_p95_ms` | float |
 | `rst_flow_pct` | float |
 | `siwg` | float |
+| `els_final` | float |
+| `time_to_rebalance_s` | float |
+| `session_retention_pct` | float |
 | `source` | string |
 
 ---

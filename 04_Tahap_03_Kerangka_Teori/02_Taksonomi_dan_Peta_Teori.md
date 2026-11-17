@@ -13,7 +13,7 @@ benar-benar baru?"
 |---|---|---|---|
 | **L1 — Fondasi** | QoS, pengukuran jaringan, karakteristik FO/LEO, TCP/conntrack | Diterima dari literatur | ETSI, ITU-T, RFC, Ma et al. (2023), Mohan et al. (2024) |
 | **L2 — Metode** | PCC, MCDM/SAW, EWMA, histeresis | Diterima dan diadaptasi | MikroTik, Vafaei et al. (2021), Roberts (1959), Tournaire et al. (2023) |
-| **L3 — Integrasi** | SPA-HSM, aturan dwell sadar-transien, pemetaan skor→bucket, SIWG | **Diformulasikan dalam penelitian ini** | Proposisi 1–2, definisi SIWG |
+| **L3 — Modifikasi** | SPA-HSM; alokasi *stock-flow aware*; preservasi sesi; SIWG/ELS | **Dimodifikasi dalam penelitian ini** | Proposisi 1–2, definisi SIWG/ELS |
 | **L4 — Evaluasi** | Ablasi faktorial, statistik campuran, effect size | Diterima dari metodologi | Cohen (1988), Holm (1979), Liang & Zeger (1986) |
 
 **Aturan atribusi:** L1 dan L2 tidak diklaim sebagai kebaruan. L3 adalah klaim
@@ -38,7 +38,8 @@ utama. L4 adalah alat, bukan kontribusi.
 | *Offloading controller* | Ali et al. (2025); Wang & Kuo (2013) | Arsitektur kontrol eksternal | Diterima |
 | **Aturan dwell sadar-transien** | **Proposisi 1 penelitian ini** | **Menurunkan $k_{down}$ dari $T_{tr}$** | **Baru (L3)** |
 | **Pemetaan skor→bucket** | **Formalisasi penelitian ini** | **Menjembatani kontinu–diskret** | **Baru (L3)** |
-| **SIWG** | **Definisi penelitian ini** | **Mengukur trade-off stabilitas–kontinuitas** | **Baru (L3)** |
+| **Alokasi stock-flow aware** | **Modifikasi penelitian ini** | **Memisahkan $S_i$ dan $F_i$ dalam keputusan** | **Baru (L3)** |
+| **SIWG + ELS + time-to-rebalance** | **Definisi penelitian ini** | **Mengukur trade-off dan rebalance** | **Baru (L3)** |
 | Statistik campuran | Liang & Zeger (1986); McCullagh & Nelder (1989) | Analisis data berulang/cacat | Diterima |
 | *Effect size* dan koreksi | Cohen (1988); Holm (1979) | Pelaporan hasil | Diterima |
 
@@ -52,7 +53,11 @@ utama. L4 adalah alat, bukan kontribusi.
 | Derau metrik | Variasi cepat yang tidak bertahan | $\alpha$, $N_{eff}$ | Varians skor | RQ1 |
 | Stabilitas keputusan | Kecenderungan keputusan berbalik arah | Mode histeresis, $k_{down}, k_{up}$ | Flapping rate | H1, H2 |
 | Kecepatan pemulihan | Waktu kembali ke state stabil | $k_{up}$, $\theta_{high}$ | Recovery latency p95 | H1, H2 |
-| Kontinuitas sesi | Kemampuan mempertahankan sesi berjalan | `AFFINITY_LOCK`, conntrack | RST flow/packet | H3a |
+| Kontinuitas sesi | Kemampuan mempertahankan sesi berjalan | `AFFINITY_LOCK`, conntrack | RST flow/packet, session retention | H3a |
+| Stok koneksi | Koneksi lama yang tidak dapat dipindahkan | $S_i(t)$ | Jumlah koneksi lama per link | H3c |
+| Aliran koneksi baru | Koneksi baru yang dapat diarahkan | $F_i(t)$ | Laju koneksi baru per link | H3c |
+| Beban efektif | Pangsa stok + aliran | $L_i(t)$ | ELS | H3c |
+| Kecepatan rebalance | Waktu menuju alokasi efektif | $\kappa$, $W_{\min}, W_{\max}$ | Time-to-rebalance | H3c |
 | Kinerja agregat | Laju dan kualitas data efektif | Rasio bucket | Goodput, latency p95 | H3b |
 | Trade-off gabungan | Kinerja setelah dikurangi biaya gangguan sesi | $\lambda$, SIWG | SIWG | H4 |
 | Portabilitas inti | Kemandirian logika dari platform | Kontrak antarmuka | % keputusan identik | H5 |
@@ -115,9 +120,15 @@ utama. L4 adalah alat, bukan kontribusi.
 ```
 
 **Pembacaan:** setiap kotak adalah konstruk yang diukur; setiap panah adalah
-mekanisme yang diuji. Hipotesis H1–H2 menguji panah histeresis→flapping/recovery;
-H3a menguji panah aturan→sesi; H3b menguji panah agregat; H4 menguji keseluruhan;
-H5 menguji kemandirian inti dari adapter.
+mekanisme yang diuji. H1–H2 menguji panah histeresis→flapping/recovery;
+H3a menguji panah aturan→sesi; H3b menguji panah agregat; **H3c menguji panah
+stok koneksi lama→keputusan alokasi**; H4 menguji keseluruhan; H5 menguji
+kemandirian inti dari adapter.
+
+**Stok koneksi lama sebagai state tambahan.** Selain jalur kualitas, terdapat
+jalur dari *conntrack* ke evaluasi alokasi: $S_i(t)$ tidak dapat dipindahkan,
+sehingga controller harus menghitung $L_i(t)$ dan mengoreksi $W_i(t)$. Inilah
+objek yang diuji oleh H3c.
 
 ---
 

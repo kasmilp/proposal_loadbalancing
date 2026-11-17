@@ -65,7 +65,11 @@ dan apa yang masih harus diverifikasi.
 | C43 | Handover Starlink 15 detik menyebabkan bursty loss; StarTCP menahan transmisi | Jiang et al. (2024) | Workshop | Sedang | Siap | Abstrak |
 | C44 | Scheduler MPTCP memiliki parameter load balancing yang diinventarisasi | Naimi et al. (2024) | Judul | Lemah | Siap (terbatas) | Hanya judul; jangan klaim detail |
 | C45 | SD-WAN menggunakan kemampuan load balancing untuk koneksi WAN | Rajagopalan (2020) | Overview | Sedang | Siap | Abstrak |
-| C46 | Adaptive threshold digunakan untuk menentukan sel overload pada jaringan satelit-terestrial | Shahid et al. (2020) | Studi simulasi | Sedang–kuat | Siap | Abstrak; belum diterjemahkan ke PCC |
+| C46 | Adaptive threshold digunakan untuk menentukan sel overload pada jaringan satelit-terestrial | Shahid et al. (2020) | Studi simulasi | Sedang-kuat | Siap | Abstrak; belum diterjemahkan ke PCC |
+| C47 | Alokasi berbasis kualitas saja tidak menurunkan beban efektif jika stok koneksi lama tinggi | Analisis penelitian ini | Inferensi/desain | Sedang | Desain | Nyatakan sebagai argumen, bukan temuan literatur |
+| C48 | ELS = ½ Σ|L_i − T_i| mengukur selisih beban efektif terhadap target | Definisi penelitian ini | Desain | — | Desain | Uji sensitivitas ambang |
+| C49 | Time-to-rebalance mengukur kecepatan pemulihan alokasi efektif | Definisi penelitian ini | Desain | — | Desain | Laporkan p50/p95 |
+| C50 | Session retention mengukur proporsi koneksi lama yang tetap di jalurnya | Definisi penelitian ini | Desain | — | Desain | Validasi dengan log conntrack |
 
 ---
 
@@ -79,8 +83,8 @@ dan apa yang masih harus diverifikasi.
 | Verifikasi halaman | 0 | — |
 | Perlu sumber | 0 | — |
 | Inferensi | 2 | Nyatakan sebagai penalaran desain (C33, C34) |
-| Desain | 5 | Nyatakan sebagai klaim penelitian, bukan literatur |
-| **Total** | **46** | |
+| Desain | 9 | Nyatakan sebagai klaim penelitian, bukan literatur |
+| **Total** | **50** | |
 
 ---
 

@@ -127,18 +127,20 @@ $\lambda \in \{0{,}25;\ 0{,}5;\ 1{,}0\}$.
 
 ### 3.4.1 Kondisi eksperimen
 
-| Kondisi | Histeresis | $k_{up}$ | Affinity | Peran |
-|---|---|:---:|---|---|
-| A | Tidak ada (statis 50:50) | — | — | Baseline statis |
-| B | Tidak ada (dinamis) | — | Off | *Dynamic naive* |
-| C | Simetris | 20 | Off | Isolasi bentuk histeresis |
-| D | Asimetris | 60 | Off | Isolasi asimetri waktu |
-| E | Simetris | 20 | On | Affinity pada simetris |
-| F | Asimetris | 60 | On | **SPA-HSM (usulan)** |
-| G | Tidak ada | — | — | Baseline praktisi `netwatch` |
+| Kondisi | Alokasi | Histeresis | $k_{up}$ | Affinity | Peran |
+|---|---|---|---|:---:|---|
+| A | Statis 50:50 | Tidak ada | — | — | Baseline statis |
+| B | Kualitas saja | Tidak ada | — | Off | *Dynamic naive* |
+| C | Kualitas saja | Simetris | 20 | Off | Isolasi bentuk histeresis |
+| D | Kualitas saja | Asimetris | 60 | Off | Isolasi asimetri waktu |
+| E | Kualitas saja | Simetris | 20 | On | Affinity pada simetris |
+| F | Kualitas saja | Asimetris | 60 | On | Proposed tanpa stock |
+| G | Statis + `netwatch` | — | — | — | Baseline praktisi |
+| **H** | **Stock-flow aware** | **Asimetris** | **60** | **On** | **Proposed utama** |
 
-Enam kondisi pertama membentuk **faktorial 2×2** (simetris/asimetris × affinity
-off/on) ditambah dua pembanding (A dan B) serta satu baseline praktisi (G).
+Tujuh kondisi inti (A–G) ditambah kondisi H (*stock-aware*) membentuk
+**faktorial 2×2** (simetris/asimetris × affinity off/on) ditambah dua pembanding
+(A dan B), satu baseline praktisi (G), dan satu kondisi *stock-aware* (H).
 Kombinasi "tanpa histeresis + affinity on" tidak dijalankan; interaksi tersebut
 diakui sebagai keterbatasan.
 
@@ -155,6 +157,8 @@ Parameter yang dipertahankan sama:
 | $N$ | 20 bucket |
 | $b_{min}$ / $b_{max}$ | 3 / 17 |
 | $T_{max}$ | 10 menit |
+| $\kappa$ | 0 / 0,5 / 1,0 |
+| $W_{\min}/W_{\max}$ | 0,15 / 0,85 |
 
 ### 3.4.2 Perbandingan kunci
 
@@ -163,8 +167,9 @@ Parameter yang dipertahankan sama:
 | H1 | B vs C; B vs D | Kehadiran histeresis (affinity off) |
 | H2 | C vs D; E vs F | Simetris vs asimetris |
 | H3a | C vs E; D vs F; F vs A | Affinity (histeresis tetap) |
-| H3b | F vs A; F vs G | Sistem usulan vs baseline |
-| H4 | F vs semua kondisi | Efek gabungan |
+| H3b | H vs A; H vs G | Sistem usulan vs baseline |
+| **H3c** | **H vs F** | **Koreksi stock-flow** |
+| H4 | H vs semua kondisi | Efek gabungan |
 | H5 | Dua adapter | Platform |
 
 H1 sengaja hanya membandingkan B dengan C dan D karena ketiganya memakai affinity
@@ -173,7 +178,7 @@ dilaporkan sebagai efek gabungan untuk H4.
 
 ### 3.4.3 Urutan, counterbalancing, dan washout
 
-Urutan kondisi diatur dengan **Latin square** 7×7 dan diulang 3–4 blok. Setiap
+Urutan kondisi diatur dengan **Latin square** 8×8 dan diulang 3–4 blok. Setiap
 kondisi diuji pada dua jendela waktu: jam sibuk (19.00–23.00) dan jam rendah
 (01.00–05.00). Antar-kondisi diberi washout minimal 10 menit, diikuti verifikasi
 bahwa tidak ada aturan atau entri *conntrack* yang tersisa.
@@ -248,15 +253,30 @@ Headroom dihitung dari utilisasi SNMP:
 
 $$H_i(t) = \max(\varepsilon, 1 - u_i(t))$$
 
-Saat kedua link `STABLE`:
+Target kualitas untuk koneksi baru:
 
-$$W_i(t) = \frac{Q_i(t) H_i(t)}{\sum_k Q_k(t) H_k(t)}$$
+$$T_i(t) = \frac{Q_i(t) H_i(t)}{\sum_k Q_k(t) H_k(t)}$$
+
+Koreksi *stock-flow*:
+
+$$W_i(t)=\text{clip}\left(T_i(t)+\kappa\left(T_i(t)-\frac{S_i(t)}{\sum_k S_k(t)}\right),\;W_{\min},\;W_{\max}\right)$$
+
+dengan $S_i(t)$ adalah stok koneksi lama di link $i$ dan $\kappa$ adalah gain
+koreksi. Jika stok lama melebihi target, alokasi koneksi baru dikurangi; jika
+stok lama di bawah target, alokasi ditambah.
+
+**Metrik rebalance:**
+
+$$\text{ELS}(t)=\frac{1}{2}\sum_i \left|L_i(t)-T_i(t)\right|, \qquad L_i(t)=\frac{S_i(t)+F_i(t)}{\sum_k(S_k(t)+F_k(t))}$$
+
+*Time-to-rebalance* adalah waktu hingga $\text{ELS}(t) \le \varepsilon$ setelah
+degradasi.
 
 Saat salah satu `DEGRADED`, rasio mengikuti tabel state:
 
 | FO | LEO | $W_{FO}$ | $W_{LEO}$ |
 |---|---|---:|---:|
-| STABLE | STABLE | $QH$-based | $QH$-based |
+| STABLE | STABLE | $W_i$ stock-flow | $W_i$ stock-flow |
 | DEGRADED | STABLE | 0,15 | 0,85 |
 | STABLE | DEGRADED | 0,85 | 0,15 |
 | DEGRADED | DEGRADED | 0,50 | 0,50 |
@@ -340,6 +360,10 @@ loop every Ts:
 | Utilisasi | SNMP `ifHCInOctets` | Router | 10 detik |
 | Skor dan state | *Algorithm Core* | Controller | 1 detik |
 | RST dan retransmisi | `tcpdump`/Wireshark | LAN capture | Kontinu |
+| Stok $S_i$ | Tabel conntrack/API per *mark* | Router | 30 detik |
+| Aliran $F_i$ | Log koneksi baru | Controller | 10 detik |
+| ELS dan time-to-rebalance | Dihitung dari $S_i,F_i,T_i$ | Controller | Per episode |
+| Session retention | Conntrack + capture | Controller/LAN | Per episode |
 | Telemetri Starlink | gRPC dish (jika tersedia) | Dish | 1 detik |
 | Cuaca | Stasiun cuaca/BMKG | Lokasi | 10 menit |
 
@@ -379,9 +403,11 @@ Episode tanpa aliran TCP dikeluarkan dari H3a tetapi tetap masuk H3b.
 
 Data disimpan dalam dua tingkat: sampel skoring (1 detik) dan ringkasan episode.
 Kolom wajib mencakup `timestamp`, `scenario`, `run_id`, `link_id`, metrik mentah,
-`q_score`, `state`, `bucket`, `rule_change`, counter RST, `rain_mm`, `source`, dan
-`notes`. Ringkasan episode mencakup `flaps`, `recovery_s`, `goodput_mbps`,
-`latency_p95_ms`, `rst_flow_pct`, dan `siwg`.
+`q_score`, `state`, `ratio_target`, `ratio_applied`, `bucket`, `rule_change`,
+`stock_conn`, `new_conn`, `effective_share`, `els`, counter RST, `rain_mm`,
+`source`, dan `notes`. Ringkasan episode mencakup `flaps`, `recovery_s`,
+`goodput_mbps`, `latency_p95_ms`, `rst_flow_pct`, `siwg`, `els_final`,
+`time_to_rebalance_s`, dan `session_retention_pct`.
 
 ---
 
@@ -435,8 +461,8 @@ mengimpor checkpoint, memverifikasi aturan dan rute, lalu menguji konektivitas.
 
 | Jenis | Outcome |
 |---|---|
-| Primer | *Flapping rate*, RST flow, *goodput*, SIWG |
-| Sekunder | *Recovery latency* p95, RST packet, latensi p95, jitter, loss, overhead, fairness |
+| Primer | *Flapping rate*, RST flow, *goodput*, SIWG, **ELS** |
+| Sekunder | *Recovery latency* p95, RST packet, latensi p95, jitter, loss, **time-to-rebalance**, **session retention**, overhead, fairness |
 
 ### 3.8.2 Unit analisis
 
@@ -451,6 +477,7 @@ tidak diperlakukan sebagai observasi independen.
 | H1, H2 | *Negative binomial* campuran dengan *offset* jam | IRR + 95% CI |
 | H3a | Logistik campuran level aliran; beta level episode | Selisih pp + 95% CI |
 | H3b | LMM pada log(goodput) dan log(latency p95) | Rasio + 95% CI |
+| **H3c** | LMM pada ELS/log(TTR); beta/logistik untuk RST dan retention | Rasio/selisih + 95% CI |
 | H4 | LMM pada SIWG | Rasio + 95% CI |
 | H5 | Uji konformitas dan kesamaan urutan | Persentase identik |
 
@@ -460,7 +487,7 @@ residual, dan autokorelasi.
 
 ### 3.8.4 Koreksi dan kekuatan uji
 
-Koreksi **Holm–Bonferroni** diterapkan pada keluarga H1–H4. H5 dilaporkan
+Koreksi **Holm–Bonferroni** diterapkan pada keluarga H1–H4 dan H3c. H5 dilaporkan
 terpisah. *Power* final dihitung setelah pilot; jika target episode tidak
 tercapai, hasil dilaporkan dengan interval kepercayaan dan presisi, bukan sebagai
 "tidak ada efek".
@@ -518,16 +545,16 @@ Risiko utama dan mitigasinya:
 |---:|---|---|
 | 1–2 | Finalisasi desain dan kontrak antarmuka | Spesifikasi dan mock |
 | 3–4 | Pilot dan kalibrasi | Laporan pilot |
-| 5–6 | Replay staging | Dataset staging |
+| 5–6 | Replay staging A–H | Dataset staging |
 | 7 | Perbaikan parameter | Parameter final |
-| 8–13 | Kampanye lapangan | Dataset lapangan |
-| 14 | Pembersihan dan audit data | Dataset bersih |
-| 15–17 | Analisis statistik | Tabel hasil |
-| 18–19 | Penulisan Bab IV–V | Draf hasil |
-| 20 | Konsolidasi dan format | Naskah siap seminar |
+| 8–14 | Kampanye lapangan | Dataset lapangan |
+| 15 | Pembersihan dan audit data | Dataset bersih |
+| 16–18 | Analisis statistik | Tabel hasil |
+| 19–20 | Penulisan Bab IV–V | Draf hasil |
+| 21–22 | Konsolidasi dan format | Naskah siap seminar |
 
 Sediakan penyangga 2 minggu untuk cuaca, gangguan, dan revisi. Jika penyangga
-habis, cakupan diturunkan ke A, B, D, F dan dicatat sebagai penyimpangan.
+habis, cakupan diturunkan ke A, B, D, F, H dan dicatat sebagai penyimpangan.
 
 ---
 
@@ -555,7 +582,9 @@ skrip, dan data teranonimisasi.
 2. Hanya satu adapter nyata (MikroTik); portabilitas diuji melalui kontrak, bukan
    lintas vendor.
 3. Hanya dua ISP; generalisasi multi-ISP tidak diklaim.
-4. Interaksi "tanpa histeresis × affinity" tidak diuji karena desain 2×2 + pembanding.
+4. Interaksi "tanpa histeresis × affinity" tidak diuji karena desain 2×2 + pembanding + H.
 5. SIWG adalah metrik pembanding internal, bukan standar industri.
 6. Data lapangan mengandung *confounder*; klaim kausal utama berasal dari staging.
 7. QoE dan kepuasan pengguna tidak diukur.
+8. Stok $S_i$ bergantung pada keterbacaan tabel conntrack; estimasi dapat bias.
+9. Kondisi H menambah beban; jika waktu ketat, diuji di staging + subset lapangan.

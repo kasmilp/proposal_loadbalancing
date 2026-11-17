@@ -59,6 +59,27 @@ perlindungan sesi benar-benar bekerja atau hanya kebetulan karena beban uji rend
 
 ---
 
+### G-E2 — Akumulasi stok koneksi lama di link yang memburuk belum diukur
+
+**Yang sudah diketahui.** PCC bersifat *session-oriented*: koneksi lama
+mempertahankan *connection mark* dan jalurnya, sedangkan perubahan aturan terutama
+memengaruhi koneksi baru (MikroTik, n.d.).
+
+**Yang belum ada.** Belum ada studi yang mengukur **distribusi koneksi lama** pada
+setiap link setelah degradasi, apalagi yang menghubungkannya dengan pangsa beban
+efektif. Studi PCC yang ada melaporkan QoS agregat atau RST, tetapi tidak
+melaporkan berapa banyak koneksi yang masih “tertahan” di link yang sedang buruk.
+
+**Konsekuensi.** Controller dapat mengira telah menggeser trafik karena rasio
+koneksi baru berubah, padahal beban efektif pada link yang memburuk masih tinggi
+akibat stok koneksi lama. Tanpa metrik ini, klaim “adaptif” tidak dapat dibuktikan.
+
+**Jenis:** G-E, diperkuat G-M.
+**Tingkat keyakinan:** tinggi — dapat diukur dari tabel *conntrack* per
+*connection mark*.
+
+---
+
 ### G-M1 — Histeresis pada literatur kontrol tidak diturunkan dari dinamika link LEO
 
 **Yang sudah diketahui.** Histeresis dua ambang mencegah osilasi keputusan, dan
@@ -98,6 +119,27 @@ hasil antar-penelitian tidak dapat dibandingkan.
 
 **Jenis:** G-M.
 **Tingkat keyakinan:** sedang–tinggi.
+
+---
+
+### G-M3 — Kebijakan alokasi belum mempertimbangkan stok koneksi lama dan aliran koneksi baru
+
+**Yang sudah diketahui.** Literatur *load balancing* menghitung alokasi dari
+kondisi link saat ini (Kumar & Golash, 2009; Amalia et al., 2022; Nugroho et al.,
+2023). Literatur SD-WAN/DRL mengalokasikan *flow* pada level *overlay* (Cruvellier
+et al., 2025; Giacometti et al., 2025).
+
+**Yang belum ada.** Belum ada kebijakan alokasi pada level PCC yang secara
+eksplisit memisahkan **stok koneksi lama** $S_i(t)$ dan **aliran koneksi baru**
+$F_i(t)$, lalu menghitung persentase koneksi baru berdasarkan keduanya.
+
+**Konsekuensi.** Alokasi “dinamis” yang hanya berbasis kualitas saat ini dapat
+gagal menurunkan beban efektif di link yang memburuk, karena koneksi lama tidak
+ikut berpindah. Diperlukan kebijakan *stock-flow aware* dan metrik seperti
+*effective load skew* serta *time-to-rebalance*.
+
+**Jenis:** G-M utama.
+**Tingkat keyakinan:** tinggi — dapat diuji dengan simulasi dan data *conntrack*.
 
 ---
 
@@ -163,11 +205,12 @@ lintas platform.
 > literatur telah menyediakan metode skor multi-kriteria serta mekanisme histeresis
 > secara terpisah, belum ada studi yang (i) menurunkan parameter histeresis dari
 > durasi transien link LEO yang terukur, (ii) memformalkan pemetaan skor kualitas
-> kontinu menjadi proporsi PCC diskret, dan (iii) mengukur dampak perubahan rasio
-> terhadap integritas sesi TCP melalui ablasi terkontrol pada WAN heterogen FO–LEO.
-> Akibatnya, praktisi tidak memiliki dasar kuantitatif untuk memilih parameter
-> histeresis dan tidak dapat mengetahui apakah mekanisme preservasi sesi benar-benar
-> bekerja atau hanya diasumsikan.
+> kontinu menjadi proporsi PCC diskret, (iii) mengukur dampak perubahan rasio
+> terhadap integritas sesi TCP, dan (iv) mempertimbangkan **stok koneksi lama**
+> yang tetap menempati link yang memburuk dalam perhitungan alokasi. Akibatnya,
+> controller dapat mengubah rasio koneksi baru tanpa menurunkan beban efektif pada
+> link yang memburuk, dan praktisi tidak memiliki dasar kuantitatif untuk menilai
+> apakah mekanisme adaptif benar-benar bekerja.
 
 Paragraf ini yang akan menjadi **inti 1.1 dan 1.2.10** pada naskah proposal.
 
@@ -215,13 +258,16 @@ kombinasi string di atas dijalankan dan hasilnya didokumentasikan.
 
 | Gap | Jenis | Kekuatan sebagai novelty | Peran dalam proposal |
 |---|---|---|---|
-| G-E1: RST/sesi belum diukur | Evidence | Tinggi | Kontribusi empiris utama (H2a) |
-| G-M1: dwell histeresis tidak berbasis transien LEO | Method | Tinggi | Kontribusi konseptual/metodologis (H1) |
-| G-M2: skor kontinu → bucket diskret | Method | Sedang–tinggi | Kontribusi formalisasi |
+| G-M3: alokasi belum *stock-flow aware* | Method | **Tinggi** | **Kontribusi utama (H3c)** |
+| G-E2: stok koneksi lama belum diukur | Evidence | **Tinggi** | **Kontribusi empiris utama (H3c)** |
+| G-E1: RST/sesi belum diukur | Evidence | Tinggi | Pendukung (H3a) |
+| G-M1: dwell histeresis tidak berbasis transien LEO | Method | Tinggi | Pendukung (H1/H2) |
+| G-M2: skor kontinu → bucket diskret | Method | Sedang–tinggi | Formalisasi pendukung |
 | G-I1: integrasi empat komponen | Integration | Sedang | Payung sistem, bukan novelty tunggal |
-| G-C1: konteks FO–LEO lapangan | Context | Sedang | Validitas eksternal (K4) |
-| G-C2: portabilitas platform | Context | Rendah–sedang | Kontribusi rekayasa (H3), jangan dilebihkan |
+| G-C1: konteks FO–LEO lapangan | Context | Sedang | Validitas eksternal |
+| G-C2: portabilitas platform | Context | Rendah–sedang | Rekayasa pendukung |
 
-**Keputusan Tahap 1:** novelty utama harus bertumpu pada **G-M1 + G-E1**, dengan
-G-I1 sebagai kerangka sistem. Jika hanya G-I1 yang ditonjolkan, proposal berisiko
+**Keputusan Tahap 1:** novelty utama bertumpu pada **G-M3 + G-E2**—
+kebijakan alokasi *stock-flow aware* dan pengukuran stok koneksi lama. G-M1, G-E1,
+dan G-M2 menjadi pendukung. Jika hanya G-I1 yang ditonjolkan, proposal berisiko
 dinilai inkremental.

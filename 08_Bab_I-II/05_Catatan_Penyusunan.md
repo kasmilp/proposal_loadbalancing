@@ -10,27 +10,31 @@ diselesaikan.
 
 | Aspek | Draf lama (arsip) | Draf baru |
 |---|---|---|
-| Judul | Menonjolkan PCC MikroTik | Menonjolkan SPA-HSM dan WAN FO–LEO |
+| Judul | Menonjolkan PCC MikroTik | Mekanisme kontrol adaptif sadar-sesi pada FO–LEO |
 | Nama algoritma | ALQI/TLABA bercampur | Hanya SPA-HSM |
-| Jumlah skenario | 8 (A–H) | 7 kondisi (A–G) |
-| Desain | Diklaim 3×2 | 2×2 + dua pembanding + baseline G |
+| Posisi kontribusi | Merancang kontroler | **Memodifikasi fungsi kontrol di atas kapabilitas platform** |
+| Novelty utama | PCC dinamis / integrasi | **Alokasi stock-flow aware + preservasi sesi** |
+| Jumlah skenario | 8 (A–H) | 8 kondisi (A–H), termasuk kondisi stock-aware H |
+| Desain | Diklaim 3×2 | 2×2 + dua pembanding + baseline G + H |
 | Batas recovery | 60 detik | 90 detik |
 | H3a | Dua syarat setara | Primer non-inferior; sekunder <1% |
-| Metrik gabungan | Belum ada | SIWG |
+| Metrik gabungan | Belum ada | SIWG + ELS + time-to-rebalance + session retention |
 | Kualitas referensi | Campur | Tier T1/T2/T3; T3 hanya konteks |
-| Bab II | Belum ada | Draf lengkap dengan peta teori |
+| Bab II | Belum ada | Draf lengkap dengan peta teori dan stock-flow |
 | Bab III | Belum ada | Draf lengkap dengan formalisasi dan statistik |
-| Posisi MikroTik | Ambigu | Adapter/testbed, bukan objek |
+| Posisi MikroTik | Ambigu | Aktuator/testbed, bukan objek atau novelty |
 
 ---
 
 ## 2. Kekuatan Draf Sekarang
 
 1. Rantai RQ → tujuan → hipotesis → metrik → uji tersambung.
-2. Tiga novelty eksplisit: aturan *dwell*, pemetaan bucket, SIWG + ablasi.
-3. Angka dan istilah konsisten di Bab I–III.
-4. Batas klaim jujur: satu adapter, dua ISP, QoS bukan QoE.
-5. Ada rencana statistik dan protokol keselamatan.
+2. Novelty utama eksplisit: **alokasi stock-flow aware** dan **preservasi sesi
+   sebagai batasan**, didukung ablasi A–H.
+3. Angka dan istilah konsisten di Bab I–III (δ, κ, ELS, TTR).
+4. Batas klaim jujur: satu adapter, dua ISP, QoS bukan QoE, tidak mengklaim
+   kontroler dasar sudah beroperasi.
+5. Ada rencana statistik, pengukuran stok, dan protokol keselamatan.
 
 ---
 

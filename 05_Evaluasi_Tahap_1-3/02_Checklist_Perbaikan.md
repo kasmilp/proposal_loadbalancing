@@ -165,17 +165,54 @@ Jiang et al. (2024), dan Naimi et al. (2024) masuk ke Bab II 2.8.1. Naimi et al.
 
 ---
 
+### [ ] P-06 — Pencarian literatur *stock-flow/session-aware allocation*
+
+**Langkah:**
+1. Jalankan query S8: `("stock-flow" OR "session-aware") AND ("load balancing" OR "allocation") AND network`.
+2. Cari juga literatur kontrol antrean/stock-flow dan SDN session-aware.
+3. Catat hit dan kandidat.
+
+**Kriteria selesai:** klaim G-M3/G-E2 punya pembanding literatur atau dinyatakan
+sebagai gap yang belum ditemukan.
+
+**Perkiraan:** 1 hari.
+
+---
+
+### [ ] P-07 — Finalisasi H3c dan kondisi H
+
+**Langkah:**
+1. Tetapkan definisi ELS, time-to-rebalance, session retention.
+2. Tetapkan $\kappa$ dan sensitivitasnya.
+3. Pastikan desain A–H dan protokol pengukuran stok konsisten.
+
+**Kriteria selesai:** H3c dan kondisi H muncul di Bab I, II, III, dan PPT.
+
+---
+
+### [ ] P-08 — Perbarui judul, abstrak, dan kebijakan bahasa
+
+**Langkah:**
+1. Pakai judul kerja baru.
+2. Ganti kata “merancang/menciptakan/membangun dari nol” dengan “memodifikasi”.
+3. Pastikan tidak ada klaim “kontroler dasar sudah beroperasi”.
+
+**Kriteria selesai:** seluruh 01–12 konsisten dengan kebijakan bahasa.
+
+---
+
 ## C. PEMBERSIHAN — sebelum naskah final
 
 | ID | Item | Tindakan | Status |
 |---|---|---|---|
 | C-01 | §2.1 "Posisi Bab II" bersifat meta | Ganti menjadi "Kerangka Umum" | [ ] |
 | C-02 | "Flapping rate" vs "flap per jam" | Definisikan sekali di 2.7, gunakan konsisten | [ ] |
-| C-03 | RQ5 ditandai opsional | Tulis "lima sub-RQ, RQ5 opsional" di semua tempat | [ ] |
+| C-03 | RQ ditandai opsional | Tulis "enam sub-RQ" di semua tempat | [ ] |
 | C-04 | `AFFINITY_LOCK` vs "affinity lock" | Kode untuk teknis, prosa untuk narasi | [ ] |
 | C-05 | Penanda **[verifikasi]** | Hanya di dokumen kerja, hilang di naskah | [ ] |
 | C-06 | Gaya sitasi (D-10) | Konfirmasi manual ke pedoman kampus | [ ] |
 | C-07 | Referensi T3 | Pastikan hanya dipakai untuk konteks | [ ] |
+| C-08 | Kata kerja kontribusi | Gunakan “memodifikasi”, bukan “merancang/menciptakan” | [ ] |
 
 ---
 
