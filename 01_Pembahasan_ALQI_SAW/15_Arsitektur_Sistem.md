@@ -45,96 +45,88 @@ kolektor, agar tidak ada dua sistem label. Alias "WAN1/2/3" tidak dipakai lagi.
 
 ## 3. Diagram Blok
 
+**Gambar:** `arsitektur/arsitektur_ALQI_SAW.png` (vektor: `.svg`); skrip:
+`arsitektur/arsitektur_ALQI_SAW.py`. Diagram berikut **sinkron** dengan gambar
+tersebut (frame *Server Controller*, alur stok $S_i$, korelasi antar-LEO,
+kanal baca vs tulis, dan legenda lapisan L0–L7).
+
 ### 3.1 Mermaid
 
 ```mermaid
 flowchart TB
-  subgraph L0["Data plane — tri-link"]
+  subgraph L0["Data plane (L0)"]
     A["ether1-ISP-A · Starlink LEO-1"]
     B["ether2-ISP-B · Starlink LEO-2"]
     C["ether3-ISP-C · FO IndiHome"]
   end
 
-  subgraph R["Router RB1100AHx4"]
+  subgraph RB["Router RB1100AHx4 — Aktuator (L0)"]
     MGL["Mangle &amp; PCC + connection mark"]
-    CTR["conntrack — stok koneksi S_i"]
+    CTR["conntrack — stok S_i"]
     PING["/ping interface= (probe di router)"]
-    API["API-SSL (librouteros)"]
-    MGL --- CTR --- PING
+    API["API-SSL service"]
+    NAT["NAT masquerade per WAN"]
   end
 
-  subgraph K["Kolektor Baseline (read-only) — collector.py"]
-    COL["Snapshot /print + probe /ping"]
-    JSONL[("JSONL: ts_utc · site · router · kind · data")]
+  subgraph CTL["Server Controller (out-of-band)"]
+    COL["L1 · Kolektor collector.py — read-only<br/>/print + /ping → JSONL"]
+    ANP["L2 · analyze_periodicity<br/>FFT · ACF 15s · korelasi antar-WAN"]
+    EW["L3 · EWMA → Normalisasi (batas tetap) → Bobot (γ)"]
+    QI["L3 · Skor Q_i(t) — 3 link (0–100)"]
+    HG["L4 · Gerbang histeresis + state machine (8 state)"]
+    AL["L4 · Alokasi &amp; bucket mapping 3 link"]
+    ADP["L5 · Adapter: MikroTik / mock"]
   end
 
-  subgraph AN["Analisis (opsional, sudah ada)"]
-    ANB["analyze_baseline.py"]
-    ANP["analyze_periodicity.py · FFT · ACF 15s · korelasi antar-WAN"]
-  end
-
-  subgraph E["Scoring & Decision Engine (baru)"]
-    EW["EWMA → Normalisasi (batas tetap) → Bobot (γ)"]
-    QI["Q_i(t) · 3 link (0–100)"]
-    HG["Gerbang histeresis + state machine (8 state)"]
-    AL["Alokasi &amp; bucket mapping 3 link"]
-  end
-
-  DB[("Time-series store + audit + versioning")]
-  ADP{"Adapter: MikroTik / mock"}
-  OBS["Observability: fail-static · watchdog · rollback"]
+  DB[("L6 · Time-series store + audit + versioning")]
+  OBS["L7 · Observability: fail-static · watchdog · rollback"]
 
   A --> MGL
   B --> MGL
   C --> MGL
-  PING --> COL
-  API --> COL
-  COL --> JSONL
-  JSONL --> AN
-  JSONL --> EW --> QI --> HG --> AL
-  AL --> ADP
-  ADP --> API
-  JSONL --> DB
-  QI --> DB
-  HG --> DB
-  ANP -. korelasi LEO A–B .-> HG
-  E --- OBS
-  R --- OBS
+  API -->|GET /print + /ping (read-only)| COL
+  CTR -. connection_stock (S_i) .-> COL
+  COL --> ANP
+  COL --> EW --> QI --> HG --> AL --> ADP
+  ADP -->|write: apply / verify (akun terpisah)| API
+  ANP -. korelasi A–B .-> HG
+  COL -. raw JSONL .-> DB
+  HG -. Q / status / rasio .-> DB
+  OBS -. rollback .-> ADP
+  DB -. kendali .- OBS
 ```
 
 ### 3.2 Diagram teks (portabel)
 
 ```
- ether1-ISP-A(Starlink)  ether2-ISP-B(Starlink)  ether3-ISP-C(FO IndiHome)
-        │                       │                        │
-        └───────────┬───────────┴───────────┬────────────┘
-                    ▼                                    ▲
-        ┌──────────────────────────────┐        apply mangle/PCC
-        │  ROUTER RB1100AHx4           │◄──────────────────┐
-        │  mangle/PCC + connection mark│                   │
-        │  conntrack (stok S_i)        │                   │
-        │  /ping interface= (di router)│                   │
-        │  API-SSL (librouteros)       │                   │
-        └──────────────┬───────────────┘                   │
-                       │ /print + /ping (read-only)        │
-                       ▼                                    │
-        ┌──────────────────────────────┐                    │
-        │ KOLEKTOR  collector.py       │                    │
-        │ → JSONL (kind, data)         │                    │
-        └───────┬──────────────┬───────┘                    │
-                │              │                            │
-     analyze_baseline/   ┌─────▼──────────────────────────┐ │
-     analyze_periodicity │ SCORING & DECISION ENGINE      │ │
-     (FFT, ACF 15s,      │ EWMA→Normalisasi→Bobot(γ)→Q_i(t)│ │
-      korelasi antar-WAN)│ → gerbang histeresis (8 state) │ │
-                │        │ → alokasi & bucket 3 link     │ │
-                │        └─────┬──────────────────────────┘ │
-                │              │ policy                     │
-                │              ▼                            │
-                │        Adapter: MikroTik / mock ──────────┘
-                ▼
-        Time-series store + audit log + config versioning
-        Observability: fail-static · watchdog · snapshot/rollback
+  ether1-ISP-A (Starlink)   ether2-ISP-B (Starlink)   ether3-ISP-C (FO)
+          │                          │                        │
+          └──────────────┬───────────┴────────────┬──────────┘
+                         ▼
+        ┌─────────────────────────────────────────────┐
+        │  ROUTER RB1100AHx4 — Aktuator (L0)          │
+        │   mangle/PCC + connection mark              │◄── write: apply/verify
+        │   conntrack (stok S_i)                      │    (akun terpisah, L5)
+        │   /ping interface= (probe di router)        │
+        │   API-SSL service  ·  NAT per WAN           │
+        └───────────┬──────────────────────▲──────────┘
+                    │ read-only            │
+        ╔═══════════▼══════════════════════╪══════════════════════════╗
+        ║  SERVER CONTROLLER (out-of-band) ║                          ║
+        ║  ┌───────────────────────────────┴───────────────────────┐  ║
+        ║  │ L1 Kolektor collector.py  →  JSONL                     │  ║
+        ║  │ L2 analyze_periodicity (FFT · ACF 15s · korelasi A–B)  │  ║
+        ║  ├───────────────────────────────────────────────────────┤  ║
+        ║  │ L3 EWMA → Normalisasi → Bobot(γ) → Q_i(t) (3 link)     │  ║
+        ║  │ L4 Gerbang histeresis (8 state) → Alokasi & bucket     │  ║
+        ║  ├───────────────────────────────────────────────────────┤  ║
+        ║  │ L5 Adapter: MikroTik / mock  ──► write ke router        │  ║
+        ║  └───────────────────────────────────────────────────────┘  ║
+        ╚═══════┬═════════════════════════════┬══════════════════════╝
+                │ raw JSONL                   │ korelasi A–B (ke L4)
+                ▼                             ▼
+        L6 Time-series store            L7 Observability
+        (audit · versioning) ── kendali ── (fail-static · rollback) ──► L5
 ```
 
 ---
