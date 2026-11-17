@@ -193,7 +193,7 @@ Simpan berkas ke controller dan satu lokasi cadangan.
 | Field | Isi |
 |---|---|
 | Run ID | |
-| Kondisi | A–G |
+| Kondisi | A–H |
 | Tanggal | |
 | Jam mulai/selesai | |
 | Cuaca/curah hujan | |

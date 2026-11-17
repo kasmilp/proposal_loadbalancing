@@ -127,7 +127,7 @@ malam, efek jam sibuk bercampur dengan efek perlakuan.
 
 ### 5.2 Rancangan urutan
 
-- Gunakan **Latin square** 7×7 untuk tujuh kondisi (A–G).
+- Gunakan **Latin square** 8×8 untuk delapan kondisi (A–H).
 - Setiap blok (satu siklus) memuat setiap kondisi satu kali.
 - Ulangi 3–4 blok dengan rotasi berbeda.
 - Di dalam blok, urutan hari diacak terkontrol (*balanced Latin square*).
@@ -162,7 +162,7 @@ Tujuannya agar efek tidak bergantung pada satu pola beban.
 | Emulator | `tc netem` pada dua virtual link |
 | Trace | Rekaman metrik lapangan (RTT, loss, throughput) |
 | Adapter | `MockAdapter` untuk uji kontrak |
-| Skenario | A–G, masing-masing 20 replay |
+| Skenario | A–H, masing-masing 20 replay |
 | Variasi | Trace bersih, berderau, transien 15 detik, degradasi lambat |
 | Luaran | Dataset staging + kurva trade-off |
 
@@ -180,7 +180,7 @@ Staging dipakai untuk:
 | Elemen | Rencana |
 |---|---|
 | Durasi kampanye | 6 minggu |
-| Cakupan | 7 kondisi, masing-masing ≥ 3 hari lapangan |
+| Cakupan | 8 kondisi, masing-masing ≥ 3 hari lapangan |
 | Jendela | 2 jendela per hari (sibuk dan rendah) |
 | Target episode | 30 per kondisi (lapangan + staging) |
 | Notifikasi | Pemberitahuan ke pelanggan sebelum kampanye |

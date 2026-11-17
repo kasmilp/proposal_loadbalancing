@@ -59,7 +59,7 @@ Jika tri-ISP dipilih, hal-hal berikut **wajib** direvisi:
 4. **State machine**: 3 link, 8 kombinasi state; tabel rasio diperluas.
 5. **Bucket mapping**: $N=20$ dibagi tiga link; tetapkan $b_{min}$ dan $b_{max}$
    baru (mis. 2 dan 14) dan uji kelayakan.
-6. **Skenario**: A–G tetap, tetapi baseline G harus menangani tiga WAN.
+6. **Skenario**: A–H; kondisi H ditambahkan untuk menguji *stock-aware*.
 7. **Hipotesis**: semua frasa "dual-ISP" diganti; H2/H3a dibandingkan pada tiga link.
 8. **Ukuran sampel**: episode per kondisi tetap, tetapi kampanye lebih panjang.
 9. **Analisis**: model harus mengakomodasi tiga link dan korelasi antar-LEO.
