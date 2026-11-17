@@ -45,7 +45,7 @@ Sediakan **2 minggu penyangga** untuk:
 - perbaikan data,
 - revisi pembimbing.
 
-Jika penyangga habis, turunkan cakupan ke A, B, D, F dan catat sebagai
+Jika penyangga habis, turunkan cakupan ke A, B, D, F, H dan catat sebagai
 penyimpangan (bukan mengubah hasil).
 
 ---

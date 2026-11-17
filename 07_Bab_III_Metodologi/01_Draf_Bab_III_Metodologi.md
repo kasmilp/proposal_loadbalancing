@@ -541,6 +541,8 @@ Risiko utama dan mitigasinya:
 
 ## 3.10 Jadwal Penelitian
 
+Total alokasi: **22 minggu** (di luar waktu tunggu seminar dan revisi).
+
 | Minggu | Aktivitas | Luaran |
 |---:|---|---|
 | 1–2 | Finalisasi desain dan kontrak antarmuka | Spesifikasi dan mock |
@@ -553,8 +555,10 @@ Risiko utama dan mitigasinya:
 | 19–20 | Penulisan Bab IV–V | Draf hasil |
 | 21–22 | Konsolidasi dan format | Naskah siap seminar |
 
-Sediakan penyangga 2 minggu untuk cuaca, gangguan, dan revisi. Jika penyangga
-habis, cakupan diturunkan ke A, B, D, F, H dan dicatat sebagai penyimpangan.
+Sediakan penyangga 2 minggu untuk cuaca, gangguan, dan revisi; penyangga diambil
+dari minggu 21–22 dengan memadatkan konsolidasi bila tidak terpakai. Jika
+penyangga habis, cakupan diturunkan ke A, B, D, F, H dan dicatat sebagai
+penyimpangan.
 
 ---
 
