@@ -42,10 +42,11 @@ alasan eksklusi (protokol PRISMA ringkas).
 | Kode | Pekerjaan | Tujuan |
 |---|---|---|
 | T-1 | Inventaris isi dataset `11_Kolektor_Baseline/data/*.jsonl` (kolom, resolusi, durasi) | Memastikan L1 (offline) dapat dijalankan |
-| T-2 | Cek ketersediaan REST API/SNMP tulis-terpisah di RB1100AHx4 | Prasyarat adopsi |
+| T-2 | Cek ketersediaan **REST API tulis-terpisah** (akun write) di RB1100AHx4 (SNMP opsional) | Prasyarat adopsi |
 | T-3 | Cek ketersediaan telemetri Starlink (gRPC dish) | Data throughput akurat |
 | T-4 | Konfirmasi izin lokasi & kepatuhan ToS ISP | Kelayakan operasional |
 | T-5 | Uji `tc/netem` di staging | Validasi internal |
+| T-6 | **Uji independensi dua Starlink** (korelasi transien LEO-1–LEO-2; ambang < 0,7) | Kelayakan tri-link (`00_README.md` §6) |
 
 ---
 
@@ -59,6 +60,7 @@ alasan eksklusi (protokol PRISMA ringkas).
 | D-4 | Normalisasi default | N-a / N-b / **N-c** | N-c |
 | D-5 | Primary outcome | Spearman ρ / stabilitas / AUC | Tetapkan satu |
 | D-6 | Keterlibatan lapangan | Ya / tidak (cukup offline+staging) | Tergantung waktu |
+| D-7 | **Topologi uji** | Dual-ISP (A+C) / **Tri-link 1 FO + 2 LEO (A+B+C)** / Dual + validasi tri | **Tri-link (revisi 18 Nov 2026)**; tunduk pada uji independensi T-6 |
 
 ---
 

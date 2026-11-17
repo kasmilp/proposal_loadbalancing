@@ -43,13 +43,13 @@ connections".*
 
 | # | Parameter | Definisi | Satuan | Rentang / nilai acuan | Jenis | Pengaruh pada kualitas koneksi | Instrumen |
 |---|---|---|---|---|---|---|---|
-| P1 | **One-way delay (OWD)** | Waktu tempuh paket satu arah | ms | TIPHON: <150/<250/<350/<450 ms (Kelas 4/3/2/1) | Cost | Menentukan kelayakan aplikasi interaktif (VoIP/video); >150 ms mulai terasa | Probe aktif (ICMP/UDP), SNMP |
+| P1 | **One-way delay (OWD)** | Waktu tempuh paket satu arah | ms | TIPHON: <150/<250/<350/<450 ms (Kelas 4/3/2/1) | Cost | Menentukan kelayakan aplikasi interaktif (VoIP/video); >150 ms mulai terasa | Probe `/ping interface=` di router (ICMP) — `collector.py` |
 | P2 | **RTT** | Round-trip time | ms | ≈ 2× OWD | Cost | Menggerakkan TCP throughput melalui BDP | ping / probe |
 | P3 | **Jitter / IPDV** | Variasi delay antar-paket | ms | TIPHON degradasi: 0 / ≤75 / ≤125 / ≤225 ms | Cost | Merusak buffer real-time; memicu retransmisi | RFC 3550 (estimasi jitter) |
-| P4 | **Packet loss ratio (IPLR)** | Rasio paket gagal sampai | % | TIPHON degradasi: 0/3/15/25%. Y.1541: 1×10⁻³ (Kelas 0–4), 1×10⁻⁵ (Kelas 6–7) | Cost | Menurunkan goodput; memicu congestion control | SNMP counter, probe |
-| P5 | **Throughput / goodput** | Laju data efektif berhasil | Mbps | Starlink: DL **137 → 90,2** saat hujan; UL **20,9 → 10,5** (Ullah et al., 2025, hlm. 5) | **Benefit** | Kapasitas nyata; *carried ≠ achievable* | SNMP interface counters, iperf3 |
+| P4 | **Packet loss ratio (IPLR)** | Rasio paket gagal sampai | % | TIPHON degradasi: 0/3/15/25%. Y.1541: 1×10⁻³ (Kelas 0–4), 1×10⁻⁵ (Kelas 6–7) | Cost | Menurunkan goodput; memicu congestion control | Probe `packet_loss` + delta counter interface |
+| P5 | **Throughput / goodput** | Laju data efektif berhasil | Mbps | Starlink: DL **137 → 90,2** saat hujan; UL **20,9 → 10,5** (Ullah et al., 2025, hlm. 5) | **Benefit** | Kapasitas nyata; *carried ≠ achievable* | Delta counter interface (kolektor) + iperf3 |
 | P6 | **Available bandwidth / headroom** | Sisa kapasitas yang dapat dipakai | Mbps | `max(0; 0,9·C − L)` (margin 10%) | Benefit | Menentukan apakah link dapat menampung koneksi baru | Turunan P5 + P7 |
-| P7 | **Utilisasi link** | Pangsa kapasitas terpakai | % | 0–100% | Cost | Mencegah *overload*; dasar batas share 15–85% | SNMP |
+| P7 | **Utilisasi link** | Pangsa kapasitas terpakai | % | 0–100% | Cost | Mencegah *overload*; dasar batas share 15–85% | Delta counter interface (kolektor) |
 | P8 | **Frekuensi flapping** | Laju perubahan aturan yang berbalik arah | flap/jam | jendela W = 5 menit (uji sensitivitas 1/5/15) | Cost (output) | Metrik hasil keputusan, **bukan** input indeks | Log aturan/controller |
 
 ---
@@ -78,6 +78,9 @@ connections".*
    P5/P6 (throughput/headroom)**. **P7** dapat dipakai sebagai kriteria tambahan atau
    pembatas.
 4. **Arah cost/benefit** menentukan rumus normalisasi (lihat `04_Analisis_Bobot_SAW.md`).
+5. **Indeks dihitung per link** $i \in \{\text{ISP-A (ether1)},\ \text{ISP-B (ether2)},\ \text{ISP-C (ether3)}\}$
+   (topologi tri-link, `00_README.md` §6). Normalisasi, bobot, dan gerbang diterapkan
+   **per link**; korelasi antar-LEO dilaporkan sebagai kovariat, bukan diabaikan.
 
 ---
 
@@ -94,4 +97,5 @@ connections".*
 **[ANALISIS]** Nilai 15 detik adalah *skala waktu transien* yang harus diserap desain
 indeks/gerbang — bukan klaim bahwa Starlink "lebih buruk" secara umum. Istilah
 *"upper bound"* pada naskah lama sebaiknya diganti **"kasus stres"** agar tidak
-disalahpahami.
+disalahpahami. Karena topologi memakai **dua Starlink**, transien keduanya dapat
+berkorelasi (arkip mencatat 0,68–0,70) — lihat `00_README.md` §6.

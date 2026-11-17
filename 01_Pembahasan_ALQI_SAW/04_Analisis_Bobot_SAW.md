@@ -60,6 +60,10 @@ Rasional: pada sistem kontrol, indeks harus **komparabel antar-waktu**; N-b yang
 batasnya bergeser tiap siklus membuat skor yang sama bisa punya arti berbeda di dua
 waktu.
 
+**[FAKTA]** Naskah lama memakai **N-a** (rumus `min/x` dan `x/max`, dengan koreksi
+bobot suku packet loss) — lihat `13_Perbaikan_Proposal_Lama.md` §2.1. Alur target
+memakai **N-c** (lihat `13` §3: "normalisasi (batas tetap)").
+
 ---
 
 ## 3. Pendekatan Penentuan Bobot

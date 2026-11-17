@@ -1,0 +1,18 @@
+2026-11-17 18:17:59,581 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 18:18:00,453 INFO Terhubung (read-only)
+2026-11-17 19:01:07,461 WARNING Gagal membaca /system/resource/print: The read operation timed out
+2026-11-17 19:01:07,470 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:01:17,524 WARNING Gagal membaca /interface/print: timed out
+2026-11-17 19:01:17,525 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:01:27,542 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:01:37,563 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:01:47,586 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:01:57,624 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:01:59,211 INFO Terhubung (read-only)
+2026-11-17 19:06:18,134 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:06:28,156 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:06:38,175 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:06:48,712 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:06:58,721 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-17 19:06:58,722 INFO Menghubungkan ke id-23.hostddns.us:6187
+2026-11-17 19:06:59,598 INFO Terhubung (read-only)
