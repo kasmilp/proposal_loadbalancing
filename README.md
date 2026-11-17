@@ -1,52 +1,57 @@
 # Proposal Tesis S2 — Ruang Kerja
 
 Repositori ini dipakai untuk menyusun proposal tesis Magister Teknik Informatika
-(Universitas Hasanuddin) secara bertahap. Fokus penelitian adalah **memodifikasi
-fungsi kontrol** pada mekanisme alokasi koneksi di jaringan heterogen FO–LEO,
-dengan penekanan pada **alokasi stock-flow aware** dan **preservasi sesi**.
-PCC dan MikroTik diposisikan sebagai aktuator dan platform pengujian, bukan
-sebagai kontribusi algoritmik.
+(Universitas Hasanuddin) secara bertahap.
+
+**Fokus aktif:** kajian arah penelitian **ALQI berbasis *Simple Additive Weighting*
+(SAW)** — pembobotan dan normalisasi adaptif untuk penilaian kualitas link pada
+jaringan heterogen FO–LEO. Lingkup dipersempit dari sistem kontroler penuh (SPA-HSM)
+menjadi modul/fokus yang lebih spesifik dan terukur.
 
 ## Struktur
 
-| Folder | Isi |
+| Folder | Isi | Status |
+|---|---|---|
+| `01_Arsip_SPA-HSM_Tahap_01-12/` | Alur kerja SPA-HSM: manajemen, gap/novelty, RQ, kerangka teori, metodologi, baseline, presentasi. | **Arsip** |
+| `00_Arsip_Proposal_SPA-HSM/` | Materi lebih lama: draf Bab I–II, dokumen audit, PDF, jurnal, arsitektur, logo, panduan penulisan. | **Arsip** |
+| `01_Pembahasan_ALQI_SAW/` | **Naskah aktif baru**: kelayakan, prior art, gap, parameter, bobot SAW, formulasi, SOTA, eksperimen, RQ/judul, kandidat referensi. | **Aktif** |
+
+## Isi `01_Pembahasan_ALQI_SAW/`
+
+| Berkas | Isi |
 |---|---|
-| `00_Arsip_Proposal_SPA-HSM/` | Seluruh materi lama: draf Bab I–II, dokumen audit, PDF, jurnal, arsitektur, logo, panduan penulisan. Dipertahankan sebagai rujukan, bukan naskah aktif. |
-| `01_Manajemen_Proposal/` | Roadmap tahapan, log keputusan, dan kontrol progres. |
-| `02_Tahap_01_Gap_dan_Novelty/` | Luaran Tahap 1: peta gap, pernyataan novelty, matriks state of the art, uji kelayakan. |
-| `03_Tahap_02_Rumusan_Masalah/` | Luaran Tahap 2: pertanyaan penelitian, tujuan, hipotesis, definisi operasional, metrik SIWG. |
-| `04_Tahap_03_Kerangka_Teori/` | Luaran Tahap 3: draf Bab II, peta teori, tabel klaim–sumber, audit referensi, register CSV. |
-| `05_Evaluasi_Tahap_1-3/` | Evaluasi kritis, kebijakan tier referensi (SOTA vs daftar pustaka), checklist perbaikan. |
-| `06_Tahap_04_Metodologi/` | Luaran Tahap 4: desain skenario, formalisasi, instrumen, rencana statistik, jadwal/risiko/etika. |
-| `07_Bab_III_Metodologi/` | Draf Bab III, lampiran protokol pilot/rollback, matriks alinyemen metodologi. |
-| `08_Bab_I-II/` | Draf Bab I–II konsolidasi, matriks konsistensi, daftar simbol, catatan penyusunan. |
-| `09_Verifikasi_dan_Pencarian/` | Log pencarian gap (P-01), verifikasi 7 klaim (P-04), kandidat referensi baru. |
-| `10_Pra_Penelitian/` | Protokol baseline 3 ISP read-only dan matriks keputusan dual vs tri-ISP. |
-| `11_Kolektor_Baseline/` | Kolektor baseline read-only, analisis JSONL, konfigurasi contoh, dan README. |
-| `12_Presentasi/` | Deck proposal 20 slide, skrip pembuat, dan catatan presentasi. |
+| `00_README.md` | Indeks, konvensi label, ringkasan eksekutif |
+| `01_Kelayakan_dan_Prior_Art.md` | Putusan kelayakan + temuan prior art paten ALQI |
+| `02_Research_Gap.md` | Gap berbasis bukti (G-N1, G-N2, G-W1, G-W2) |
+| `03_Spesifikasi_Parameter.md` | Parameter QoS + batas acuan TIPHON/Y.1541 |
+| `04_Analisis_Bobot_SAW.md` | Benefit/cost, normalisasi, pendekatan bobot |
+| `05_Formulasi_ALQI_Adaptif.md` | Formulasi matematis statis → adaptif |
+| `06_Matriks_State_of_the_Art.md` | Tabel pembanding + nilai kuantitatif |
+| `07_Kebaruan_dan_Kontribusi.md` | Klaim kebaruan S2 + batas klaim |
+| `08_Rancangan_Eksperimen.md` | Arsitektur, skenario, metrik, statistik |
+| `09_Rumusan_Masalah_dan_Judul.md` | RQ versi "memodifikasi" + rekomendasi judul |
+| `10_Kandidat_Referensi.csv` | Daftar referensi (sebagian perlu verifikasi) |
+| `11_Rencana_Verifikasi_Lanjutan.md` | Pekerjaan literatur & teknis yang belum selesai |
 
 ## Aturan kerja
 
-1. Naskah aktif **tidak** ditulis di folder arsip.
-2. Setiap tahap punya luaran yang dapat diperiksa dan kriteria lulus.
-3. Setiap klaim kebaruan harus bisa dijawab dengan: *apa yang baru, dibanding siapa,
-   dan bukti apa yang akan dihasilkan.*
-4. Keputusan lingkup dicatat di `01_Manajemen_Proposal/01_Log_Keputusan.md`
-   agar tidak ada istilah atau klaim yang saling bertentangan antar-bab.
+1. **Naskah aktif tidak ditulis di folder arsip.** Arsip dipertahankan sebagai rujukan.
+2. Labeli setiap pernyataan: **[FAKTA]** (sumber), **[ANALISIS]** (penalaran),
+   **[USULAN]** (desain).
+3. Klaim kebaruan harus bisa dijawab dengan: *apa yang baru, dibanding siapa, bukti apa.*
+4. Klaim "belum ada" hanya boleh ditulis setelah log pencarian dijalankan, dengan
+   frasa *"berdasarkan pencarian pada …"*.
+5. Kata kerja kontribusi: **memodifikasi** — hindari "merancang/menciptakan/membangun
+   dari nol".
 
 ## Status
 
-- [x] Tahap 0 — Konsolidasi dan pemindahan materi lama
-- [x] Tahap 1 — Peta gap dan pernyataan novelty
-- [x] Tahap 2 — Rumusan masalah, tujuan, hipotesis
-- [x] Tahap 3 — Kerangka teori dan state of the art
-- [x] Tahap 3.5 — Evaluasi dan perbaikan (blocking B-01 s.d. B-04 selesai)
-- [x] Tahap 4 — Metodologi dan desain evaluasi
-- [x] Tahap 5 — Instrumen, etika, manajemen risiko (dokumen; kalibrasi lapangan belum)
-- [ ] Tahap 6 — Penulisan naskah proposal (draf Bab I–III selesai; P-01 s.d. P-04 selesai; abstrak dan daftar pustaka belum)
-- [x] Baseline awal 2,2 jam dianalisis (bukan baseline final)
-- [x] Pembaruan positioning: modifikasi fungsi kontrol + alokasi stock-flow aware
-- [x] Deck presentasi diperbarui (20 slide, versi 17 November 2026)
-- [ ] Baseline final 7–14 hari + throughput 1 detik
-- [ ] Tahap 7 — Uji kelayakan internal dan simulasi seminar
-- [ ] Tahap 8 — Seminar proposal dan revisi
+- [x] Konsolidasi materi lama menjadi dua arsip
+- [x] Analisis kelayakan awal ALQI–SAW
+- [x] Identifikasi prior art (US 9,674,720 B2)
+- [x] Spesifikasi parameter & batas acuan (TIPHON/Y.1541)
+- [x] Analisis bobot SAW & formulasi adaptif
+- [x] Matriks SOTA + rancangan eksperimen + RQ/judul
+- [ ] Verifikasi literatur lintas basis data (lihat `11_...`)
+- [ ] Kunci lingkup (Varian A/B/C) dan keputusan D-1 s.d. D-6
+- [ ] Tulis Bab I + kerangka Bab III
