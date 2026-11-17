@@ -47,6 +47,7 @@ hanya boleh ditulis setelah log pencarian dijalankan (lihat `11_Rencana_Verifika
 | `14_Tahapan_Penelitian.md` | **Roadmap** tahap demi tahap (T0–T10) + gate, jadwal, kriteria lulus |
 | `15_Arsitektur_Sistem.md` | **Arsitektur** tri-link: diagram, lapisan, kontrak antarmuka, state machine, deployment |
 | `16_Arsitektur_Jaringan_MikroTik.md` | **Desain jaringan Multi-WAN** (3 ISP): PCC, failover, LAN, konfigurasi RouterOS v7 |
+| `17_Uji_Kelayakan_dan_Risiko_Penguji.md` | **Uji kelayakan dari sudut penguji**: skor ±70, syarat blocking B1–B6, 12 pertanyaan |
 | `arsitektur/` | Skrip & gambar: `arsitektur_ALQI_SAW.*` dan `arsitektur_jaringan_mikrotik.*` (`.png`/`.svg`) |
 
 ---
