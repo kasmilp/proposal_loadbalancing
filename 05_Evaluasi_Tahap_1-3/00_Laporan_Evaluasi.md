@@ -129,7 +129,7 @@ Tulis aturan keputusan eksplisit agar tidak terjadi *post-hoc*.
 | ID | Temuan | Perbaikan |
 |---|---|---|
 | m-01 | "Flapping rate" dan "flap per jam" dipakai bergantian | Definisikan sekali, gunakan konsisten |
-| m-02 | "Lima sub-RQ" padahal RQ5 ditandai opsional | Sebut "lima sub-RQ, RQ5 opsional" |
+| m-02 | Jumlah sub-RQ berubah dari lima ke enam | Perbarui semua rujukan menjadi "enam sub-RQ" |
 | m-03 | Penomoran "lima hipotesis" sempat tidak sesuai jumlah (6) | Sudah diperbaiki; cek ulang saat menulis Bab I |
 | m-04 | Istilah `AFFINITY_LOCK` (kode) dan "affinity lock" (prosa) bercampur | Pakai kode untuk teknis, prosa untuk narasi |
 | m-05 | Tabel klaim memakai penanda **[verifikasi]** yang harus hilang di naskah final | Sisakan di dokumen kerja saja |

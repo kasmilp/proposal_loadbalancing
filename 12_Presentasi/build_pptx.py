@@ -164,7 +164,7 @@ rect(s, 10.7, 0.0, 2.633, 7.5, RGBColor(0x10, 0x30, 0x55), shape=MSO_SHAPE.RECTA
 text(s, "PROPOSAL TESIS MAGISTER", 0.85, 0.85, 9.8, 0.3, 12, True, TEAL)
 text(s, "SPA-HSM", 0.85, 1.35, 9.6, 0.9, 46, True, WHITE)
 text(s, "Mekanisme Kontrol Adaptif untuk Alokasi Koneksi Sadar-Sesi\npada Jaringan Heterogen FO–LEO",
-     0.85, 2.28, 9.8, 1.20, 24, True, WHITE)
+     0.85, 2.28, 9.6, 1.20, 22, True, WHITE)
 text(s, "Implementasi dan Evaluasi pada Platform MikroTik PCC", 0.85, 3.58, 9.8, 0.35, 15, False, MID, italic=True)
 rect(s, 0.85, 4.18, 2.2, 0.05, ORANGE, shape=MSO_SHAPE.RECTANGLE)
 text(s, "Kasmil Papalia  •  D082252011", 0.85, 4.45, 9.8, 0.32, 15, True, WHITE)
@@ -275,8 +275,8 @@ title_bar(s, "Research Gap", "Apa yang belum tersedia")
 rows = [
     ["Gap", "Kondisi literatur", "Yang belum ada"],
     ["G-M1", "Histeresis dipakai di cloud/handover", "Dwell tidak diturunkan dari transien LEO terukur"],
-    ["**G-M3**", "**Alokasi dari kualitas link saat ini**", "**Belum mempertimbangkan stok koneksi lama**"],
-    ["**G-E2**", "**Conntrack mempertahankan sesi lama**", "**Akumulasi stok di link buruk belum diukur**"],
+    ["G-M3", "Alokasi dari kualitas link saat ini", "Belum mempertimbangkan stok koneksi lama"],
+    ["G-E2", "Conntrack mempertahankan sesi lama", "Akumulasi stok di link buruk belum diukur"],
     ["G-M2", "SAW menghasilkan skor kontinu", "Pemetaan formal skor → bucket PCC diskret"],
     ["G-E1", "PCC mengklaim menjaga sesi", "Dampak perubahan rasio ke RST belum diukur"],
     ["G-C1", "PCC diuji pada ISP homogen/lab", "Evaluasi lapangan dual-ISP FO–LEO"],
@@ -722,17 +722,18 @@ bullets(s, [
     "Dual-ISP FO–LEO; tidak mengklaim generalisasi >2 ISP.",
     "Starlink sebagai kasus acuan upper bound transien.",
     "Bobot SAW statis; bukan pembelajaran bobot.",
-    "MikroTik sebagai adapter; hanya satu adapter nyata + mock.",
+    "MikroTik sebagai aktuator; hanya satu adapter nyata + mock.",
     "Satu lokasi RT/RW Net; bukan skala enterprise.",
     "QoS, bukan QoE; persepsi pengguna tidak diukur.",
     "Stabilitas empiris; bukan pembuktian formal control loop.",
-    "Desain 2×2 + pembanding; interaksi none×affinity tidak diuji.",
-], 0.65, 1.45, 12.0, 4.9, 14, DARK, space=12)
+    "Desain 2×2 + pembanding + H; interaksi none×affinity tidak diuji.",
+    "Stok S_i bergantung pada keterbacaan conntrack; estimasi dapat bias.",
+], 0.65, 1.40, 12.0, 4.9, 11, DARK, space=7)
 rect(s, 0.65, 6.15, 12.0, 0.55, LIGHT, line=MID)
-text(s, "Klaim dijaga sejajar dengan bukti: aturan desain + bukti empiris, bukan metode dasar baru.",
-     0.85, 6.30, 11.6, 0.30, 11, True, NAVY)
+text(s, "Klaim dijaga sejajar dengan bukti: modifikasi kebijakan + bukti empiris, bukan metode dasar baru.",
+     0.85, 6.30, 11.6, 0.30, 10, True, NAVY)
 footer(s, 19)
-add_notes(s, "Batasan ini sengaja disebut di awal agar ekspektasi penguji realistis.")
+add_notes(s, "Batasan ini sengaja disebut di awal agar ekspektasi penguji realistis. Kondisi H dan estimasi stok adalah keterbatasan utama.")
 
 # =====================================================================
 # 20. PENUTUP
@@ -741,12 +742,12 @@ s = new_slide()
 rect(s, 0, 0, 13.333, 7.5, NAVY, shape=MSO_SHAPE.RECTANGLE)
 rect(s, 0, 0, 0.18, 7.5, TEAL, shape=MSO_SHAPE.RECTANGLE)
 text(s, "Tiga hal yang perlu diingat", 0.85, 0.85, 11.5, 0.35, 13, True, TEAL)
-text(s, "1.  Masalahnya adalah trade-off stabilitas–kontinuitas, bukan sekadar throughput.",
-     0.85, 1.50, 11.6, 0.55, 21, True, WHITE)
-text(s, "2.  Kebaruan ada pada aturan dwell, pemetaan bucket, dan SIWG + ablasi.",
-     0.85, 2.35, 11.6, 0.55, 21, True, WHITE)
+text(s, "1.  Masalahnya adalah trade-off stabilitas–kontinuitas–kinerja, bukan sekadar throughput.",
+     0.85, 1.50, 11.6, 0.55, 20, True, WHITE)
+text(s, "2.  Kebaruan ada pada alokasi stock-flow aware dan preservasi sesi—bukan “PCC dinamis”.",
+     0.85, 2.35, 11.6, 0.55, 20, True, WHITE)
 text(s, "3.  Baseline awal mendukung dual-ISP A+C; ISP-B menjadi validasi eksternal.",
-     0.85, 3.20, 11.6, 0.55, 21, True, WHITE)
+     0.85, 3.20, 11.6, 0.55, 20, True, WHITE)
 rect(s, 0.85, 4.25, 2.0, 0.06, ORANGE, shape=MSO_SHAPE.RECTANGLE)
 text(s, "Terima kasih", 0.85, 4.65, 8.0, 0.75, 38, True, WHITE)
 text(s, "Diskusi dan pertanyaan", 0.85, 5.45, 8.0, 0.35, 16, False, MID)

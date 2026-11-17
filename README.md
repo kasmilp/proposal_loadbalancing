@@ -1,8 +1,11 @@
 # Proposal Tesis S2 — Ruang Kerja
 
 Repositori ini dipakai untuk menyusun proposal tesis Magister Teknik Informatika
-(Universitas Hasanuddin) secara bertahap, dengan penekanan pada **research gap**
-dan **novelty** yang dapat dipertahankan di depan penguji.
+(Universitas Hasanuddin) secara bertahap. Fokus penelitian adalah **memodifikasi
+fungsi kontrol** pada mekanisme alokasi koneksi di jaringan heterogen FO–LEO,
+dengan penekanan pada **alokasi stock-flow aware** dan **preservasi sesi**.
+PCC dan MikroTik diposisikan sebagai aktuator dan platform pengujian, bukan
+sebagai kontribusi algoritmik.
 
 ## Struktur
 
@@ -42,6 +45,8 @@ dan **novelty** yang dapat dipertahankan di depan penguji.
 - [x] Tahap 5 — Instrumen, etika, manajemen risiko (dokumen; kalibrasi lapangan belum)
 - [ ] Tahap 6 — Penulisan naskah proposal (draf Bab I–III selesai; P-01 s.d. P-04 selesai; abstrak dan daftar pustaka belum)
 - [x] Baseline awal 2,2 jam dianalisis (bukan baseline final)
+- [x] Pembaruan positioning: modifikasi fungsi kontrol + alokasi stock-flow aware
+- [x] Deck presentasi diperbarui (20 slide, versi 17 November 2026)
 - [ ] Baseline final 7–14 hari + throughput 1 detik
 - [ ] Tahap 7 — Uji kelayakan internal dan simulasi seminar
 - [ ] Tahap 8 — Seminar proposal dan revisi

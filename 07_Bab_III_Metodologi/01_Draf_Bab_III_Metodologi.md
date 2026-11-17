@@ -79,7 +79,7 @@ dengan lebih dari dua ISP.
 
 | Jenis | Variabel | Skala/operasionalisasi |
 |---|---|---|
-| Bebas | Kondisi eksperimen (A–G) | Kategorik |
+| Bebas | Kondisi eksperimen (A–H) | Kategorik |
 | Bebas | Mode histeresis | none / symmetric / asymmetric |
 | Bebas | Status affinity | off / on |
 | Terikat | *Flapping rate* | flap per jam |
@@ -191,7 +191,7 @@ bahwa tidak ada aturan atau entri *conntrack* yang tersisa.
 | Lapangan | Episode | ≥ 10 per kondisi |
 | Total | Episode | 30 per kondisi |
 
-Dengan 7 kondisi, target total sekitar 210 episode. Untuk uji dua sisi
+Dengan 8 kondisi, target total sekitar 240 episode. Untuk uji dua sisi
 $\alpha=0{,}05$, *power* 0,80, dan $d=0{,}5$, dibutuhkan sekitar 34 episode per
 kelompok; target 30–40 adalah kompromi dengan keterbatasan lapangan. *Power* final
 dihitung setelah pilot menggunakan estimasi ICC.

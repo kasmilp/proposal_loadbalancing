@@ -442,4 +442,4 @@ uji; yang diteliti adalah kebijakan controller yang menghubungkan keduanya.
 7. Koneksi lama adalah **stok** yang tidak dapat dipindahkan; alokasi harus
    *stock-flow aware*.
 8. Arsitektur tiga lapis memungkinkan pengujian tanpa menyentuh produksi.
-8. Kerangka teoritis menghasilkan dua proposisi yang dapat diuji dan enam hipotesis.
+8. Kerangka teoritis menghasilkan dua proposisi yang dapat diuji dan tujuh hipotesis.
