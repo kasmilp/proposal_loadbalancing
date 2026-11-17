@@ -74,11 +74,12 @@ secara signifikan** — tetapi pada **dataset MCDM statis**. Ini justru dasar ga
 
 ### 3.1 Yang membuat layak **[ANALISIS]**
 
-1. Masalah nyata dan terukur: jaringan dual-WAN FO–LEO dengan dua sumber degradasi
-   berbeda (kongesti operasional FO; transien/rain fade LEO).
+1. Masalah nyata dan terukur: jaringan **tri-link (1 FO + 2 Starlink LEO)** dengan
+   dua *jenis* sumber degradasi (kongesti operasional pada FO; transien/rain fade
+   pada LEO) — dengan catatan korelasi antar-LEO harus diuji (lihat `00_README.md` §6).
 2. Parameter punya batas acuan baku (TIPHON/Y.1541/G.114) → dapat diukur.
-3. Aset teknis tersedia: router RB1100AHx4, Starlink, FO IndiHome, kolektor baseline,
-   dataset 2,2 jam → eksperimen offline & staging mungkin.
+3. Aset teknis tersedia: router RB1100AHx4, **dua Starlink + FO IndiHome**, kolektor
+   baseline, dataset 2,2 jam → eksperimen offline & staging mungkin.
 4. Celah metode yang jelas: normalisasi & pembobotan **belum diuji pada deret metrik
    link real-time yang bising** (bukan dataset statis).
 
@@ -113,10 +114,11 @@ secara signifikan** — tetapi pada **dataset MCDM statis**. Ini justru dasar ga
 |---|---|---|
 | S-1 | Kebaruan dipindah ke **mekanisme pembobotan/normalisasi adaptif**, bukan integrasi | Pernyataan novelty di `07_Kebaruan_dan_Kontribusi.md` |
 | S-2 | Istilah ALQI ditangani sebagai prior art atau diganti | Draf Bab II menyitasi US 9,674,720 B2 |
-| S-3 | Lingkup dinyatakan sempit: **modul penilaian kualitas link**, bukan controller penuh | RQ di `09_Rumusan_Masalah_dan_Judul.md` |
+| S-3 | Lingkup dipilih secara eksplisit (Varian A/B/C) — idealnya modul penilaian kualitas link | RQ & varian di `09_Rumusan_Masalah_dan_Judul.md`; desain di `08_Rancangan_Eksperimen.md` |
 | S-4 | Ada pembanding eksplisit (statis, sama-rata, entropy-SAW, metrik tunggal) | `08_Rancangan_Eksperimen.md` |
 | S-5 | Klaim "belum ada" diganti "belum dievaluasi pada konteks X" | `02_Research_Gap.md` |
 | S-6 | Log pencarian lintas basis data dijalankan | `11_Rencana_Verifikasi_Lanjutan.md` |
+| S-7 | Topologi tri-link (1 FO + 2 LEO) dengan **uji independensi antar-Starlink** dan analisis korelasi | `00_README.md` §6; `08` §1 |
 
 ---
 
@@ -125,5 +127,6 @@ secara signifikan** — tetapi pada **dataset MCDM statis**. Ini justru dasar ga
 - **Bukan** metode MCDM baru.
 - **Bukan** "pertama memakai SAW" atau "pertama memakai bobot objektif".
 - **Bukan** kebaruan istilah ALQI.
-- Generalisasi dibatasi: dual-ISP FO–LEO, satu lokasi skala kecil, QoS ≠ QoE.
+- Generalisasi dibatasi: **tri-link 1 FO + 2 LEO** (bukan semua WAN), satu lokasi
+  skala kecil, QoS ≠ QoE.
 - Bobot SAW: jika tetap statis, jangan menyebut sistem "adaptif" tanpa penjelasan.

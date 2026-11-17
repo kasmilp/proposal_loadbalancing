@@ -8,9 +8,12 @@ dengan nilai kuantitatif yang dapat dipertanggungjawabkan.
 dan `04_Tahap_03_Kerangka_Teori/05_Register_Referensi.csv` **[FAKTA]**; baris **✱** =
 kandidat hasil pencarian OpenAlex 17 Nov 2026 **[perlu verifikasi]**.
 
+**Penomoran:** tabel di bawah menjadi **Tabel 10** pada skema penomoran proposal
+(lihat `13_Perbaikan_Proposal_Lama.md` §7).
+
 ---
 
-## 1. Tabel Perbandingan Penelitian Terdahulu
+## 1. Tabel Perbandingan Penelitian Terdahulu (Tabel 10)
 
 | # | Penulis, Tahun (DOI) | Metode | Parameter | Hasil kuantitatif | Keterbatasan | Peluang pengembangan |
 |---|---|---|---|---|---|---|
@@ -27,38 +30,47 @@ kandidat hasil pencarian OpenAlex 17 Nov 2026 **[perlu verifikasi]**.
 | 11 | Garcia et al., 2025 (`10.1145/3748749.3749090`) | Karakterisasi OWD | one-way delay | Siklus rekonfigurasi **15 detik** | Pengukuran; tanpa mitigasi | Sumber transien untuk uji stabilitas |
 | 12 | Hammer et al., 2024 (`10.1145/3697253.3697273`) | Pengukuran edge router | throughput, reordering | Penurunan throughput pada batas 15 dtk | Tanpa kebijakan alokasi | Dampak pada keputusan real-time |
 | 13 | Ma et al., 2023 (`10.1109/INFOCOM53939.2023.10228912`) | Pengukuran end-user | throughput, latency, outage | Variabilitas & outage tinggi | Deskriptif-observasional | Mitigasi berbasis pengukuran |
-| 14 | Cruvellier et al., 2025 (`10.1109/globecom59602.2025.11432107`) | **DRL** load balancing SD-WAN | goodput | **+48,94%** pada bandwidth asimetris | Simulasi; butuh pembelajaran | Pembanding "berat" |
-| 15 ✱ | Wireless Networks, 2021 (`10.1007/s11276-021-02625-y`) | **Entropy + SAW** untuk handover SDN-5G | kriteria handover | (perlu verifikasi) | Domain 5G seluler; bukan skor link WAN FO–LEO | **Pembanding langsung** — sumber diferensiasi |
-| 16 ✱ | JNCA, 2022 (`10.1016/j.jnca.2022.103358`) | Evaluasi kontekstual algoritma seleksi | multi-kriteria | (perlu verifikasi) | Fokus seleksi, bukan stabilitas indeks temporal | Kerangka evaluasi indeks |
-| 17 ✱ | Symmetry, 2021 (`10.3390/sym13060973`) | Pembobotan objektif **CRITIC** (modifikasi) | kriteria MCDM | Perbaikan metode CRITIC | Domain umum | Kandidat mekanisme bobot |
-| 18 ✱ | Symmetry, 2021 (`10.3390/sym13040525`) | Pembobotan objektif **MEREC** | kriteria MCDM | Efek penghapusan kriteria | Domain umum | Kandidat pembanding bobot |
-| 19 ✱ | Information, 2023 (`10.3390/info14050285`) | Tinjauan metode bobot MCDM | — | Peta metode subjektif/objektif/hibrida | Tinjauan umum | Landasan Bab II |
+| 14 | Chen et al., 2025 (`10.1016/j.eng.2025.05.012`) | Tinjauan integrasi satelit–terestrial 6G | arsitektur, QoS | Peta tantangan integrasi TN–NTN | Tinjauan konseptual; tanpa mekanisme skoring | Konteks tri-link (1 FO + 2 LEO) & batas klaim |
+| 15 | Ji et al., 2026 (`10.1016/j.icte.2026.03.001`) | Tinjauan inter-satellite link LEO | link, handover | Teknologi & aplikasi ISL | Tinjauan; bukan alokasi multi-WAN | Konteks dinamika LEO |
+| 16 | Cruvellier et al., 2025 (`10.1109/globecom59602.2025.11432107`) | **DRL** load balancing SD-WAN | goodput | **+48,94%** pada bandwidth asimetris | Simulasi; butuh pembelajaran | Pembanding "berat" |
+| 17 ✱ | Wireless Networks, 2021 (`10.1007/s11276-021-02625-y`) | **Entropy + SAW** untuk handover SDN-5G | kriteria handover | (perlu verifikasi) | Domain 5G seluler; bukan skor link WAN 1 FO + 2 LEO | **Pembanding langsung** — sumber diferensiasi |
+| 18 ✱ | JNCA, 2022 (`10.1016/j.jnca.2022.103358`) | Evaluasi kontekstual algoritma seleksi | multi-kriteria | (perlu verifikasi) | Fokus seleksi, bukan stabilitas indeks temporal | Kerangka evaluasi indeks |
+| 19 ✱ | Symmetry, 2021 (`10.3390/sym13060973`) | Pembobotan objektif **CRITIC** (modifikasi) | kriteria MCDM | Perbaikan metode CRITIC | Domain umum | Kandidat mekanisme bobot |
+| 20 ✱ | Symmetry, 2021 (`10.3390/sym13040525`) | Pembobotan objektif **MEREC** | kriteria MCDM | Efek penghapusan kriteria | Domain umum | Kandidat pembanding bobot |
+| 21 ✱ | Information, 2023 (`10.3390/info14050285`) | Tinjauan metode bobot MCDM | — | Peta metode subjektif/objektif/hibrida | Tinjauan umum | Landasan Bab II |
 
 ---
 
 ## 2. Matriks Dimensi (● eksplisit · ◐ sebagian · ○ tidak)
 
-| No | Studi | D1 skor multi-kriteria | D2 penghalusan deret | D3 histeresis/ambang ganda | D4 normalisasi berbatas tetap | **D5 bobot adaptif/objektif** | D6 konteks FO–LEO |
+| No | Studi | D1 skor multi-kriteria | D2 penghalusan deret | D3 histeresis/ambang ganda | D4 normalisasi berbatas tetap | **D5 bobot adaptif/objektif** | D6 konteks tri-link |
 |---|---|:--:|:--:|:--:|:--:|:--:|:--:|
 | 1–5 | Studi PCC (Amalia, Arfianita, Nugroho, Putra, Mirsal) | ○ | ○ | ○ | ○ | ○ | ○ |
 | 6 | Ali et al. (ANN hub) | ◐ | ○ | ○ | ○ | ○ | ◐ |
 | 7 | Vafaei et al. (normalisasi) | ● | ○ | ○ | ○ | ○ | ○ |
 | 9 | Tournaire et al. (histeresis) | ○ | ◐ | ● | ○ | ○ | ○ |
-| 15 ✱ | Entropy-SAW (5G) | ● | ○ | ○ | ○ | ● | ○ |
-| 10–13 | Starlink (Ullah, Garcia, Hammer, Ma) | ○ | ○ | ○ | ○ | ○ | ◐ |
-| 14 | SD-WAN DRL | ◐ | ○ | ○ | ○ | ◐ | ○ |
+| 10–13 | Starlink/LEO (Ullah, Garcia, Hammer, Ma) | ○ | ○ | ○ | ○ | ○ | ◐ |
+| 14–15 | Tinjauan satelit 6G (Chen, Ji) | ○ | ○ | ○ | ○ | ○ | ◐ |
+| 16 | SD-WAN DRL (Cruvellier) | ◐ | ○ | ○ | ○ | ◐ | ○ |
+| 17 ✱ | Entropy-SAW (5G) | ● | ○ | ○ | ○ | ● | ○ |
 | — | **Arah penelitian ini** | ● | ● | ◐ | ● | ● | ● |
 
 ---
 
 ## 3. Bukti Kuantitatif Adanya Kesenjangan **[ANALISIS]**
 
-Dari 19 entri pada Tabel 1:
+Dari **21 entri** pada Tabel 10:
 
-- **12 entri** memakai bobot/rasio **statis** atau **tanpa** skor komposit (baris 1–6, 10–13, 14).
-- **1 entri** memakai **pembobotan objektif pada SAW** (baris 15), tetapi di **domain seluler 5G**, bukan dual-WAN FO–LEO, dan **tidak mengukur stabilitas temporal indeks**.
-- **1 entri** mengkaji **normalisasi** (baris 7), tetapi pada **dataset statis**, bukan deret metrik bising.
-- **0 entri** mengombinasikan **(a) normalisasi berbatas acuan tetap + (b) bobot adaptif/hibrida + (c) konteks FO–LEO + (d) evaluasi stabilitas temporal**.
+- **12 entri** tidak memakai skor komposit multi-kriteria sama sekali — baris **1–5**
+  (PCC/load balancing rasio statis), **10–13** (pengukuran Starlink/LEO), **14–15**
+  (tinjauan satelit 6G), dan **16** (DRL SD-WAN).
+- **1 entri** memakai **pembobotan objektif pada SAW** (baris **17**), tetapi di
+  **domain seluler 5G**, bukan tri-link (1 FO + 2 LEO), dan **tidak mengukur stabilitas
+  temporal indeks**.
+- **1 entri** mengkaji **normalisasi** (baris **7**), tetapi pada **dataset statis**,
+  bukan deret metrik bising.
+- **0 entri** mengombinasikan **(a) normalisasi berbatas acuan tetap + (b) bobot
+  adaptif/hibrida + (c) konteks tri-link (1 FO + 2 LEO) + (d) evaluasi stabilitas temporal**.
 
 **Angka inilah yang dipakai sebagai bukti kesenjangan** — bukan klaim "belum ada".
 

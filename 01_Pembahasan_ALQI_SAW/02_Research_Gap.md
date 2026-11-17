@@ -68,7 +68,7 @@ Tanpa pengujian, desainer sistem tidak punya dasar memilih teknik normalisasi.
 
 ---
 
-### G-N2 — Pembobotan objektif/adaptif belum dievaluasi pada penilaian kualitas link WAN FO–LEO skala kecil
+### G-N2 — Pembobotan objektif/adaptif belum dievaluasi pada penilaian kualitas link WAN heterogen (1 FO + 2 LEO) skala kecil
 
 **Yang sudah diketahui.** Pembobotan objektif (entropy, CRITIC, MEREC) mapan di MCDM
 (`10.3390/sym13060973`; `10.3390/sym13040525` **[FAKTA kandidat]**). *Entropy-based
@@ -76,7 +76,7 @@ SAW* telah dipakai untuk handover 5G (`10.1007/s11276-021-02625-y` **[FAKTA
 kandidat]**).
 
 **Yang belum ada.** Belum ditemukan studi yang (i) menerapkan pembobotan objektif pada
-**penilaian kualitas link WAN heterogen FO–LEO** dalam konteks **router kelas
+**penilaian kualitas link WAN heterogen (1 FO + 2 LEO)** dalam konteks **router kelas
 SOHO/PCC**, dan (ii) mengukur **hubungan akurasi ↔ stabilitas** akibat bobot yang
 diperbarui berkala.
 
@@ -140,7 +140,7 @@ Agar tidak membangun *strawman*:
 | Gap | Jenis | Kekuatan sebagai novelty | Peran |
 |---|---|---|---|
 | G-N1: normalisasi pada data streaming | Method | **Tinggi** | Kontribusi utama |
-| G-N2: pembobotan objektif/hibrida pada FO–LEO | Method | **Tinggi** | Kontribusi utama |
+| G-N2: pembobotan objektif/hibrida pada 1 FO + 2 LEO | Method | **Tinggi** | Kontribusi utama |
 | G-W1: stabilitas indeks vs transien LEO | Evidence/Method | Sedang–tinggi | Pendukung |
 | G-W2: dekomposisi normalisasi × bobot | Method | Sedang–tinggi | Pendukung |
 
@@ -154,7 +154,7 @@ menjadi pendukung yang memperkuat atribusi bukti.
 > Meskipun teknik normalisasi dan pembobotan pada SAW telah terbukti memengaruhi hasil
 > peringkat dan telah diterapkan pada seleksi jaringan seluler, pengujiannya masih
 > bertumpu pada dataset statis atau domain seluler 5G — belum pada **deret metrik
-> kualitas link real-time yang bising** pada **jaringan dual-WAN heterogen FO–LEO**
-> dengan transien periodik. Akibatnya, belum diketahui teknik normalisasi dan skema
+> kualitas link real-time yang bising** pada **jaringan tri-link heterogen (1 FO +
+> 2 LEO Starlink)** dengan transien periodik. Akibatnya, belum diketahui teknik normalisasi dan skema
 > pembobotan mana yang menghasilkan indeks yang **akurat sekaligus stabil secara
 > temporal**, dan seberapa besar masing-masing komponen menyumbang kinerja tersebut.

@@ -106,9 +106,9 @@ keseimbangan antara prior ahli dan data."*
 | $\alpha$ | Faktor EWMA | 0,10–0,20 | Uji sensitivitas |
 | $N$ | Jendela update bobot | 30–60 sampel | Uji sensitivitas |
 | $\gamma$ | Bobot hibrida | 0,5 | Uji {0; 0,25; 0,5; 0,75; 1} |
-| $\theta_{\text{degradasi}}$ | Ambang masuk degradasi | peringkat $Q$ penentu | Turunkan dari data/pilot |
-| $\theta_{\text{pemulihan}}$ | Ambang kembali baik | $> \theta_{\text{deg}}$ | Asimetri |
-| $k_{\text{down}}, k_{\text{up}}$ | Dwell count | $k_{\text{up}} > k_{\text{down}}$ | Turunkan dari transien 15 dtk |
+| $\theta_{\text{degradasi}}$ | Ambang masuk degradasi | 60 (skala 0–100) | Setara 0,60 pada skala 0–1 |
+| $\theta_{\text{pemulihan}}$ | Ambang kembali baik | 80 | $> \theta_{\text{degradasi}}$ → asimetri |
+| $k_{\text{down}}, k_{\text{up}}$ | Dwell count | 20 / 60 | $k_{\text{down}}\cdot T_s > 15$ dtk; $k_{\text{up}} > k_{\text{down}}$ |
 | $T_s$ | Interval polling | 1 detik | Perangkat |
 | $W$ | Jendela flap | 5 menit | Uji 1/5/15 |
 
@@ -116,10 +116,10 @@ keseimbangan antara prior ahli dan data."*
 
 ## 5. Kasus Uji Ilustratif **[USULAN]**
 
-Bandingkan dua jalur (FO vs LEO) pada tiga kondisi:
-1. **Normal** — kedua link sehat.
-2. **Transien LEO** — jitter/loss melonjak singkat (pola 15 dtk).
-3. **Degradasi FO sustained** — throughput turun bertahap (kongesti jam sibuk).
+Bandingkan tiga jalur (ISP-A LEO-1, ISP-B LEO-2, ISP-C FO) pada tiga kondisi (kode sesuai `08` §4b):
+1. **Normal (N)** — kedua link sehat.
+2. **Transien LEO (T)** — jitter/loss melonjak singkat (pola 15 dtk).
+3. **Degradasi FO *sustained* (S)** — throughput turun bertahap (kongesti jam sibuk).
 
 Harapan: $Q_i(t)$ mengikuti degradasi **sustained** tetapi **tidak** berkedip pada
 transien singkat (berkat EWMA + gerbang). Target uji: rasio chattering, rank

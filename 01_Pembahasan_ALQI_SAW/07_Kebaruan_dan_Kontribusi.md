@@ -17,7 +17,7 @@ Kata kerja: **memodifikasi**. Hindari "merancang", "menciptakan", "membangun dar
 
 | Kode | Klaim | Dibanding siapa | Bukti yang dihasilkan | Kekuatan |
 |---|---|---|---|---|
-| **K-A** | **Studi komparatif terkontrol** teknik normalisasi (N-a/N-b/N-c) dan skema pembobotan (statis, entropy, CRITIC, MEREC, hibrida) untuk indeks kualitas link pada **deret metrik real-time FO–LEO** | Vafaei et al. (dataset statis); entropy-SAW (domain seluler 5G) | Matriks kinerja + uji sensitivitas + effect size | **Tinggi** |
+| **K-A** | **Studi komparatif terkontrol** teknik normalisasi (N-a/N-b/N-c) dan skema pembobotan (statis, entropy, CRITIC, MEREC, hibrida) untuk indeks kualitas link pada **deret metrik real-time tri-link (1 FO + 2 LEO)** | Vafaei et al. (dataset statis); entropy-SAW (domain seluler 5G) | Matriks kinerja + uji sensitivitas + effect size | **Tinggi** |
 | **K-B** | **Mekanisme pembobotan hibrida adaptif** $w(t) = \gamma w^{\text{ahli}} + (1-\gamma) w^{\text{obj}}(t)$ dengan **gerbang kestabilan** | Studi bobot statis; studi bobot objektif tanpa analisis stabilitas | Kurva trade-off akurasi ↔ stabilitas ($\gamma$) | Tinggi |
 | **K-C** | **Normalisasi berbatas acuan tetap** (TIPHON/Y.1541) untuk menjaga **komparabilitas temporal** indeks | Min–max dengan batas bergeser | Uji *rank reversal* & stabilitas indeks | Sedang–tinggi |
 | **K-D** | **Dekomposisi kontribusi** normalisasi vs pembobotan terhadap kinerja indeks | Studi yang melaporkan "sistem lebih baik" tanpa atribusi | Analisis ablasi 2×2 (normalisasi × bobot) | Sedang–tinggi |
@@ -43,7 +43,8 @@ Kata kerja: **memodifikasi**. Hindari "merancang", "menciptakan", "membangun dar
 
 ## 3. Batas Klaim **[USULAN]**
 
-- Konteks: **dual-ISP FO–LEO**, satu lokasi skala kecil (RT/RW Net).
+- Konteks: **tri-link 1 FO + 2 LEO**, satu lokasi skala kecil (RT/RW Net);
+  **korelasi antar-Starlink diuji dan dilaporkan** (lihat `00_README.md` §6).
 - Data: **deret metrik 1 detik** dari kolektor *read-only*; validasi internal di
   staging, eksternal di lapangan (jika memungkinkan).
 - Bobot: **hibrida** dengan prior ahli dari literatur/pilot; **bukan** pembelajaran
@@ -73,7 +74,7 @@ lama). Novelty utama tetap pada penilaian, dengan alokasi sebagai bukti penerapa
 
 > *"Berbeda dari studi PCC yang menetapkan rasio secara statis dan dari studi
 > normalisasi MCDM yang diuji pada dataset statis, penelitian ini **memodifikasi
-> fungsi penilaian kualitas link** pada jaringan dual-WAN FO–LEO menjadi skor
+> fungsi penilaian kualitas link** pada jaringan tri-link (1 FO + 2 LEO) menjadi skor
 > komposit berbasis SAW dengan **normalisasi berbatas acuan tetap** dan **pembobotan
 > hibrida adaptif**, lalu **membuktikan secara komparatif** teknik mana yang
 > menghasilkan indeks paling akurat sekaligus paling stabil secara temporal."*
