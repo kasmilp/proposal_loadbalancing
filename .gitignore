@@ -1,20 +1,20 @@
 # Koleksi mentah jurnal dipindah ke luar repo (Opsi B)
 00_Arsip_Proposal_SPA-HSM/jurnal_terkait/jurnal terkait/
 
-# Kolektor baseline
-11_Kolektor_Baseline/.env
-11_Kolektor_Baseline/data/
-11_Kolektor_Baseline/logs/
-11_Kolektor_Baseline/report_*.md
-11_Kolektor_Baseline/report_*.json
-11_Kolektor_Baseline/__pycache__/
-11_Kolektor_Baseline/.venv/
+# Kolektor baseline (lokasi arsip) — hanya artefak lingkungan; data & laporan dilacak
+01_Arsip_SPA-HSM_Tahap_01-12/11_Kolektor_Baseline/.venv/
+01_Arsip_SPA-HSM_Tahap_01-12/11_Kolektor_Baseline/__pycache__/
+01_Arsip_SPA-HSM_Tahap_01-12/11_Kolektor_Baseline/logs/
+01_Arsip_SPA-HSM_Tahap_01-12/11_Kolektor_Baseline/.env
 **/__pycache__/
 *.pyc
 
 # Presentasi
 12_Presentasi/preview/
 12_Presentasi/~$*.pptx
+
+# Data baseline besar (>100 MB) — versi terarsipnya disimpan sebagai .jsonl.gz
+01_Arsip_SPA-HSM_Tahap_01-12/11_Kolektor_Baseline/data/baseline_rb1100ahx4_20261117_181759.jsonl
 
 # Berkas sistem dan sementara
 Thumbs.db

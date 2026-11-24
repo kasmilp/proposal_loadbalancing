@@ -48,6 +48,8 @@ hanya boleh ditulis setelah log pencarian dijalankan (lihat `11_Rencana_Verifika
 | `15_Arsitektur_Sistem.md` | **Arsitektur** tri-link: diagram, lapisan, kontrak antarmuka, state machine, deployment |
 | `16_Arsitektur_Jaringan_MikroTik.md` | **Desain jaringan Multi-WAN** (3 ISP): PCC, failover, LAN, konfigurasi RouterOS v7 |
 | `17_Uji_Kelayakan_dan_Risiko_Penguji.md` | **Uji kelayakan dari sudut penguji**: skor ±70, syarat blocking B1–B6, 12 pertanyaan |
+| `18_B1_Lingkup_dan_Pernyataan_Kebaruan.md` | **B1**: keputusan lingkup (Varian C) + pernyataan kebaruan satu paragraf |
+| `19_Analisis_Pra_Penelitian.md` | **Konsolidasi pra-penelitian**: akses API, baseline 2,2 jam + snapshot 17 Nov, temuan statistik, implikasi keputusan (D-7) |
 | `arsitektur/` | Skrip & gambar: `arsitektur_ALQI_SAW.*` dan `arsitektur_jaringan_mikrotik.*` (`.png`/`.svg`) |
 
 ---

@@ -20,7 +20,8 @@ spesifik dan terukur.
 |---|---|---|
 | `01_Arsip_SPA-HSM_Tahap_01-12/` | Alur kerja SPA-HSM: manajemen, gap/novelty, RQ, kerangka teori, metodologi, baseline, presentasi. | **Arsip** |
 | `00_Arsip_Proposal_SPA-HSM/` | Materi lebih lama: draf Bab I–II, dokumen audit, PDF, jurnal, arsitektur, logo, panduan penulisan. | **Arsip** |
-| `01_Pembahasan_ALQI_SAW/` | **Naskah aktif baru**: kelayakan, prior art, gap, parameter, bobot SAW, formulasi, SOTA, eksperimen, RQ/judul, kandidat referensi. | **Aktif** |
+| `01_Pembahasan_ALQI_SAW/` | **Naskah aktif baru**: kelayakan, prior art, gap, parameter, bobot SAW, formulasi, SOTA, eksperimen, RQ/judul, kandidat referensi, analisis pra-penelitian. | **Aktif** |
+| `02_Pembahasan_Final_Proposal/` | **Konsolidasi final**: struktur langkah penelitian (kelayakan gap/novelty S2), peta gap→klaim→bukti→syarat, gerbang keputusan, tahapan kerja per folder, draf Bab I–III (rencana). | **Aktif** |
 
 ## Isi `01_Pembahasan_ALQI_SAW/`
 
@@ -45,7 +46,21 @@ spesifik dan terukur.
 | `15_Arsitektur_Sistem.md` | Arsitektur tri-link: diagram, kontrak antarmuka, state machine, deployment |
 | `16_Arsitektur_Jaringan_MikroTik.md` | Desain jaringan Multi-WAN 3 ISP: PCC, failover, LAN, RouterOS v7 |
 | `17_Uji_Kelayakan_dan_Risiko_Penguji.md` | Uji kelayakan dari sudut penguji (skor ±70; syarat B1–B6) |
+| `18_B1_Lingkup_dan_Pernyataan_Kebaruan.md` | B1: lingkup (Varian C) + pernyataan kebaruan |
 | `arsitektur/` | Skrip & gambar arsitektur (`arsitektur_ALQI_SAW.*`, `arsitektur_jaringan_mikrotik.*`) |
+
+## Isi `02_Pembahasan_Final_Proposal/`
+
+| Berkas | Isi |
+|---|---|
+| `00_README.md` | Indeks, ringkasan eksekutif, status blocking B1–B6, barometer S2, peta gap→klaim→bukti→syarat, checklist final |
+| `01_Struktur_Langkah_Penelitian_S2.md` | **Struktur langkah penelitian** (T0–T10) + gerbang G0–G3/G-S2 + cara menutup B1–B6 + P1–P5 |
+| `02_Draf_Bab_I.md` | *(rencana)* Draf Bab I |
+| `03_Draf_Bab_II.md` | *(rencana)* Tinjauan pustaka + posisi |
+| `04_Draf_Bab_III.md` | *(rencana)* Metodologi |
+| `05_Registrasi_Rencana_Analisis.md` | *(rencana)* Pra-registrasi statistik |
+| `06_Tahapan_Per_Folder.md` | **Tahapan kerja per folder**: T0–T10 → folder → berkas, gelombang kerja, serah-terima, gerbang |
+| `07_Kamus_Kode.md` | **Kamus kode lengkap**: arti & rujukan semua kode (B1–B6, K-A…K-E, G-N/G-W, D-1…D-7, V/PA/T, perlakuan A–H, kondisi N/T/S/R/K, kode arsip) |
 
 ## Aturan kerja
 

@@ -1,0 +1,482 @@
+{
+  "meta": {
+    "version": 1,
+    "host": "router.example.local",
+    "port": 6187,
+    "site": "rt-rw-net-buru",
+    "router": "rb1100ahx4",
+    "tag": "baseline",
+    "probe": true,
+    "probe_targets": [
+      "1.1.1.1",
+      "8.8.8.8"
+    ],
+    "probe_interfaces": [
+      "ether1-ISP-A",
+      "ether2-ISP-B",
+      "ether3-ISP-C"
+    ],
+    "intervals": {
+      "resource": 10,
+      "identity": 3600,
+      "interface": 10,
+      "ethernet": 300,
+      "address": 60,
+      "route": 60,
+      "mangle": 60,
+      "nat": 300,
+      "service": 3600,
+      "group": 3600,
+      "netwatch": 60
+    },
+    "probe_interval": 2.0,
+    "duration_s": 0,
+    "connection_table": false,
+    "read_only": true
+  },
+  "time_range": {
+    "start": "2026-11-13T04:43:02.491698",
+    "end": "2026-11-18T14:11:10.058312"
+  },
+  "records": 211716,
+  "counts": {
+    "resource": 1,
+    "identity": 1,
+    "address": 7,
+    "route": 18,
+    "mangle": 23,
+    "service": 73,
+    "group": 3,
+    "netwatch": 0
+  },
+  "probe_summary": [
+    {
+      "interface": "ether1-ISP-A",
+      "target": "1.1.1.1",
+      "samples": 32022,
+      "success": 31915,
+      "loss_pct": 0.334,
+      "rtt_median_ms": 46.73,
+      "rtt_p95_ms": 62.36,
+      "rtt_min_ms": 32.14,
+      "rtt_max_ms": 265.95,
+      "jitter_ms": 5.89,
+      "periodicity": [
+        {
+          "lag_s": 1,
+          "autocorr": 0.977
+        },
+        {
+          "lag_s": 2,
+          "autocorr": 0.93
+        },
+        {
+          "lag_s": 3,
+          "autocorr": 0.891
+        }
+      ],
+      "autocorr_15s": 0.721
+    },
+    {
+      "interface": "ether1-ISP-A",
+      "target": "8.8.8.8",
+      "samples": 32017,
+      "success": 31925,
+      "loss_pct": 0.287,
+      "rtt_median_ms": 59.34,
+      "rtt_p95_ms": 74.78,
+      "rtt_min_ms": 45.55,
+      "rtt_max_ms": 186.8,
+      "jitter_ms": 5.82,
+      "periodicity": [
+        {
+          "lag_s": 1,
+          "autocorr": 0.943
+        },
+        {
+          "lag_s": 2,
+          "autocorr": 0.826
+        },
+        {
+          "lag_s": 3,
+          "autocorr": 0.728
+        }
+      ],
+      "autocorr_15s": 0.299
+    },
+    {
+      "interface": "ether2-ISP-B",
+      "target": "1.1.1.1",
+      "samples": 32022,
+      "success": 31935,
+      "loss_pct": 0.272,
+      "rtt_median_ms": 46.27,
+      "rtt_p95_ms": 62.47,
+      "rtt_min_ms": 31.05,
+      "rtt_max_ms": 159.55,
+      "jitter_ms": 6.12,
+      "periodicity": [
+        {
+          "lag_s": 1,
+          "autocorr": 0.979
+        },
+        {
+          "lag_s": 2,
+          "autocorr": 0.937
+        },
+        {
+          "lag_s": 3,
+          "autocorr": 0.901
+        }
+      ],
+      "autocorr_15s": 0.733
+    },
+    {
+      "interface": "ether2-ISP-B",
+      "target": "8.8.8.8",
+      "samples": 32017,
+      "success": 31905,
+      "loss_pct": 0.35,
+      "rtt_median_ms": 59.76,
+      "rtt_p95_ms": 76.53,
+      "rtt_min_ms": 46.27,
+      "rtt_max_ms": 170.94,
+      "jitter_ms": 6.16,
+      "periodicity": [
+        {
+          "lag_s": 1,
+          "autocorr": 0.961
+        },
+        {
+          "lag_s": 2,
+          "autocorr": 0.883
+        },
+        {
+          "lag_s": 3,
+          "autocorr": 0.815
+        }
+      ],
+      "autocorr_15s": 0.506
+    },
+    {
+      "interface": "ether3-ISP-C",
+      "target": "1.1.1.1",
+      "samples": 32021,
+      "success": 31882,
+      "loss_pct": 0.434,
+      "rtt_median_ms": 46.64,
+      "rtt_p95_ms": 47.45,
+      "rtt_min_ms": 45.82,
+      "rtt_max_ms": 617.62,
+      "jitter_ms": 0.37,
+      "periodicity": [
+        {
+          "lag_s": 1,
+          "autocorr": 0.999
+        },
+        {
+          "lag_s": 2,
+          "autocorr": 0.995
+        },
+        {
+          "lag_s": 3,
+          "autocorr": 0.992
+        }
+      ],
+      "autocorr_15s": 0.957
+    },
+    {
+      "interface": "ether3-ISP-C",
+      "target": "8.8.8.8",
+      "samples": 32016,
+      "success": 31877,
+      "loss_pct": 0.434,
+      "rtt_median_ms": 45.83,
+      "rtt_p95_ms": 46.43,
+      "rtt_min_ms": 44.82,
+      "rtt_max_ms": 161.41,
+      "jitter_ms": 0.27,
+      "periodicity": [
+        {
+          "lag_s": 1,
+          "autocorr": 0.865
+        },
+        {
+          "lag_s": 2,
+          "autocorr": 0.607
+        },
+        {
+          "lag_s": 3,
+          "autocorr": 0.428
+        }
+      ],
+      "autocorr_15s": 0.325
+    }
+  ],
+  "correlations": [
+    {
+      "target": "1.1.1.1",
+      "interface_a": "ether1-ISP-A",
+      "interface_b": "ether2-ISP-B",
+      "pearson_r": 0.74,
+      "n": 466074
+    },
+    {
+      "target": "1.1.1.1",
+      "interface_a": "ether1-ISP-A",
+      "interface_b": "ether3-ISP-C",
+      "pearson_r": 0.016,
+      "n": 466073
+    },
+    {
+      "target": "1.1.1.1",
+      "interface_a": "ether2-ISP-B",
+      "interface_b": "ether3-ISP-C",
+      "pearson_r": -0.015,
+      "n": 466073
+    },
+    {
+      "target": "8.8.8.8",
+      "interface_a": "ether1-ISP-A",
+      "interface_b": "ether2-ISP-B",
+      "pearson_r": 0.522,
+      "n": 464795
+    },
+    {
+      "target": "8.8.8.8",
+      "interface_a": "ether1-ISP-A",
+      "interface_b": "ether3-ISP-C",
+      "pearson_r": -0.142,
+      "n": 464794
+    },
+    {
+      "target": "8.8.8.8",
+      "interface_a": "ether2-ISP-B",
+      "interface_b": "ether3-ISP-C",
+      "pearson_r": 0.052,
+      "n": 464794
+    }
+  ],
+  "episodes": [
+    {
+      "interface": "ether1-ISP-A",
+      "target": "1.1.1.1",
+      "episodes": 154,
+      "total_duration_s": 1374.9,
+      "median_duration_s": 2.6
+    },
+    {
+      "interface": "ether1-ISP-A",
+      "target": "8.8.8.8",
+      "episodes": 172,
+      "total_duration_s": 1614.2,
+      "median_duration_s": 2.7
+    },
+    {
+      "interface": "ether2-ISP-B",
+      "target": "1.1.1.1",
+      "episodes": 143,
+      "total_duration_s": 1489.9,
+      "median_duration_s": 2.8
+    },
+    {
+      "interface": "ether2-ISP-B",
+      "target": "8.8.8.8",
+      "episodes": 220,
+      "total_duration_s": 1986.1,
+      "median_duration_s": 2.9
+    },
+    {
+      "interface": "ether3-ISP-C",
+      "target": "1.1.1.1",
+      "episodes": 20,
+      "total_duration_s": 1218.2,
+      "median_duration_s": 10.3
+    },
+    {
+      "interface": "ether3-ISP-C",
+      "target": "8.8.8.8",
+      "episodes": 18,
+      "total_duration_s": 1158.3,
+      "median_duration_s": 7.4
+    }
+  ],
+  "throughput": [
+    {
+      "interface": "ether1-ISP-A",
+      "samples": 6805,
+      "rx_mean_mbps": 16.325,
+      "rx_p95_mbps": 26.572,
+      "tx_mean_mbps": 1.697,
+      "tx_p95_mbps": 4.217
+    },
+    {
+      "interface": "ether2-ISP-B",
+      "samples": 6805,
+      "rx_mean_mbps": 15.197,
+      "rx_p95_mbps": 26.35,
+      "tx_mean_mbps": 1.851,
+      "tx_p95_mbps": 3.527
+    },
+    {
+      "interface": "ether3-ISP-C",
+      "samples": 6805,
+      "rx_mean_mbps": 21.379,
+      "rx_p95_mbps": 51.814,
+      "tx_mean_mbps": 1.724,
+      "tx_p95_mbps": 4.579
+    },
+    {
+      "interface": "ether4",
+      "samples": 6805,
+      "rx_mean_mbps": 5.403,
+      "rx_p95_mbps": 11.518,
+      "tx_mean_mbps": 39.828,
+      "tx_p95_mbps": 78.497
+    },
+    {
+      "interface": "ether5",
+      "samples": 6805,
+      "rx_mean_mbps": 0.331,
+      "rx_p95_mbps": 0.758,
+      "tx_mean_mbps": 2.355,
+      "tx_p95_mbps": 6.287
+    },
+    {
+      "interface": "ether6",
+      "samples": 6805,
+      "rx_mean_mbps": 0.135,
+      "rx_p95_mbps": 0.413,
+      "tx_mean_mbps": 0.747,
+      "tx_p95_mbps": 2.873
+    },
+    {
+      "interface": "ether7",
+      "samples": 6805,
+      "rx_mean_mbps": 0.101,
+      "rx_p95_mbps": 0.329,
+      "tx_mean_mbps": 0.53,
+      "tx_p95_mbps": 2.058
+    },
+    {
+      "interface": "ether8",
+      "samples": 6805,
+      "rx_mean_mbps": 0.271,
+      "rx_p95_mbps": 0.955,
+      "tx_mean_mbps": 1.142,
+      "tx_p95_mbps": 4.504
+    },
+    {
+      "interface": "ether9",
+      "samples": 6805,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "ether10",
+      "samples": 6805,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "ether11",
+      "samples": 6805,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "ether12",
+      "samples": 6805,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "ether13-Laptop",
+      "samples": 6805,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "Bridge - Hotspot",
+      "samples": 6805,
+      "rx_mean_mbps": 5.452,
+      "rx_p95_mbps": 12.29,
+      "tx_mean_mbps": 43.349,
+      "tx_p95_mbps": 87.128
+    },
+    {
+      "interface": "apim@mytunnel.id",
+      "samples": 6805,
+      "rx_mean_mbps": 0.005,
+      "rx_p95_mbps": 0.006,
+      "tx_mean_mbps": 0.016,
+      "tx_p95_mbps": 0.025
+    },
+    {
+      "interface": "lo",
+      "samples": 6805,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    },
+    {
+      "interface": "onco@mytunnel.id",
+      "samples": 6805,
+      "rx_mean_mbps": 0.01,
+      "rx_p95_mbps": 0.015,
+      "tx_mean_mbps": 0.242,
+      "tx_p95_mbps": 0.381
+    },
+    {
+      "interface": "zerotier1",
+      "samples": 6805,
+      "rx_mean_mbps": 0.0,
+      "rx_p95_mbps": 0.0,
+      "tx_mean_mbps": 0.0,
+      "tx_p95_mbps": 0.0
+    }
+  ],
+  "open_services": [
+    "api",
+    "api-ssl",
+    "btest",
+    "detnet",
+    "dhcp",
+    "dhcpclient",
+    "ftp",
+    "hotspot",
+    "ntp",
+    "ppp",
+    "resolver",
+    "reverse-proxy",
+    "snmp",
+    "ssh",
+    "telnet",
+    "winbox",
+    "wproxy",
+    "www",
+    "www-ssl"
+  ],
+  "files": [
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_rb1100ahx4_20261113_050431.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_rb1100ahx4_20261113_071728.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_rb1100ahx4_20261117_162339.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_rb1100ahx4_20261117_181759.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_router_20261113_044301.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_router_20261113_044313.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_router_20261113_044356.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_router_20261113_044931.jsonl",
+    "C:\\Users\\kasmi\\OneDrive\\Dokumen\\GitHub\\proposal_loadbalancing\\01_Arsip_SPA-HSM_Tahap_01-12\\11_Kolektor_Baseline\\data\\baseline_router_20261113_044942.jsonl"
+  ]
+}

@@ -122,3 +122,1344 @@
 2026-11-18 01:01:46,274 WARNING Gagal membaca /system/resource/print: timed out
 2026-11-18 01:01:46,275 INFO Menghubungkan ke router.example.local:6187
 2026-11-18 01:01:47,098 INFO Terhubung (read-only)
+2026-11-18 02:01:51,645 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:02:01,700 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:02:11,725 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:02:22,253 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:02:32,304 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 02:02:32,305 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:02:42,312 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 02:02:42,313 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:02:52,330 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:03:02,349 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:03:12,376 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:03:22,399 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:03:32,427 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:03:42,946 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:03:52,968 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 02:03:52,970 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:04:02,992 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 02:04:02,993 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 02:04:03,985 INFO Terhubung (read-only)
+2026-11-18 03:04:46,678 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 03:04:47,451 INFO Terhubung (read-only)
+2026-11-18 04:04:51,980 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 04:04:52,741 INFO Terhubung (read-only)
+2026-11-18 05:04:53,760 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 05:04:54,780 INFO Terhubung (read-only)
+2026-11-18 06:04:54,951 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 06:04:55,908 INFO Terhubung (read-only)
+2026-11-18 07:04:56,368 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 07:04:57,268 INFO Terhubung (read-only)
+2026-11-18 08:00:23,484 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 08:00:34,036 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 08:00:44,055 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 08:00:44,056 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 08:00:54,073 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 08:00:54,074 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 08:00:54,806 INFO Terhubung (read-only)
+2026-11-18 09:01:05,961 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 09:01:16,019 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 09:01:26,036 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 09:01:33,989 INFO Terhubung (read-only)
+2026-11-18 09:39:15,483 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 09:39:25,092 INFO Terhubung (read-only)
+2026-11-18 09:55:34,377 WARNING Gagal membaca /system/resource/print: The read operation timed out
+2026-11-18 09:55:34,379 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 09:55:35,303 INFO Terhubung (read-only)
+2026-11-18 10:01:08,871 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:15,950 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:15,958 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:15,971 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,475 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,478 WARNING Gagal membaca /system/resource/print: [Errno 11001] getaddrinfo failed
+2026-11-18 10:01:16,479 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,481 WARNING Gagal membaca /interface/print: [Errno 11001] getaddrinfo failed
+2026-11-18 10:01:16,481 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,484 WARNING Gagal membaca /ip/address/print: [Errno 11001] getaddrinfo failed
+2026-11-18 10:01:16,485 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,488 WARNING Gagal membaca /ip/route/print: [Errno 11001] getaddrinfo failed
+2026-11-18 10:01:16,490 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,494 WARNING Gagal membaca /ip/firewall/mangle/print: [Errno 11001] getaddrinfo failed
+2026-11-18 10:01:16,497 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,500 WARNING Gagal membaca /tool/netwatch/print: [Errno 11001] getaddrinfo failed
+2026-11-18 10:01:16,501 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,504 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,506 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,509 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,512 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:16,516 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:18,520 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:18,533 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:18,536 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:18,538 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:18,541 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:18,544 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:20,548 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 10:01:21,374 INFO Terhubung (read-only)
+2026-11-18 11:01:28,684 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 11:01:29,464 INFO Terhubung (read-only)
+2026-11-18 11:06:46,931 WARNING Gagal membaca /tool/netwatch/print: The read operation timed out
+2026-11-18 11:06:46,932 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 11:06:56,440 INFO Terhubung (read-only)
+2026-11-18 12:42:28,124 WARNING Gagal membaca /system/resource/print: The read operation timed out
+2026-11-18 12:42:28,126 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 12:42:38,185 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 12:42:38,188 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 12:42:48,220 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 12:42:58,243 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 12:43:08,268 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 12:43:09,042 INFO Terhubung (read-only)
+2026-11-18 13:00:22,912 WARNING Gagal membaca /system/resource/print: The read operation timed out
+2026-11-18 13:00:22,916 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 13:00:32,968 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 13:00:32,969 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 13:00:42,993 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 13:00:53,022 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 13:00:53,902 INFO Terhubung (read-only)
+2026-11-18 13:17:59,352 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 13:18:00,195 INFO Terhubung (read-only)
+2026-11-18 13:28:31,816 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 13:28:32,670 INFO Terhubung (read-only)
+2026-11-18 14:01:01,584 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 14:01:11,662 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 14:01:21,687 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 14:01:31,713 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 14:01:41,732 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 14:01:52,276 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 14:01:56,180 INFO Terhubung (read-only)
+2026-11-18 14:40:13,353 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 14:40:14,166 INFO Terhubung (read-only)
+2026-11-18 15:01:59,825 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:02:09,863 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:02:20,379 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:02:30,411 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 15:02:30,412 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:02:40,422 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 15:02:40,423 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:02:50,440 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 15:02:50,448 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:03:00,461 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 15:03:00,461 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:03:10,487 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 15:03:10,488 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:03:20,504 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 15:03:20,506 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:03:30,595 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:03:40,616 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:03:50,644 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:04:00,655 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:04:10,675 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:04:21,196 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:04:31,220 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 15:04:31,221 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:04:41,236 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 15:04:41,237 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:04:51,247 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 15:04:51,250 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:05:01,272 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 15:05:01,275 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:05:11,317 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 15:05:11,322 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:05:21,339 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 15:05:21,340 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:05:31,346 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 15:05:31,346 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:05:41,360 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 15:05:41,361 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:05:51,387 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:06:01,399 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:06:11,419 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:06:21,437 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:06:31,464 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:06:41,995 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:06:52,011 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 15:06:52,012 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:07:02,027 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 15:07:02,028 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:07:12,040 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 15:07:12,040 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:07:22,053 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 15:07:22,053 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:07:32,066 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 15:07:32,067 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:07:42,090 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 15:07:42,091 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:07:52,105 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:08:02,126 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:08:12,151 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:08:22,164 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:08:32,196 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:08:42,733 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:08:52,748 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 15:08:52,749 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:09:02,779 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 15:09:02,781 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:09:12,791 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 15:09:12,792 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 15:09:16,886 INFO Terhubung (read-only)
+2026-11-18 16:01:56,994 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:02:07,044 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:02:17,553 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:02:27,565 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:02:27,566 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:02:37,576 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:02:37,576 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:02:47,600 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:02:47,600 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:02:48,351 INFO Terhubung (read-only)
+2026-11-18 16:30:51,197 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:31:01,217 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:31:11,266 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:31:21,286 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:31:31,947 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:31:42,471 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:31:52,520 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:31:52,520 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:32:02,532 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:32:02,532 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:32:12,554 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:32:12,555 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:32:22,572 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:32:22,572 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:32:32,597 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:32:32,598 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:32:42,617 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:32:42,619 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:32:52,645 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:33:02,675 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:33:12,690 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:33:22,705 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:33:32,728 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:33:43,246 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:33:53,266 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:33:53,267 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:34:03,278 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:34:03,279 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:34:13,292 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:34:13,293 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:34:23,319 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:34:23,320 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:34:33,342 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:34:33,343 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:34:43,360 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:34:43,361 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:34:53,378 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:35:03,387 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:35:13,402 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:35:23,432 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:35:33,466 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:35:43,989 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:35:54,003 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:35:54,003 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:36:04,026 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:36:04,027 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:36:14,054 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 16:36:14,055 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:36:24,075 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:36:24,076 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:36:34,096 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:36:34,096 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:36:44,112 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:36:44,113 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:36:54,134 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 16:36:54,136 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:37:04,164 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:37:04,165 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:37:14,174 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:37:24,187 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:37:34,207 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:37:44,229 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:37:54,243 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:38:04,773 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:38:14,785 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:38:14,786 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:38:24,816 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:38:24,816 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:38:34,831 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:38:34,832 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:38:44,864 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:38:44,865 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:38:54,877 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:38:54,878 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:39:04,884 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:39:04,885 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:39:14,895 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:39:24,914 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:39:34,924 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:39:44,953 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:39:54,978 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:40:05,507 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:40:15,555 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:40:15,555 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:40:25,571 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:40:25,573 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:40:35,595 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:40:35,596 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:40:45,618 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:40:45,619 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:40:55,644 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:40:55,645 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:41:05,654 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:41:05,656 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:41:15,663 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:41:25,673 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:41:35,690 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:41:45,715 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:41:55,730 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:42:06,255 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:42:16,268 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:42:16,268 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:42:26,285 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:42:26,285 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:42:36,305 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 16:42:36,306 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:42:46,319 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:42:46,319 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:42:56,336 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:42:56,337 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:43:06,352 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:43:06,353 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:43:16,364 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 16:43:16,366 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:43:26,379 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:43:26,380 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:43:36,396 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:43:46,421 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:43:56,441 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:44:06,477 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:44:16,500 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:44:27,034 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:44:37,051 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:44:37,052 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:44:47,065 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:44:47,066 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:44:57,076 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:44:57,077 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:45:07,103 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:45:07,104 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:45:17,126 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:45:17,127 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:45:27,150 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:45:27,151 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:45:37,165 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:45:47,191 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:45:57,205 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:46:07,223 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:46:17,239 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:46:27,758 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:46:37,774 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:46:37,777 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:46:47,808 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:46:47,809 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:46:57,829 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:46:57,830 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:47:07,845 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:47:07,846 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:47:17,866 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:47:17,867 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:47:27,898 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:47:27,899 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:47:37,918 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:47:47,931 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:47:57,950 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:48:07,967 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:48:18,015 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:48:28,528 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:48:38,549 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:48:38,550 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:48:48,563 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:48:48,564 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:48:58,585 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 16:48:58,585 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:49:08,601 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:49:08,601 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:49:18,615 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:49:18,616 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:49:28,626 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:49:28,627 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:49:38,636 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 16:49:38,638 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:49:48,656 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:49:48,657 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:49:58,676 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:50:08,688 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:50:18,712 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:50:28,736 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:50:38,754 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:50:49,263 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:50:59,284 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:50:59,285 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:51:09,332 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:51:09,333 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:51:19,347 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:51:19,348 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:51:29,362 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:51:29,363 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:51:39,394 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:51:39,395 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:51:49,418 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:51:49,418 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:51:59,431 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:52:09,452 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:52:19,469 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:52:29,492 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:52:39,526 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:52:50,052 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:53:00,099 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:53:00,099 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:53:10,116 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:53:10,118 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:53:20,141 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:53:20,142 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:53:30,163 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:53:30,164 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:53:40,189 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:53:40,190 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:53:50,209 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:53:50,209 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:54:00,226 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:54:10,238 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:54:20,252 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:54:30,269 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:54:40,280 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:54:50,806 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:55:00,830 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:55:00,831 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:55:10,856 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:55:10,857 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:55:20,868 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 16:55:20,869 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:55:30,892 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:55:30,892 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:55:40,907 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:55:40,908 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:55:50,917 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:55:50,918 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:56:00,935 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 16:56:00,936 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:56:10,963 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:56:10,964 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:56:20,987 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:56:31,008 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:56:41,020 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:56:51,085 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:57:01,109 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:57:11,631 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:57:21,660 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:57:21,661 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:57:31,695 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:57:31,697 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:57:41,728 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:57:41,733 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:57:51,786 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:57:51,786 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:58:01,815 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 16:58:01,816 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:58:11,835 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 16:58:11,836 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:58:21,851 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:58:31,880 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:58:41,899 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:58:51,921 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:59:01,950 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:59:12,477 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:59:22,496 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 16:59:22,497 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:59:32,506 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 16:59:32,507 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:59:42,535 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 16:59:42,536 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 16:59:52,561 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 16:59:52,562 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:00:02,583 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:00:02,584 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:00:12,599 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:00:12,602 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:00:22,656 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:00:32,679 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:00:42,706 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:00:52,732 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:01:02,743 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:01:13,261 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:01:23,278 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:01:23,279 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:01:33,300 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:01:33,302 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:01:43,322 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:01:43,322 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:01:53,335 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:01:53,336 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:02:03,356 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:02:03,357 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:02:13,376 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:02:13,377 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:02:23,389 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:02:23,390 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:02:33,402 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:02:33,403 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:02:43,417 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:02:53,426 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:03:03,450 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:03:13,471 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:03:23,501 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:03:34,027 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:03:44,049 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:03:44,050 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:03:54,072 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:03:54,080 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:04:04,112 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:04:04,113 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:04:14,139 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:04:14,140 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:04:24,152 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:04:24,153 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:04:34,172 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:04:34,173 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:04:44,188 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:04:54,207 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:05:04,231 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:05:14,244 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:05:24,272 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:05:34,819 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:05:44,842 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:05:44,843 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:05:54,852 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:05:54,853 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:06:04,862 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:06:04,862 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:06:14,906 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:06:14,907 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:06:24,924 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:06:24,926 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:06:34,943 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:06:34,944 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:06:44,956 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:06:54,973 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:07:04,994 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:07:15,010 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:07:25,029 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:07:35,547 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:07:45,571 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:07:45,572 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:07:55,592 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:07:55,593 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:08:05,611 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:08:05,614 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:08:15,644 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:08:15,646 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:08:25,677 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:08:25,678 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:08:35,694 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:08:35,694 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:08:45,706 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:08:45,708 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:08:55,725 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:08:55,726 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:09:05,743 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:09:15,769 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:09:25,791 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:09:35,816 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:09:45,880 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:09:56,406 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:10:06,423 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:10:06,423 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:10:16,444 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:10:16,444 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:10:26,502 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:10:26,506 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:10:36,529 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:10:36,529 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:10:46,605 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:10:46,606 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:10:56,615 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:10:56,616 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:11:06,638 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:11:16,662 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:11:26,674 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:11:36,705 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:11:46,729 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:11:57,245 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:12:07,267 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:12:07,268 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:12:17,292 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:12:17,294 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:12:27,316 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:12:27,317 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:12:37,343 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:12:37,344 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:12:47,366 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:12:47,367 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:12:57,386 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:12:57,387 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:13:07,414 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:13:17,431 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:13:27,449 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:13:37,464 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:13:47,486 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:13:58,005 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:14:08,026 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:14:08,027 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:14:18,052 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:14:18,053 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:14:28,075 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:14:28,076 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:14:38,101 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:14:38,102 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:14:48,113 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:14:48,114 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:14:58,135 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:14:58,136 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:15:08,201 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:15:08,202 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:15:18,226 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:15:18,227 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:15:28,252 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:15:38,270 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:15:48,292 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:15:58,335 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:16:08,358 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:16:18,921 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:16:28,948 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:16:28,949 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:16:38,969 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:16:38,970 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:16:48,987 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:16:48,989 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:16:59,013 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:16:59,013 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:17:09,035 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:17:09,035 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:17:19,057 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:17:19,058 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:17:29,081 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:17:39,101 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:17:49,186 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:17:59,212 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:18:09,228 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:18:19,755 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:18:29,803 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:18:29,803 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:18:39,824 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:18:39,828 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:18:49,861 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:18:49,861 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:18:59,892 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:18:59,893 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:19:09,912 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:19:09,913 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:19:19,934 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:19:19,935 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:19:29,963 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:19:39,974 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:19:49,993 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:20:00,012 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:20:10,032 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:20:20,557 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:20:30,583 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:20:30,584 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:20:40,607 WARNING Gagal membaca /system/identity/print: timed out
+2026-11-18 17:20:40,608 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:20:50,631 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:20:50,632 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:21:00,661 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:21:00,661 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:21:10,680 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:21:10,681 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:21:20,691 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:21:20,692 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:21:30,708 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:21:30,709 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:21:40,735 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:21:40,738 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:21:50,763 WARNING Gagal membaca /ip/service/print: timed out
+2026-11-18 17:21:50,764 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:22:00,817 WARNING Gagal membaca /user/group/print: timed out
+2026-11-18 17:22:00,817 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:22:10,844 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:22:10,845 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:22:20,862 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:22:30,876 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:22:40,890 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:22:50,907 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:23:00,918 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:23:11,445 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:23:21,468 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:23:21,469 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:23:31,488 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:23:31,489 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:23:41,503 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:23:41,503 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:23:51,525 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:23:51,525 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:24:01,548 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:24:01,548 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:24:11,559 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:24:11,560 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:24:21,581 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:24:31,594 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:24:41,616 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:24:51,634 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:25:01,656 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:25:12,167 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:25:22,183 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:25:22,183 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:25:32,207 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:25:32,209 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:25:42,236 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:25:42,236 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:25:52,246 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:25:52,247 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:26:02,265 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:26:02,265 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:26:12,573 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:26:12,574 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:26:22,599 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:26:32,617 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:26:42,629 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:26:52,651 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:27:02,672 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:27:13,189 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:27:23,243 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:27:23,244 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:27:33,283 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:27:33,284 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:27:43,315 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:27:43,315 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:27:53,331 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:27:53,332 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:28:03,359 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:28:03,360 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:28:13,381 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:28:13,382 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:28:23,433 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:28:23,434 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:28:33,451 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:28:33,451 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:28:43,473 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:28:53,499 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:29:03,529 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:29:13,561 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:29:23,609 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:29:34,125 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:29:44,133 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:29:44,135 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:29:54,163 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:29:54,165 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:30:04,186 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:30:04,186 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:30:14,202 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:30:14,203 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:30:24,227 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:30:24,228 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:30:34,277 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:30:34,278 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:30:44,290 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:30:54,316 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:31:04,334 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:31:14,348 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:31:24,360 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:31:34,874 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:31:44,899 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:31:44,901 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:31:54,921 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:31:54,921 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:32:04,947 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:32:04,948 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:32:14,965 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:32:14,965 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:32:24,981 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:32:24,982 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:32:35,008 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:32:35,008 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:32:45,026 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:32:55,056 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:33:05,072 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:33:15,098 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:33:25,119 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:33:35,635 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:33:45,646 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:33:45,647 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:33:55,669 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:33:55,670 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:34:05,681 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:34:05,682 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:34:15,702 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:34:15,703 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:34:25,780 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:34:25,788 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:34:35,811 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:34:35,812 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:34:45,828 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:34:45,832 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:34:55,863 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:34:55,863 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:35:05,894 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:35:15,915 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:35:25,964 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:35:35,978 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:35:46,002 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:35:56,521 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:36:06,535 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:36:06,536 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:36:16,551 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:36:16,552 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:36:26,573 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:36:26,578 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:36:36,603 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:36:36,603 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:36:46,613 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:36:46,614 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:36:56,623 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:36:56,625 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:37:06,649 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:37:16,661 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:37:26,682 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:37:36,716 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:37:46,749 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:37:57,275 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:38:07,330 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:38:07,331 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:38:17,350 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:38:17,350 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:38:27,370 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:38:27,371 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:38:37,391 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:38:37,392 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:38:47,421 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:38:47,422 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:38:57,442 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:38:57,442 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:39:07,511 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:39:17,522 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:39:27,538 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:39:37,559 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:39:47,584 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:39:58,111 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:40:08,130 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:40:08,130 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:40:18,154 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:40:18,156 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:40:28,197 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:40:28,197 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:40:38,218 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:40:38,219 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:40:48,263 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:40:48,263 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:40:58,324 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:40:58,324 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:41:08,347 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:41:08,348 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:41:18,367 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:41:18,368 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:41:28,396 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:41:38,413 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:41:48,444 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:41:58,463 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:42:08,494 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:42:19,016 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:42:29,032 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:42:29,033 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:42:39,051 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:42:39,052 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:42:49,073 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:42:49,074 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:42:59,106 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:42:59,106 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:43:09,127 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:43:09,128 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:43:19,146 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:43:19,147 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:43:29,168 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:43:39,246 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:43:49,281 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:43:59,295 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:44:09,317 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:44:19,842 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:44:29,874 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:44:29,875 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:44:39,904 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:44:39,904 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:44:49,920 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:44:49,921 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:44:59,947 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:44:59,948 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:45:09,980 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:45:09,981 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:45:20,024 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:45:20,025 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:45:30,035 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:45:40,054 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:45:50,073 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:46:00,098 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:46:10,133 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:46:20,675 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:46:30,688 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:46:30,688 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:46:40,702 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:46:40,702 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:46:50,719 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:46:50,719 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:47:00,727 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:47:00,728 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:47:10,753 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:47:10,754 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:47:20,788 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:47:20,790 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:47:30,801 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:47:30,802 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:47:40,835 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:47:40,851 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:47:50,868 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:48:00,899 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:48:10,908 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:48:20,931 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:48:30,995 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:48:41,531 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:48:51,564 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:48:51,565 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:49:01,591 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:49:01,592 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:49:11,613 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:49:11,614 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:49:21,640 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:49:21,640 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:49:31,668 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:49:31,669 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:49:41,713 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:49:41,713 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:49:51,733 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:50:01,760 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:50:11,785 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:50:21,805 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:50:31,835 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:50:42,364 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:50:52,385 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:50:52,386 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:51:02,431 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:51:02,431 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:51:12,487 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:51:12,487 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:51:22,520 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:51:22,521 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:51:32,544 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:51:32,546 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:51:42,588 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:51:42,588 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:51:52,611 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:52:02,639 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:52:12,653 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:52:22,664 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:52:32,680 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:52:43,204 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:52:53,225 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:52:53,225 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:53:03,241 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:53:03,242 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:53:13,263 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:53:13,264 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:53:23,287 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:53:23,288 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:53:33,314 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:53:33,317 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:53:43,329 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:53:43,330 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:53:53,353 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 17:53:53,354 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:54:03,376 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:54:03,377 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:54:13,397 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:54:23,453 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:54:33,489 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:54:43,533 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:54:53,557 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:55:04,082 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:55:14,103 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:55:14,105 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:55:24,643 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:55:24,645 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:55:34,698 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:55:34,698 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:55:44,716 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:55:44,716 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:55:54,727 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:55:54,727 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:56:04,756 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:56:04,757 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:56:14,786 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:56:24,818 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:56:34,841 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:56:44,864 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:56:54,918 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:57:05,435 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:57:15,478 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:57:15,478 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:57:25,503 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:57:25,504 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:57:35,537 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:57:35,538 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:57:45,570 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:57:45,571 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:57:55,589 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 17:57:55,589 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:58:05,601 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 17:58:05,603 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:58:15,632 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:58:25,645 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:58:35,660 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:58:45,673 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:58:55,690 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:59:06,217 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:59:16,236 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 17:59:16,237 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:59:26,249 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 17:59:26,249 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:59:36,270 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 17:59:36,271 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:59:46,296 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 17:59:46,297 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 17:59:56,320 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 17:59:56,320 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:00:06,332 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:00:06,333 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:00:16,359 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 18:00:16,360 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:00:26,382 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:00:26,383 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:00:36,443 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:00:46,465 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:00:56,535 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:01:06,720 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:01:16,741 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:01:27,263 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:01:37,296 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:01:37,298 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:01:47,324 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:01:47,326 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:01:57,352 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:01:57,352 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:02:07,374 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:02:07,375 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:02:17,395 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:02:17,397 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:02:27,423 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:02:27,424 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:02:37,455 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:02:47,481 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:02:57,517 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:03:07,536 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:03:17,554 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:03:28,069 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:03:38,110 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:03:38,111 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:03:48,126 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:03:48,129 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:03:58,151 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:03:58,152 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:04:08,184 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:04:08,189 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:04:18,223 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:04:18,224 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:04:28,259 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:04:28,259 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:04:38,276 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:04:48,301 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:04:58,360 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:05:08,388 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:05:18,404 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:05:28,924 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:05:38,946 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:05:38,947 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:05:49,061 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:05:49,062 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:05:59,085 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 18:05:59,086 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:06:09,107 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:06:09,116 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:06:19,137 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:06:19,138 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:06:29,199 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:06:29,200 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:06:39,217 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 18:06:39,217 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:06:49,240 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:06:49,241 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:06:59,254 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:07:09,275 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:07:19,298 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:07:29,327 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:07:39,359 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:07:49,874 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:07:59,914 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:07:59,915 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:08:09,943 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:08:09,944 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:08:19,956 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:08:19,957 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:08:29,982 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:08:29,983 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:08:40,004 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:08:40,005 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:08:50,031 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:08:50,033 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:09:00,053 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:09:10,072 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:09:20,097 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:09:30,110 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:09:40,120 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:09:50,634 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:10:00,655 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:10:00,655 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:10:10,673 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:10:10,674 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:10:20,710 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:10:20,711 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:10:30,732 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:10:30,733 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:10:40,758 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:10:40,758 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:10:50,961 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:10:50,962 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:11:00,979 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:11:11,005 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:11:21,035 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:11:31,049 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:11:41,073 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:11:51,587 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:12:01,612 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:12:01,612 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:12:11,629 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:12:11,630 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:12:21,655 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 18:12:21,656 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:12:31,681 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:12:31,683 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:12:41,710 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:12:41,711 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:12:51,748 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:12:51,748 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:13:01,764 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 18:13:01,764 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:13:11,773 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:13:11,773 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:13:21,792 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:13:31,812 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:13:41,823 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:13:51,838 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:14:01,863 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:14:12,397 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:14:22,415 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:14:22,416 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:14:32,445 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:14:32,447 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:14:42,460 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:14:42,460 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:14:52,496 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:14:52,497 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:15:02,512 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:15:02,513 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:15:12,534 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:15:12,535 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:15:22,556 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:15:32,580 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:15:42,598 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:15:52,622 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:16:02,642 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:16:13,161 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:16:23,173 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:16:23,174 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:16:33,205 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:16:33,206 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:16:43,220 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:16:43,221 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:16:53,251 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:16:53,252 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:17:03,276 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:17:03,277 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:17:13,306 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:17:13,309 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:17:23,373 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:17:33,405 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:17:43,440 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:17:53,463 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:18:03,517 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:18:14,039 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:18:24,076 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:18:24,076 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:18:34,118 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:18:34,118 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:18:44,152 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 18:18:44,153 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:18:54,195 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:18:54,196 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:19:04,219 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:19:04,221 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:19:14,247 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:19:14,248 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:19:24,272 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 18:19:24,273 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:19:34,304 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:19:34,305 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:19:44,320 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:19:54,353 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:20:04,379 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:20:14,405 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:20:24,423 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:20:34,959 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:20:45,012 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:20:45,014 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:20:55,037 WARNING Gagal membaca /system/identity/print: timed out
+2026-11-18 18:20:55,038 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:21:05,053 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:21:05,055 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:21:15,080 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:21:15,081 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:21:25,116 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:21:25,117 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:21:35,135 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:21:35,137 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:21:45,156 WARNING Gagal membaca /ip/service/print: timed out
+2026-11-18 18:21:45,159 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:21:55,186 WARNING Gagal membaca /user/group/print: timed out
+2026-11-18 18:21:55,187 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:22:05,214 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:22:05,214 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:22:15,248 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:22:25,274 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:22:35,297 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:22:45,326 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:22:55,357 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:23:05,874 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:23:15,892 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:23:15,895 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:23:25,914 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:23:25,916 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:23:35,943 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:23:35,946 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:23:46,000 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:23:46,002 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:23:56,027 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:23:56,028 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:24:06,063 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:24:06,064 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:24:16,082 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:24:26,104 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:24:36,124 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:24:46,156 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:24:56,176 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:25:06,696 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:25:16,722 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:25:16,724 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:25:26,754 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:25:26,757 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:25:36,774 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 18:25:36,776 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:25:46,796 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:25:46,797 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:25:56,816 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:25:56,816 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:26:06,828 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:26:06,829 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:26:16,853 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 18:26:16,854 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:26:26,868 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:26:26,870 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:26:36,892 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:26:46,912 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:26:56,943 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:27:06,961 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:27:16,994 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:27:27,506 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:27:37,545 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:27:37,548 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:27:47,566 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:27:47,568 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:27:57,590 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:27:57,590 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:28:07,607 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:28:07,609 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:28:17,631 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:28:17,632 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:28:27,654 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:28:27,655 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:28:37,681 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:28:47,706 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:28:57,721 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:29:07,745 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:29:17,767 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:29:28,301 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:29:38,319 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:29:38,320 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:29:48,341 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:29:48,342 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:29:58,367 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:29:58,368 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:30:08,385 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:30:08,386 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:30:18,402 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:30:18,403 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:30:28,432 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:30:28,433 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:30:38,447 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:30:48,475 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:30:58,497 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:31:08,521 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:31:18,553 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:31:29,079 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:31:39,092 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:31:39,093 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:31:49,113 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:31:49,114 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:31:59,125 WARNING Gagal membaca /interface/ethernet/print: timed out
+2026-11-18 18:31:59,126 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:32:09,144 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:32:09,145 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:32:19,167 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:32:19,168 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:32:29,203 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:32:29,204 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:32:39,223 WARNING Gagal membaca /ip/firewall/nat/print: timed out
+2026-11-18 18:32:39,224 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:32:49,251 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:32:49,252 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:32:59,283 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:33:09,308 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:33:19,337 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:33:29,383 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:33:39,434 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:33:49,955 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:33:59,982 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:33:59,984 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:34:10,018 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:34:10,019 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:34:20,044 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:34:20,044 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:34:30,068 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:34:30,069 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:34:40,105 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:34:40,106 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:34:50,125 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:34:50,127 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:35:00,149 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:35:10,184 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:35:20,223 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:35:30,254 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:35:40,322 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:35:50,848 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:36:00,907 WARNING Gagal membaca /system/resource/print: timed out
+2026-11-18 18:36:00,908 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:36:10,979 WARNING Gagal membaca /interface/print: timed out
+2026-11-18 18:36:10,980 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:36:21,018 WARNING Gagal membaca /ip/address/print: timed out
+2026-11-18 18:36:21,019 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:36:31,057 WARNING Gagal membaca /ip/route/print: timed out
+2026-11-18 18:36:31,057 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:36:41,100 WARNING Gagal membaca /ip/firewall/mangle/print: timed out
+2026-11-18 18:36:41,100 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:36:51,295 WARNING Gagal membaca /tool/netwatch/print: timed out
+2026-11-18 18:36:51,296 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:37:01,328 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:37:11,369 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:37:21,412 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:37:31,433 INFO Menghubungkan ke router.example.local:6187
+2026-11-18 18:37:41,448 INFO Menghubungkan ke router.example.local:6187

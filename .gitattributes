@@ -1,0 +1,2 @@
+# Arsip data terkompresi diperlakukan sebagai biner (tanpa konversi line ending)
+*.jsonl.gz binary
